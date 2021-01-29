@@ -1,0 +1,888 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url("https://fonts.googleapis.com/css?family=Raleway:700,500,600,400|Epilogue:700|Lato:700");
+* {
+  box-sizing: border-box;
+}
+.border-class-1 {
+  border: 2px solid rgba(0, 0, 0, 1);
+}
+.dove-gray-border-1px {
+  border: 1px solid var(--dove-gray);
+}
+.green-blue-border-2px {
+  border: 2px solid var(--green-blue);
+}
+.raleway-bold-alto-22px {
+  color: var(--alto);
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+}
+.raleway-bold-black-14px {
+  color: black;
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+}
+.raleway-bold-black-20px {
+  color: black;
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+}
+.raleway-bold-black-24px {
+  color: black;
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+}
+.raleway-bold-black-30px {
+  color: black;
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+}
+.raleway-medium-black-20px {
+  color: black;
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+}
+.raleway-normal-alto-13px {
+  color: var(--alto);
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+}
+.raleway-normal-alto-18px {
+  color: var(--alto);
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+}
+.raleway-normal-black-14px {
+  color: black;
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+}
+.raleway-semi-bold-black-18px {
+  color: black;
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+}
+.x01b-delegation-agreement {
+  background-color: var(--alabaster);
+  height: 768px;
+  position: relative;
+  width: 1366px;
+}
+.x01b-delegation-agreement .add-funds {
+  height: 31px;
+  left: 102px;
+  letter-spacing: 1.18px;
+  line-height: 18px;
+  position: absolute;
+  text-align: center;
+  top: 603px;
+  width: 146px;
+}
+.x01b-delegation-agreement .amount {
+  left: 393px;
+  letter-spacing: 0px;
+  line-height: 18px;
+  position: absolute;
+  text-align: left;
+  text-decoration: underline;
+  top: 562px;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .articles {
+  letter-spacing: 0px;
+  line-height: 24px;
+  margin-bottom: -7px;
+  margin-right: 10px;
+  margin-top: 16px;
+  min-height: 17px;
+  min-width: 107px;
+  text-align: left;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .articles-1 {
+  letter-spacing: 0px;
+  line-height: 24px;
+  margin-bottom: -7px;
+  margin-right: 10px;
+  margin-top: 11px;
+  min-height: 17px;
+  min-width: 107px;
+  text-align: left;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .auto-flex {
+  align-items: center;
+  align-self: flex-start;
+  display: flex;
+  min-width: 240px;
+}
+.x01b-delegation-agreement .auto-flex-1 {
+  align-items: flex-start;
+  display: flex;
+  height: 13px;
+  margin-left: 4.35px;
+  min-width: 24px;
+}
+.x01b-delegation-agreement .auto-flex1 {
+  align-items: center;
+  display: flex;
+  margin-right: 37px;
+  min-width: 218px;
+}
+.x01b-delegation-agreement .auto-flex2 {
+  align-items: center;
+  align-self: flex-start;
+  display: flex;
+  min-width: 239px;
+}
+.x01b-delegation-agreement .bg {
+  height: 1px;
+  left: 373px;
+  position: absolute;
+  top: 747px;
+  width: 618px;
+}
+.x01b-delegation-agreement .bg-1 {
+  background-color: black;
+  border-radius: 21px;
+  height: 59px;
+  left: 356px;
+  position: absolute;
+  top: 688px;
+  width: 948px;
+}
+.x01b-delegation-agreement .bg-2 {
+  border-radius: 9px;
+  height: 42px;
+  left: 393px;
+  position: absolute;
+  top: 596px;
+  width: 170px;
+}
+.x01b-delegation-agreement .by-delegating-the-tr {
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 14px;
+  height: 59px;
+  left: 393px;
+  letter-spacing: 0px;
+  line-height: 18px;
+  position: absolute;
+  text-align: left;
+  top: 493px;
+  width: 864px;
+}
+.x01b-delegation-agreement .dai {
+  letter-spacing: 0px;
+  line-height: 14px;
+  margin-bottom: 0.07px;
+  margin-left: 16px;
+  min-height: 18px;
+  min-width: 26px;
+  text-align: center;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .dashboard {
+  align-self: flex-end;
+  height: 26px;
+  letter-spacing: 0px;
+  line-height: 20px;
+  margin-left: 6px;
+  min-height: 26px;
+  text-align: center;
+  width: 146px;
+}
+.x01b-delegation-agreement .delegate-support {
+  color: white;
+  font-family: "Epilogue", Helvetica, Arial, serif;
+  font-size: 22px;
+  left: 721px;
+  letter-spacing: 1.08px;
+  line-height: 18px;
+  position: absolute;
+  text-align: center;
+  top: 709px;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .description {
+  height: 99px;
+  letter-spacing: 0px;
+  line-height: 24px;
+  margin-left: 2px;
+  margin-top: 4px;
+  min-height: 99px;
+  text-align: left;
+  width: 235px;
+}
+.x01b-delegation-agreement .description-1 {
+  height: 77px;
+  letter-spacing: 0px;
+  line-height: 24px;
+  margin-left: 2px;
+  margin-top: 4px;
+  min-height: 77px;
+  text-align: left;
+  width: 235px;
+}
+.x01b-delegation-agreement .group-1324 {
+  align-items: flex-start;
+  display: flex;
+  height: 25px;
+  left: 637px;
+  min-width: 285px;
+  position: absolute;
+  top: 638px;
+}
+.x01b-delegation-agreement .group-1325 {
+  align-items: center;
+  background-color: black;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  left: 363px;
+  min-height: 286px;
+  padding: 14px 23px;
+  position: absolute;
+  top: 134px;
+  width: 301px;
+}
+.x01b-delegation-agreement .group-1326 {
+  align-items: center;
+  background-color: black;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  left: 683px;
+  min-height: 286px;
+  padding: 14px 23px;
+  position: absolute;
+  top: 134px;
+  width: 301px;
+}
+.x01b-delegation-agreement .group-1327 {
+  align-items: center;
+  background-color: black;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  left: 1003px;
+  min-height: 286px;
+  padding: 14px 23px;
+  position: absolute;
+  top: 134px;
+  width: 301px;
+}
+.x01b-delegation-agreement .group-1330 {
+  align-items: flex-end;
+  display: flex;
+  height: 22px;
+  left: 393px;
+  min-width: 172px;
+  position: absolute;
+  top: 651px;
+}
+.x01b-delegation-agreement .group-21 {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2px;
+  min-height: 23px;
+  padding: 0px 0;
+  width: 19px;
+}
+.x01b-delegation-agreement .group-22 {
+  align-items: flex-start;
+  background-color: white;
+  border-radius: 28px;
+  display: flex;
+  height: 56px;
+  justify-content: flex-end;
+  left: 43px;
+  min-width: 218px;
+  padding: 11.8px 15px;
+  position: absolute;
+  top: 425px;
+}
+.x01b-delegation-agreement .group-23 {
+  align-items: center;
+  background-color: white;
+  border-radius: 28px;
+  display: flex;
+  height: 56px;
+  justify-content: flex-end;
+  left: 43px;
+  min-width: 218px;
+  padding: 13px 15px;
+  position: absolute;
+  top: 349px;
+}
+.x01b-delegation-agreement .group-24 {
+  align-items: flex-start;
+  background-color: white;
+  border-radius: 28px;
+  display: flex;
+  height: 56px;
+  justify-content: flex-end;
+  left: 43px;
+  min-width: 218px;
+  padding: 11.5px 15px;
+  position: absolute;
+  top: 272px;
+}
+.x01b-delegation-agreement .group-25 {
+  align-items: flex-start;
+  background-color: white;
+  border-radius: 28px;
+  display: flex;
+  height: 56px;
+  left: 44px;
+  min-width: 218px;
+  padding: 14px 16px;
+  position: absolute;
+  top: 195px;
+}
+.x01b-delegation-agreement .group-26 {
+  align-items: flex-start;
+  display: flex;
+  height: 30px;
+  justify-content: flex-end;
+  left: 63px;
+  min-width: 31px;
+  position: absolute;
+  top: 682px;
+}
+.x01b-delegation-agreement .icon-ionic--button-on {
+  height: 22px;
+  width: 22px;
+}
+.x01b-delegation-agreement .icon-ionic--button-on-1 {
+  height: 22px;
+  margin-left: 28px;
+  width: 22px;
+}
+.x01b-delegation-agreement .image-7 {
+  height: 89px;
+  width: 89px;
+}
+.x01b-delegation-agreement .line-26 {
+  height: 1px;
+  margin-right: 6px;
+  margin-top: 18px;
+  width: 227px;
+}
+.x01b-delegation-agreement .line-26-1 {
+  height: 1px;
+  margin-right: 6px;
+  margin-top: 41px;
+  width: 227px;
+}
+.x01b-delegation-agreement .line-35 {
+  height: 1px;
+  left: 51px;
+  position: absolute;
+  top: 162px;
+  width: 203px;
+}
+.x01b-delegation-agreement .line-36 {
+  height: 1px;
+  left: 51px;
+  position: absolute;
+  top: 508px;
+  width: 203px;
+}
+.x01b-delegation-agreement .log-off {
+  height: 32px;
+  left: 104px;
+  letter-spacing: 1.18px;
+  line-height: 18px;
+  position: absolute;
+  text-align: center;
+  top: 685px;
+  width: 139px;
+}
+.x01b-delegation-agreement .michael-white {
+  color: white;
+  font-family: "Lato", Helvetica, Arial, serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0px;
+  line-height: 24px;
+  margin-left: 1.01px;
+  margin-top: 10px;
+  min-height: 24px;
+  min-width: 42px;
+  text-align: center;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .notifications {
+  align-self: flex-end;
+  height: 27px;
+  letter-spacing: 0.98px;
+  line-height: 18px;
+  margin-left: 13px;
+  min-height: 27px;
+  text-align: center;
+  width: 146px;
+}
+.x01b-delegation-agreement .number {
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 18px;
+  font-weight: 700;
+  left: 390px;
+  letter-spacing: 0px;
+  line-height: 18px;
+  position: absolute;
+  text-align: center;
+  top: 593px;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .number-1 {
+  left: 637px;
+  letter-spacing: 0px;
+  line-height: 14px;
+  position: absolute;
+  text-align: center;
+  top: 660px;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .number-2 {
+  left: 820px;
+  letter-spacing: 0px;
+  line-height: 14px;
+  position: absolute;
+  text-align: center;
+  top: 660px;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .overlap-group {
+  height: 768px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 1366px;
+}
+.x01b-delegation-agreement .overlap-group1 {
+  height: 767px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 305px;
+}
+.x01b-delegation-agreement .overlap-group2 {
+  border-radius: <codegenerator_web.anima_models.admodel_corner_radius.ADModelCornerRadius object at 0x7fa7325528b0>px;
+  height: 25px;
+  position: relative;
+  width: 285px;
+}
+.x01b-delegation-agreement .overlap-group2-1 {
+  height: 30px;
+  margin-top: -0px;
+  position: relative;
+  width: 31px;
+}
+.x01b-delegation-agreement .overlap-group2-2 {
+  height: 11px;
+  margin-left: 0px;
+  margin-top: 1px;
+  position: relative;
+  width: 34px;
+}
+.x01b-delegation-agreement .path-1032 {
+  height: 21px;
+  width: 19px;
+}
+.x01b-delegation-agreement .path-1033 {
+  height: 2px;
+  margin-right: 0.03px;
+  width: 5px;
+}
+.x01b-delegation-agreement .path-1077 {
+  height: 10px;
+  left: 16px;
+  position: absolute;
+  top: 10px;
+  width: 14px;
+}
+.x01b-delegation-agreement .path-1078 {
+  height: 30px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 29px;
+}
+.x01b-delegation-agreement .path-1491 {
+  height: 0px;
+  left: 700px;
+  position: absolute;
+  top: 539px;
+  width: 422px;
+}
+.x01b-delegation-agreement .path-1496 {
+  height: 12px;
+  margin-left: 2px;
+  width: 12px;
+}
+.x01b-delegation-agreement .path-1497 {
+  height: 10px;
+  left: 11px;
+  position: absolute;
+  top: 1px;
+  width: 23px;
+}
+.x01b-delegation-agreement .path-1498 {
+  align-self: flex-end;
+  height: 10px;
+  width: 10px;
+}
+.x01b-delegation-agreement .path-1499 {
+  height: 9px;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 14px;
+}
+.x01b-delegation-agreement .path-1501 {
+  height: 29px;
+  width: 29px;
+}
+.x01b-delegation-agreement .path-1502 {
+  height: 14px;
+  width: 6px;
+}
+.x01b-delegation-agreement .path-1503 {
+  height: 20px;
+  margin-left: 2px;
+  width: 6px;
+}
+.x01b-delegation-agreement .path-1504 {
+  height: 28px;
+  margin-left: 2px;
+  width: 6px;
+}
+.x01b-delegation-agreement .path-1505 {
+  height: 32px;
+  margin-left: 2px;
+  width: 6px;
+}
+.x01b-delegation-agreement .path-1506 {
+  height: 32px;
+  left: 65px;
+  position: absolute;
+  top: 598px;
+  width: 32px;
+}
+.x01b-delegation-agreement .people {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.12px;
+  min-height: 25px;
+  padding: 0 0px;
+  width: 34px;
+}
+.x01b-delegation-agreement .photo {
+  border-radius: 38.5px;
+  height: 77px;
+  width: 77px;
+}
+.x01b-delegation-agreement .price {
+  left: 1112px;
+  letter-spacing: 0px;
+  line-height: 14px;
+  position: absolute;
+  text-align: center;
+  top: 644px;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .progress-bar-2 {
+  align-items: flex-start;
+  background-color: var(--alice-blue);
+  border-radius: 10px;
+  display: flex;
+  height: 23px;
+  left: 1018px;
+  min-width: 237px;
+  position: absolute;
+  top: 639px;
+}
+.x01b-delegation-agreement .progress-bar-2-1 {
+  align-items: flex-start;
+  background-color: var(--alice-blue);
+  border-radius: 10px;
+  display: flex;
+  height: 25px;
+  left: 0px;
+  min-width: 285px;
+  position: absolute;
+  top: 0px;
+}
+.x01b-delegation-agreement .rectangle-1609 {
+  background-color: white;
+  border-radius: 35px;
+  box-shadow: 3px 3px 6px rgba(255, 255, 255, 0.349);
+  height: 70px;
+  left: 41px;
+  position: absolute;
+  top: 662px;
+  width: 223px;
+}
+.x01b-delegation-agreement .rectangle-1614 {
+  background-color: white;
+  border-radius: 35px;
+  box-shadow: 3px 3px 6px rgba(255, 255, 255, 0.349);
+  height: 70px;
+  left: 41px;
+  position: absolute;
+  top: 579px;
+  width: 223px;
+}
+.x01b-delegation-agreement .rectangle-1751 {
+  background-color: white;
+  border-radius: 38px;
+  height: 310px;
+  left: 356px;
+  position: absolute;
+  top: 437px;
+  width: 948px;
+}
+.x01b-delegation-agreement .rectangle-19 {
+  -webkit-backdrop-filter: blur(30px) brightness(115%);
+  backdrop-filter: blur(30px) brightness(115%);
+  background-color: var(--gallery);
+  box-shadow: 5px 3px 6px rgba(47, 46, 179, 0.361);
+  height: 768px;
+  left: 305px;
+  position: absolute;
+  top: 0px;
+  width: 1061px;
+}
+.x01b-delegation-agreement .rectangle-621 {
+  background-color: black;
+  border-radius: 10px;
+  height: 23px;
+  margin-left: -2px;
+  margin-top: -2px;
+  width: 53px;
+}
+.x01b-delegation-agreement .rectangle-621-1 {
+  background-color: black;
+  border-radius: 10px;
+  height: 25px;
+  margin-left: -2px;
+  margin-top: -2px;
+  width: 127px;
+}
+.x01b-delegation-agreement .repayment-structure {
+  left: 637px;
+  letter-spacing: 0px;
+  line-height: 18px;
+  position: absolute;
+  text-align: left;
+  text-decoration: underline;
+  top: 562px;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .settings {
+  align-self: flex-end;
+  height: 27px;
+  letter-spacing: 0.98px;
+  line-height: 18px;
+  margin-bottom: 1.16px;
+  margin-left: 8px;
+  min-height: 27px;
+  text-align: center;
+  width: 146px;
+}
+.x01b-delegation-agreement .side-menu {
+  align-items: flex-start;
+  background-color: black;
+  display: flex;
+  height: 767px;
+  justify-content: flex-end;
+  left: 0px;
+  min-width: 305px;
+  padding: 26px 113.4px;
+  position: absolute;
+  top: 0px;
+}
+.x01b-delegation-agreement .span {
+  color: rgba(0, 0, 0, 1);
+  font-family: "Raleway", Helvetica, Arial, serif;
+}
+.x01b-delegation-agreement .span0 {
+  color: rgba(255, 255, 255, 1);
+  font-family: "Epilogue", Helvetica, Arial, serif;
+  font-weight: 700;
+  text-decoration: underline;
+}
+.x01b-delegation-agreement .span1-DQxoii {
+  color: rgba(0, 0, 0, 1);
+  font-family: "Raleway", Helvetica, Arial, serif;
+  text-decoration: underline;
+}
+.x01b-delegation-agreement .span1-wdFYhX {
+  color: rgba(255, 255, 255, 1);
+  font-family: "Epilogue", Helvetica, Arial, serif;
+  font-weight: 700;
+}
+.x01b-delegation-agreement .stats-chart-sharp {
+  align-items: flex-end;
+  display: flex;
+  min-width: 30px;
+}
+.x01b-delegation-agreement .text-1 {
+  height: 34px;
+  left: 384px;
+  letter-spacing: 0.19px;
+  line-height: 19px;
+  position: absolute;
+  text-align: center;
+  top: 84px;
+  width: 935px;
+}
+.x01b-delegation-agreement .text-2 {
+  left: 631px;
+  letter-spacing: 0px;
+  line-height: 30px;
+  position: absolute;
+  text-align: left;
+  top: 34px;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .text-3 {
+  height: 38px;
+  left: 637px;
+  letter-spacing: 0px;
+  line-height: 18px;
+  position: absolute;
+  text-align: left;
+  top: 594px;
+  width: 287px;
+}
+.x01b-delegation-agreement .text-4 {
+  height: 38px;
+  left: 1018px;
+  letter-spacing: 0px;
+  line-height: 18px;
+  position: absolute;
+  text-align: left;
+  top: 594px;
+  width: 239px;
+}
+.x01b-delegation-agreement .text-5 {
+  left: 130px;
+  letter-spacing: 0px;
+  line-height: 14px;
+  position: absolute;
+  text-align: center;
+  top: 4px;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .title {
+  letter-spacing: 0.15px;
+  line-height: 22px;
+  margin-left: 7px;
+  margin-top: 5px;
+  min-height: 54px;
+  min-width: 144px;
+  text-align: left;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .title-1 {
+  letter-spacing: 0.15px;
+  line-height: 22px;
+  margin-left: 7px;
+  margin-top: 5px;
+  min-height: 54px;
+  min-width: 122px;
+  text-align: left;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .title-2 {
+  letter-spacing: 0.15px;
+  line-height: 22px;
+  margin-left: 7px;
+  margin-top: 5px;
+  min-height: 54px;
+  min-width: 143px;
+  text-align: left;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .title-3 {
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 22px;
+  font-weight: 700;
+  left: 676px;
+  letter-spacing: 0.15px;
+  line-height: 22px;
+  position: absolute;
+  text-align: center;
+  text-decoration: underline;
+  top: 454px;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .top {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 110px;
+  width: 77px;
+}
+.x01b-delegation-agreement .usdc {
+  letter-spacing: 0px;
+  line-height: 14px;
+  margin-bottom: 0.07px;
+  margin-left: 16px;
+  min-height: 18px;
+  min-width: 40px;
+  text-align: center;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .your-return {
+  left: 1018px;
+  letter-spacing: 0px;
+  line-height: 18px;
+  position: absolute;
+  text-align: left;
+  text-decoration: underline;
+  top: 562px;
+  white-space: nowrap;
+}
+.x01b-delegation-agreement .your-stats {
+  align-self: center;
+  height: 27px;
+  letter-spacing: 0.98px;
+  line-height: 18px;
+  margin-left: 8px;
+  margin-top: 3px;
+  min-height: 27px;
+  text-align: center;
+  width: 146px;
+}
+:root {
+  --alabaster: rgba(250, 251, 251, 1);
+  --alice-blue: rgba(241, 249, 255, 1);
+  --alto: rgba(219, 219, 219, 1);
+  --dove-gray: rgba(112, 112, 112, 1);
+  --gallery: rgba(237, 237, 237, 0.85);
+  --green-blue: rgba(20, 110, 170, 1);
+}
