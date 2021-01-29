@@ -24,26 +24,21 @@ const App = () => {
 
     if (!address) {
         return (
-            
-            <Router> 
+
+            <Router>
                 <Switch>
-                    <Route path="/stake">
-                        <StakePage />   
-                    </Route>
-                <Route path="/delegate">
-                    <DelegationPage />
-                </Route>
-                <Route path="/">
-                    <HomePage />
-                </Route>
-                </Switch>   
-                
+                    <Route path="/"><HomePage /></Route>
+                    <Route path="/stake"><StakePage /></Route>
+                    <Route path="/delegate"><DelegationPage /></Route>
+                    <Route path="/projects-supported"><ProjectsSupportedPage /></Route>
+                </Switch>
+
             </Router>
-            
+
             //<ConnectWallet connectWallet={() => _connectWallet()}/>
             //<HomePage />
             //<DelegationPage />
-            
+
         )
     }
 
