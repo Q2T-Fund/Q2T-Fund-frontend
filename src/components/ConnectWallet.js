@@ -28,9 +28,11 @@ export async function connectWallet(address, setAddress, networkError, setNetwor
   }
   const addresses = await window.ethereum.enable()
   await SkillWallet.init(addresses[0]);
-  await SkillWallet.store({
-    skillWallet: [{ skill: 'Teaching', level: 8 }, { skill: 'Gardening', level: 9 }]
-  });
+
+  // TODO: uncomment for testing purposes if you want to have a skill wallet with this account
+  // await SkillWallet.store({
+  //   skillWallet: [{ skill: 'Teaching', level: 8 }, { skill: 'Gardening', level: 9 }]
+  // });
   const res = await SkillWallet.get();
 
   console.log(res);
@@ -42,6 +44,7 @@ export async function connectWallet(address, setAddress, networkError, setNetwor
 
   // setAddress(addresses)
   _initializeEthers(address)
+
   // We reinitialize it whenever the user changes their account.
   window.ethereum.on("accountsChanged", ([newAddress]) => {
 

@@ -18,7 +18,7 @@ const App = () => {
 
     if (!address) {
         return (
-            //<ConnectWallet connectWallet={() => _connectWallet()}/>
+            // <ConnectWalletModal />
             <HomePage />
         )
     }
