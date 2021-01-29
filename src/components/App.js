@@ -27,15 +27,10 @@ const App = () => {
 
             <Router>
                 <Switch>
-                    <Route path="/stake">
-                        <StakePage />
-                    </Route>
-                <Route path="/delegate">
-                    <DelegationPage />
-                </Route>
-                <Route path="/">
-                    <HomePage />
-                </Route>
+                    <Route path="/"><HomePage /></Route>
+                    <Route path="/stake"><StakePage /></Route>
+                    <Route path="/delegate"><DelegationPage /></Route>
+                    <Route path="/projects-supported"><ProjectsSupportedPage /></Route>
                 </Switch>
 
             </Router>
