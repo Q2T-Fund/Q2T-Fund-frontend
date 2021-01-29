@@ -7,6 +7,8 @@ import metamask from '../assets/metamask.svg'
 import skillwallet from '../assets/skillwallet.png'
 import newuser from '../assets/newuser.png'
 
+import { Link } from "react-router-dom"
+
 const HomePage = () => {
 
   return (
@@ -40,13 +42,13 @@ function X01IWantTo(props) {
         <Modal.Content>
           <Grid>
             <Grid.Row>
-              <Image src={skillwallet} size="tiny" />
-              <Button size="massive" color="grey">Skillwallet</Button>
+              <Image src={skillwallet} size="tiny" className="login-icons"/>
+              <Link to="/stake"><Button size="massive" color="black">Skillwallet</Button></Link>
             </Grid.Row>
 
             <Grid.Row>
-              <Image src={newuser} size="tiny" />
-              <Button size="massive" color="grey">New User</Button>
+              <Image src={newuser} size="tiny" className="login-icons" />
+              <Link to="/stake"><Button size="massive" color="black">New User</Button></Link>  
             </Grid.Row>
           </Grid>
         </Modal.Content>
@@ -73,12 +75,12 @@ function X01IWantTo(props) {
         <Modal.Content>
           <Grid>
             <Grid.Row>
-              <Image src={metamask} size="tiny"></Image>
-              <Button size="massive" color="grey" onClick={props.walletConnect}>Metamask</Button>
+              <Image src={metamask} size="tiny" className="login-icons"></Image>
+              <Link to="/delegate"><Button size="massive" color="black">Metamask</Button></Link>
             </Grid.Row>
             <Grid.Row >
-              <Image src={skillwallet} size="tiny" />
-              <Button size="massive" color="grey">SkillWallet</Button>
+              <Image src={skillwallet} size="tiny" className="login-icons"/>
+              <Link to="/delegate"><Button size="massive" color="black">SkillWallet</Button></Link>
             </Grid.Row>
           </Grid>
         </Modal.Content>
@@ -121,8 +123,10 @@ function X01IWantTo(props) {
       </div>
       <div className="overlap-group1">
         <Image2 image2={image2Props.image2} />
+
         <h1 className="i-want-to raleway-semi-bold-black-40px">{iWantTo}</h1>
         <div className="auto-flex">
+          
           {modal1()}
           {modal2()}
         </div>

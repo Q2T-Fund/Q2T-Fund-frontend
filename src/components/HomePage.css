@@ -7,12 +7,17 @@
 
 .login-screen {
     border-radius: 21px;
-    height: 309px;
-    width: 505px;
+    height: 100vh;
+    width: 100vw;
 }
 
 
 
+
+.login-icons {
+  margin-left: 17em;
+  margin-right: 2em;
+}
 
 
 
@@ -41,7 +46,7 @@
   background-color: white;
   display: flex;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 .x01-i-want-to .fundmy-project {
@@ -72,7 +77,7 @@
   align-items: flex-end;
   background-color: var(--black);
   display: flex;
-  height: 900px;
+  height: 100vh;
   min-width: 452px;
   padding: 250px 44px;
 }
@@ -123,7 +128,7 @@
 }
 .x01-i-want-to .rectangle-1596 {
   background-color: var(--governor-bay);
-  height: 900px;
+  height: 100vh;
   width: 10px;
 }
 .x01-i-want-to .span {
@@ -163,6 +168,13 @@
   text-align: center;
   white-space: nowrap;
 }
+
+
+.overlap-group1 .metamask {
+
+}
+
+
 :root {
   --black: rgba(0, 0, 0, 0.9);
   --ebb: rgba(235, 225, 225, 1);
