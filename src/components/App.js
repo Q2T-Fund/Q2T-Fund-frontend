@@ -3,6 +3,12 @@ import React, { useState } from "react";
 // contract's artifacts and address here
 import NoWalletDetected from './NoWalletDetected'
 import HomePage from "./HomePage"
+import DelegationPage from "./DelegationPage"
+import StakePage from "./StakePage"
+
+
+import { BrowserRouter as Router } from "react-router-dom"
+import { Switch, Link, Route } from "react-router-dom"
 
 const App = () => {
 
@@ -18,8 +24,26 @@ const App = () => {
 
     if (!address) {
         return (
-            // <ConnectWalletModal />
-            <HomePage />
+
+            <Router>
+                <Switch>
+                    <Route path="/stake">
+                        <StakePage />
+                    </Route>
+                <Route path="/delegate">
+                    <DelegationPage />
+                </Route>
+                <Route path="/">
+                    <HomePage />
+                </Route>
+                </Switch>
+
+            </Router>
+
+            //<ConnectWallet connectWallet={() => _connectWallet()}/>
+            //<HomePage />
+            //<DelegationPage />
+
         )
     }
 
