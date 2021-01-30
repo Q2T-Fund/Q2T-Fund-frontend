@@ -1,6 +1,6 @@
 import React from "react"
 
-import "./StakePage.css"
+import "../css/StakePage.css"
 
 const StakePage = () =>  {
   return <X02Stake {...X02StakeData} />;
