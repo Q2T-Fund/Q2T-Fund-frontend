@@ -11,6 +11,13 @@ import StakingPage from "./pages/StakingPage"
 import { BrowserRouter as Router } from "react-router-dom"
 import { Switch, Link, Route } from "react-router-dom"
 import SidebarExampleTransitions from "./SidebarExample";
+import { LayoutProvider } from "react-page-layout";
+import BaseLayout from './BaseLayout'
+import DummyPage from "./DummyPage";
+
+const layouts = {
+    'base': BaseLayout
+}
 
 // layouts
 import { LayoutProvider } from "react-page-layout"
