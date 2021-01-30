@@ -2,17 +2,20 @@ import React, { useState } from "react";
 
 // contract's artifacts and address here
 import NoWalletDetected from './NoWalletDetected'
-import HomePage from "./HomePage"
-import DelegationPage from "./DelegationPage"
-import StakePage from "./StakePage"
 
+// pages
+import HomePage from "./pages/HomePage"
+import DelegationPage from "./pages/DelegationPage"
+import StakePage from "./pages/StakePage"
+import DummyPage from "./pages/DummyPage";
 
+// router
 import { BrowserRouter as Router } from "react-router-dom"
 import { Switch, Link, Route } from "react-router-dom"
-import SidebarExampleTransitions from "./SidebarExample";
-import { LayoutProvider } from "react-page-layout";
-import BaseLayout from './BaseLayout'
-import DummyPage from "./DummyPage";
+
+// layouts
+import { LayoutProvider } from "react-page-layout"
+import BaseLayout from './layout/BaseLayout'
 
 const layouts = {
     'base': BaseLayout
