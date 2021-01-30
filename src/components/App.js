@@ -9,6 +9,7 @@ import StakePage from "./StakePage"
 
 import { BrowserRouter as Router } from "react-router-dom"
 import { Switch, Link, Route } from "react-router-dom"
+import SidebarExampleTransitions from "./SidebarExample";
 
 const App = () => {
 
@@ -30,7 +31,7 @@ const App = () => {
                     <Route path="/"><HomePage /></Route>
                     <Route path="/stake"><StakePage /></Route>
                     <Route path="/delegate"><DelegationPage /></Route>
-                    <Route path="/projects-supported"><ProjectsSupportedPage /></Route>
+                    <Route path="/projects-supported"><SidebarExampleTransitions /></Route>
                 </Switch>
 
             </Router>
