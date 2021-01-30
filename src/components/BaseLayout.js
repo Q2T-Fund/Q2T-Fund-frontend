@@ -36,13 +36,14 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
 
 export default class BaseLayout extends Component {
 
+  state = {
+    animation: 'push',
+    direction: 'left',
+    dimmed: false,
+    visible: false,
+  }
+
   componentDidMount() {
-    this.setState({
-      animation: 'push',
-      direction: 'left',
-      dimmed: false,
-      visible: false,
-    })
   }
 
   render() {
