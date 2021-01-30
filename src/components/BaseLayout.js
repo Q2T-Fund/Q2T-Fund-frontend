@@ -40,7 +40,7 @@ export default class BaseLayout extends Component {
     animation: 'push',
     direction: 'left',
     dimmed: false,
-    visible: false,
+    visible: true,
   }
 
   componentDidMount() {
@@ -48,18 +48,17 @@ export default class BaseLayout extends Component {
 
   render() {
     return (
-      <div>
-        <Sidebar.Pushable as={Segment} style={{ overflow: 'hidden' }}>
-          <VerticalSidebar
-            animation={this.state.animation}
-            direction={this.state.direction}
-            visible={this.state.visible}
-          />
-          <Sidebar.Pusher dimmed={this.state.dimmed && this.state.visible}>
-            <Slot name="page-content" />
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
-      </div>
+      <Sidebar.Pushable style={{ overflow: 'hidden'}} style={{ height: '100vh' }}>
+        <VerticalSidebar
+          animation={this.state.animation}
+          direction={this.state.direction}
+          visible={this.state.visible}
+        />
+        <Sidebar.Pusher
+          dimmed={this.state.dimmed && this.state.visible}>
+          <Slot name="page-content" />
+        </Sidebar.Pusher>
+      </Sidebar.Pushable>
     )
   }
 }
