@@ -10,6 +10,7 @@ import StakingPage from "./pages/StakingPage"
 // router
 import { BrowserRouter as Router } from "react-router-dom"
 import { Switch, Link, Route } from "react-router-dom"
+import SidebarExampleTransitions from "./SidebarExample";
 
 // layouts
 import { LayoutProvider } from "react-page-layout"
