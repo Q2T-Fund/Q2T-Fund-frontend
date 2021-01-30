@@ -10,6 +10,13 @@ import StakePage from "./StakePage"
 import { BrowserRouter as Router } from "react-router-dom"
 import { Switch, Link, Route } from "react-router-dom"
 import SidebarExampleTransitions from "./SidebarExample";
+import { LayoutProvider } from "react-page-layout";
+import BaseLayout from './BaseLayout'
+import DummyPage from "./DummyPage";
+
+const layouts = {
+    'base': BaseLayout
+}
 
 const App = () => {
 
@@ -31,7 +38,11 @@ const App = () => {
                     <Route exact path="/"><HomePage /></Route>
                     <Route path="/stake"><StakePage /></Route>
                     <Route path="/delegate"><DelegationPage /></Route>
-                    <Route path="/projects-supported"><SidebarExampleTransitions /></Route>
+                    <Route path="/projects-supported">
+                        <LayoutProvider layouts={layouts}>
+                            <DummyPage />
+                        </LayoutProvider>
+                    </Route>
                 </Switch>
 
             </Router>
