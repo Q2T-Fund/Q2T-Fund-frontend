@@ -25,15 +25,10 @@ const App = () => {
     // const { address } = state
     // instead of being sourced from the useState function
     const [address, setAddress] = useState(undefined)
-
-    if (window.ethereum === undefined) {
-        return (<NoWalletDetected />)
-    }
-
-    if (!address) {
-        return (
-
-
+  
+    return (
+        
+        <>
             <Router>
                 <Switch>
                     <Route exact path="/"><HomePage /></Route>
@@ -53,19 +48,8 @@ const App = () => {
             //<DelegationPage />
             
             // resolved merging confilct, reason: Router implementation maybe?
-          
-        )
-    }
-
-    // now actual functionality
-
-    return (<>
-        <h2>welcome {address}</h2>
-        <p>lot's to be done here! :)</p>
-    </>)
-
-
-
+         </>
+      )
 }
 
 export default App;
