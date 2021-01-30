@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import './HomePage.css'
 import { Button, Modal, Header, Icon, Grid, Image } from 'semantic-ui-react'
-import ConnectWalletModal from './ConnectWallet'
+import ConnectWalletModal from './../ConnectWallet'
 
-import metamask from '../assets/metamask.svg'
-import skillwallet from '../assets/skillwallet.png'
-import newuser from '../assets/newuser.png'
+import metamask from '../../assets/metamask.svg'
+import skillwallet from '../../assets/skillwallet.png'
+import newuser from '../../assets/newuser.png'
 
 import { Link } from "react-router-dom"
 
@@ -48,7 +48,7 @@ function X01IWantTo(props) {
 
             <Grid.Row>
               <Image src={newuser} size="tiny" className="login-icons" />
-              <Link to="/stake"><Button size="massive" color="black">New User</Button></Link>  
+              <Link to="/stake"><Button size="massive" color="black">New User</Button></Link>
             </Grid.Row>
           </Grid>
         </Modal.Content>
@@ -126,7 +126,7 @@ function X01IWantTo(props) {
 
         <h1 className="i-want-to raleway-semi-bold-black-40px">{iWantTo}</h1>
         <div className="auto-flex">
-          
+
           {modal1()}
           {modal2()}
         </div>
