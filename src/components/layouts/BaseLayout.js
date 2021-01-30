@@ -9,6 +9,8 @@ import {
   Image
 } from 'semantic-ui-react'
 
+import '../css/BaseLayout.css'
+
 const VerticalSidebar = ({ animation, direction, visible }) => (
   <Sidebar
     as={Menu}
@@ -56,16 +58,14 @@ export default class BaseLayout extends Component {
 
   render() {
     return (
-      <Sidebar.Pushable style={{ overflow: 'hidden', height: '100vh', width: '100vw' }}>
+      <Sidebar.Pushable>
         <VerticalSidebar
           animation={this.state.animation}
           direction={this.state.direction}
           visible={this.state.visible}
         />
         <Sidebar.Pusher dimmed={this.state.dimmed && this.state.visible}>
-          <div style={{
-            height: '100vh', backgroundColor: '#1b1c1d', padding: '1em', width: '5em', display: 'inline-block'
-          }}>
+          <div class='sidebar-handle'>
             <Button onClick={() => this.setState({ visible: !this.state.visible })}>
               <Button.Content>
                 <Icon name='content' />
