@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './HomePage.css'
+import '../css/HomePage.css'
 import { Button, Modal, Header, Icon, Grid, Image } from 'semantic-ui-react'
 import ConnectWalletModal from './../ConnectWallet'
 
