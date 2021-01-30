@@ -15,7 +15,7 @@ import { Switch, Link, Route } from "react-router-dom"
 
 // layouts
 import { LayoutProvider } from "react-page-layout"
-import BaseLayout from './layout/BaseLayout'
+import BaseLayout from './layouts/BaseLayout'
 
 const layouts = {
     'base': BaseLayout
