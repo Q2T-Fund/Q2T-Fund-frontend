@@ -9,7 +9,7 @@ const keyInfo = {
 	secret: process.env.REACT_APP_TEXTILE_SECRET
 }
 
-const skillWalletThreadID =  ThreadID.fromString(skillWalletThreadIDString);
+const skillWalletThreadID =  ThreadID.fromString('bafk42lwogxbt7moa7p7gdclynpvm3h7bnfnk56nzawnkftxdlkzmpri');
 const skillWalletPrivateKey = process.env.REACT_APP_TEXTILE_PRIV_KEY
 
 export async function initialize() {
