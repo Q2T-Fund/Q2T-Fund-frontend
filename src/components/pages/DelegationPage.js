@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { DatePicker } from "antd"
 
 import 'antd/dist/antd.css';
-import "./DelegationPage.css"
+import "../css/DelegationPage.css"
 
 import { Grid, Label, Input, Form, Checkbox } from "semantic-ui-react"
 import { Slider } from "react-semantic-ui-range";
@@ -13,8 +13,8 @@ import { Slider } from "react-semantic-ui-range";
 // <Input placeholder="Enter Value" onChange={handleValueChange} />
 
 const DelegationPage = () => {
-  
-  
+
+
   return <X01bDelegationAgreement {...x01bDelegationAgreementData} />;
 
 
@@ -40,8 +40,8 @@ function X01bDelegationAgreement(props) {
         setSliderValue(value);
       }
     };
-  
-  
+
+
     return (
       <>
         <Grid columns={2}>
@@ -52,38 +52,38 @@ function X01bDelegationAgreement(props) {
             <Label>{`${sliderValue} %`}</Label>
           </Grid.Column>
         </Grid>
-        
-        
-  
-  
+
+
+
+
       </>
     )
   }
-  
+
   const Amount = () => {
 
     const [amount, setAmount] = useState(0)
 
- 
+
     const [currency, setCurrency] = useState("DAI")
-    
+
     const amountOnChange = (e) => {
       const value = e.target.value
       console.log(value)
       setAmount(value)
     }
-  
+
     const currencyOnChange = () => {
       if (currency === "DAI") {
         setCurrency("USDC")
-      } 
-  
+      }
+
       if (currency === "USDC") {
         setCurrency("DAI")
       }
     }
-  
-  
+
+
     return (
       <>
         <Input placeholder="5000" onChange={amountOnChange} />
@@ -106,20 +106,20 @@ function X01bDelegationAgreement(props) {
             onChange={currencyOnChange}
           />
         </Form.Field>
-       
-          
-       
+
+
+
       </Form>
       </>
     )
-    
+
   }
-  
+
 
   const Return = ({ rate, amount }) => {
 
     const returnable = rate * amount
-    
+
   }
 
 
@@ -225,9 +225,9 @@ function X01bDelegationAgreement(props) {
         </div>
         <div className="rectangle-1751 dove-gray-border-1px"></div>
         <div className="amount raleway-semi-bold-black-18px">{amount}</div>
-        
 
-        
+
+
         <div className="your-return raleway-semi-bold-black-18px">{yourReturn}</div>
         <div className="repayment-structure raleway-semi-bold-black-18px">{repaymentStructure}</div>
         <div className="progress-bar-2 border-class-1">
@@ -248,19 +248,19 @@ function X01bDelegationAgreement(props) {
 
             {<Repayment />}
 
-            
+
           </div>
         </div>
-        
+
         <div className="number">{<Amount />}</div>
 
-        
+
         <div className="price raleway-bold-black-14px">{`${`1000`} USD`}</div>
 
 
 
 
-        
+
         <div className="bg-1"></div>
         <div className="delegate-support">
           <a href="thankyou" className="span0">{spanText4}</a>
