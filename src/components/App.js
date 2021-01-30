@@ -54,9 +54,9 @@ const App = () => {
             //<ConnectWallet connectWallet={() => _connectWallet()}/>
             //<HomePage />
             //<DelegationPage />
-            
+
             // resolved merging confilct, reason: Router implementation maybe?
-          
+
         )
     }
 
