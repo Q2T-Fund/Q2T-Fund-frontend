@@ -16,9 +16,9 @@ export class SkillWallet {
     static async init(address) {
         const threeIdConnect = new ThreeIdConnect()
 
-        this.ceramic = new Ceramic()
+        this.ceramic = new Ceramic(process.env.REACT_APP_CERAMIC_NETWORK);
         this.idx = new IDX({ ceramic: this.ceramic })
-
+        
         const authProvider = new EthereumAuthProvider(window.ethereum, address)
         await threeIdConnect.connect(authProvider)
         const didProvider = await threeIdConnect.getDidProvider()
