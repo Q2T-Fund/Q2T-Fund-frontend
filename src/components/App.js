@@ -28,7 +28,7 @@ const App = () => {
 
             <Router>
                 <Switch>
-                    <Route path="/"><HomePage /></Route>
+                    <Route exact path="/"><HomePage /></Route>
                     <Route path="/stake"><StakePage /></Route>
                     <Route path="/delegate"><DelegationPage /></Route>
                     <Route path="/projects-supported"><SidebarExampleTransitions /></Route>
