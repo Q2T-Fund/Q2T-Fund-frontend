@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import { DatePicker } from "antd"
 
 import 'antd/dist/antd.css';
@@ -13,23 +13,33 @@ import { Slider } from "react-semantic-ui-range";
 // <Input placeholder="Enter Value" onChange={handleValueChange} />
 
 const DelegationPage = () => {
+  
+  const initialState = { tokenAmount: 0, repaymentPercent: 0, totalReturn: 0, currency: 'DAI' }
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'updateAmount': {
+        return { ...state, tokenAmount: action.data }
+      }
+      case 'updateRepaymentPercent': {
+        return { ...state, repaymentPercent: action.data }
+      }
+      case 'updateTotalReturn': {
+        return { ...state, totalReturn: action.data }
+      }
+      case 'updateCurrency': {
+        return { ...state, currency: action.data}
+      }
+      default: {
+        throw new Error("Error mann!")
+      }
+    }
+  }
 
-
-  return <X01bDelegationAgreement {...x01bDelegationAgreementData} />;
-
-
-}
-export default DelegationPage;
-
-
-function X01bDelegationAgreement(props) {
+  const [state, dispatch] = useReducer(reducer, initialState)
 
 
 
   const Repayment = () => {
-    const [sliderValue, setSliderValue] = useState(0)
-
-
 
     const settings = {
       start: 0,
@@ -37,7 +47,7 @@ function X01bDelegationAgreement(props) {
       max: 50,
       step: 1,
       onChange: value => {
-        setSliderValue(value);
+        dispatch({ type: 'updateRepaymentPercent', data: value })
       }
     };
 
@@ -46,47 +56,50 @@ function X01bDelegationAgreement(props) {
       <>
         <Grid columns={2}>
           <Grid.Column width={12}>
-            <Slider value={sliderValue} color="black" settings={settings}></Slider>
+            <Slider value={state.repaymentPercent} color="black" settings={settings}></Slider>
           </Grid.Column>
           <Grid.Column width={4}>
-            <Label>{`${sliderValue} %`}</Label>
+            <Label>{`${state.repaymentPercent} %`}</Label>
           </Grid.Column>
         </Grid>
-
-
-
-
       </>
     )
   }
 
+  
+
+
   const Amount = () => {
 
-    const [amount, setAmount] = useState(0)
-
-
-    const [currency, setCurrency] = useState("DAI")
+    //const [amount, setAmount] = useState(0)
 
     const amountOnChange = (e) => {
-      const value = e.target.value
-      console.log(value)
-      setAmount(value)
+      e.preventDefault()
+      const value = Number(e.target.value)
+      //setAmount(value)
+      dispatch({ type: 'updateAmount', data: value })
+      console.log(state.repaymentPercent)
+      // components start lagging immediately when uncommenting the line above...
     }
 
-    const currencyOnChange = () => {
-      if (currency === "DAI") {
-        setCurrency("USDC")
-      }
-
-      if (currency === "USDC") {
-        setCurrency("DAI")
-      }
-    }
+   
 
 
     return (
       <>
-        <Input placeholder="5000" onChange={amountOnChange} />
+       
+        <div>
+        <input type="number" name="amount"
+        value={""}
+        placeholder="5000"
+        onChange={e => amountOnChange(e)}
+        />
+        </div>
+        
+      </>
+    )
+
+/*
         <Form>
         <Form.Field>
           <Checkbox
@@ -94,7 +107,7 @@ function X01bDelegationAgreement(props) {
             label='DAI'
             name='checkboxRadioGroup'
             value={'DAI'}
-            checked={currency === 'DAI'}
+            checked={state.currency === 'DAI'}
             onChange={currencyOnChange}
           />
           <Checkbox
@@ -102,93 +115,116 @@ function X01bDelegationAgreement(props) {
             label='USDC'
             name='checkboxRadioGroup'
             value='USDC'
-            checked={currency === 'USDC'}
+            checked={state.currency === 'USDC'}
             onChange={currencyOnChange}
           />
         </Form.Field>
-
-
-
       </Form>
-      </>
+*/
+
+  }
+
+
+  const Currency = () => {
+
+    const currencyOnChange = (e) => {
+      e.preventDefault()
+
+      if (state.currency === "DAI") {
+        dispatch({ type: 'updateCurrency', data: 'USDC' })
+      }
+
+      if (state.currency === "USDC") {
+        dispatch({ type: 'updateCurrency', data: 'DAI' })
+      }
+
+    }
+    return (
+    <>
+    <Label> DAI
+    <input type="radio" name="DAI"
+    value="DAI"
+    checked={state.currency === "DAI"}
+    onChange={e => currencyOnChange(e)}
+    />
+    </Label>
+
+    <Label> USDC
+    <input type="radio" name="USDC"
+    value={"USDC"}
+    checked={state.currency === "USDC"}
+    onChange={e => currencyOnChange(e)}
+    />
+    </Label>
+    </>
     )
 
-  }
-
-
-  const Return = ({ rate, amount }) => {
-
-    const returnable = rate * amount
 
   }
+ 
+  const text1 =  "Choose the area and the type of Project you want to fund."
+  const text2 = "Support the Public Goods!"
+  const image7 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-7-1@1x.png"
+  const title = (<>Blockchain &<br/>Open-Source</>)
+  const description = "Description of this area of Public Goods."
+  const line26 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-26-1@1x.png"
+  const articles="xx Active Projects"
+  const image72 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-7-1@1x.png"
+  const title2 = <>Art, Events <br/>& Lifestyle</>
+  const description2 = "Description of this area of Public Goods."
+  const line262 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-26-1@1x.png"
+  const articles2 = "xx Active Projects"
+  const image73 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-7-1@1x.png"
+  const title3 = <>Local <br/>Communities</>
+  const description3 = "Description of this area of Public Goods."
+  const line263 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-26-1@1x.png"
+  const articles3 = "xx Active Projects"
+  const amount = "Amount"
+  const yourReturn ="Your Return"
+  const repaymentStructure = "Repayment Structure"
+  const path1491 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1491@1x.png"
+  const spanText = "By delegating the Treasury, you can fund and support projects for the Public Goods. The Quadratic Treasury will be “locking” these funds to provide “"
+  const spanText2 = "non-repayable loans"
+  const spanText3 ="” to these projects using Quadratic Funding and a milestone-based approach to prevent any form of fraud and collusion."
+  const text3 = "Decide whether you want it to be a full donation, or receive back part of your funds."
+  const text4 = "This is how much you will receive back from your funds. Plus interest!"
+  const text5 = "20%"
+  const number = "5000"
+  const price ="1000 USD"
+  const iconIonicMdRadioButtonOn = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/icon-ionic-md-radio-button-on-2@1x.png"
+  const dai = "DAI"
+  const iconIonicMdRadioButtonOn2 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/icon-ionic-md-radio-button-on-1@1x.png"
+  const usdc = "USDC"
+  const spanText4 ="Delegate & Support"
+  const spanText5 = "!"
+  const title4 = "Your Delegation Agreement"
+  const number2 = "0%"
+  const number3 = "50%"
+  const photo = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/photo-1@1x.png"
+  const michaelWhite = "Jabyl"
+  const logOff =  "Log off"
+  const path1077 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1077-1@1x.png"
+  const path1078 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1078-1@1x.png"
+  const path1498 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1498@1x.png"
+  const path1496 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1496-1@1x.png"
+  const path1497 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1497@1x.png"
+  const path1499 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1499-1@1x.png"
+  const dashboard =  "Dashboard"
+  const path1032 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1032-1@1x.png"
+  const path1033 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1033-1@1x.png"
+  const notifications = "Notifications"
+  const path1501 =  "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1501@1x.png"
+  const settings =  "Settings"
+  const path1502 =  "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1502-1@1x.png"
+  const path1505 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1505-1@1x.png"
+  const path1503 ="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1503-1@1x.png"
+  const path1504 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1504-1@1x.png"
+  const yourStats = "Your Stats"
+  const path1506 ="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1506-1@1x.png"
+  const addFunds = "Add funds"
+  const line35 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-35-1@1x.png"
+  const line36 = "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-35-1@1x.png"
 
-
-
-
-  const {
-    text1,
-    text2,
-    image7,
-    title,
-    description,
-    line26,
-    articles,
-    image72,
-    title2,
-    description2,
-    line262,
-    articles2,
-    image73,
-    title3,
-    description3,
-    line263,
-    articles3,
-    amount,
-    yourReturn,
-    repaymentStructure,
-    path1491,
-    spanText,
-    spanText2,
-    spanText3,
-    text3,
-    text4,
-    text5,
-    number,
-    price,
-    iconIonicMdRadioButtonOn,
-    dai,
-    iconIonicMdRadioButtonOn2,
-    usdc,
-    spanText4,
-    spanText5,
-    title4,
-    number2,
-    number3,
-    photo,
-    michaelWhite,
-    logOff,
-    path1077,
-    path1078,
-    path1498,
-    path1496,
-    path1497,
-    path1499,
-    dashboard,
-    path1032,
-    path1033,
-    notifications,
-    path1501,
-    settings,
-    path1502,
-    path1505,
-    path1503,
-    path1504,
-    yourStats,
-    path1506,
-    addFunds,
-    line35,
-    line36,
-  } = props;
 
   return (
     <div className="x01b-delegation-agreement">
@@ -252,7 +288,9 @@ function X01bDelegationAgreement(props) {
           </div>
         </div>
 
-        <div className="number">{<Amount />}</div>
+        <div className="number">{<><Amount /> <Currency /> </>}</div>
+
+      
 
 
         <div className="price raleway-bold-black-14px">{`${`1000`} USD`}</div>
@@ -328,7 +366,20 @@ function X01bDelegationAgreement(props) {
     </div>
   );
 }
-const x01bDelegationAgreementData = {
+
+
+
+
+
+
+export default DelegationPage;
+
+
+
+
+function X01bDelegationAgreement(props) {
+
+const x01bDelegationAgreementData = { 
     text1: "Choose the area and the type of Project you want to fund.",
     text2: "Support the Public Goods!",
     image7: "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-7-1@1x.png",
@@ -393,3 +444,4 @@ const x01bDelegationAgreementData = {
     line36: "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-35-1@1x.png",
 };
 
+}

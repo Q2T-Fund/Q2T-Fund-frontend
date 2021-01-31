@@ -33,7 +33,7 @@ function X01IWantTo(props) {
         onOpen={() => setOpen1(true)}
         open={open1}
         size='small'
-        trigger={<Button size="massive" color="black" className="button1"><>Fund Public Goods</></Button>}
+        trigger={<Button size="massive" color="black" className="button1"><>Support Public Goods</></Button>}
       >
         <Header icon>
           <Icon name='ethereum' />
@@ -41,20 +41,23 @@ function X01IWantTo(props) {
         </Header>
         <Modal.Content>
           <Grid>
-            <Grid.Row>
+             <Grid.Row>
+              <Image src={metamask} size="tiny" className="login-icons"></Image>
+              <Link to="/delegate"><Button size="massive" color="black">Metamask</Button></Link>
+            </Grid.Row>
+            <Grid.Row >
               <Image src={skillwallet} size="tiny" className="login-icons"/>
-              <Link to="/stake"><Button size="massive" color="black">Skillwallet</Button></Link>
+              <Link to="/delegate"><Button size="massive" color="black">SkillWallet</Button></Link>
             </Grid.Row>
 
-            <Grid.Row>
-              <Image src={newuser} size="tiny" className="login-icons" />
-              <Link to="/stake"><Button size="massive" color="black">New User</Button></Link>
-            </Grid.Row>
           </Grid>
         </Modal.Content>
       </Modal>
     )
   }
+
+  
+
 
   const modal2 = () => {
 
@@ -66,7 +69,7 @@ function X01IWantTo(props) {
         onOpen={() => setOpen2(true)}
         open={open2}
         size='small'
-        trigger={<Button size="massive" color="black" className="button2">Support my Project</Button>}
+        trigger={<Button size="massive" color="black" className="button2">Fund my Project</Button>}
         >
         <Header icon>
           <Icon name='ethereum' />
@@ -74,13 +77,14 @@ function X01IWantTo(props) {
         </Header>
         <Modal.Content>
           <Grid>
-            <Grid.Row>
-              <Image src={metamask} size="tiny" className="login-icons"></Image>
-              <Link to="/delegate"><Button size="massive" color="black">Metamask</Button></Link>
-            </Grid.Row>
-            <Grid.Row >
+			 <Grid.Row>
               <Image src={skillwallet} size="tiny" className="login-icons"/>
-              <Link to="/delegate"><Button size="massive" color="black">SkillWallet</Button></Link>
+              <Link to="/stake"><Button size="massive" color="black">Skillwallet</Button></Link>
+            </Grid.Row>
+
+            <Grid.Row>
+              <Image src={newuser} size="tiny" className="login-icons" />
+              <Link to="/stake"><Button size="massive" color="black">New User</Button></Link>
             </Grid.Row>
           </Grid>
         </Modal.Content>
