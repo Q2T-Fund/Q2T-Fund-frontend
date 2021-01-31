@@ -10524,6 +10524,13 @@ multicast-dns@^6.0.1:
     dns-packet "^1.3.1"
     thunky "^1.0.2"
 
+multicodec@0.5.6:
+  version "0.5.6"
+  resolved "https://registry.yarnpkg.com/multicodec/-/multicodec-0.5.6.tgz#fdf250b6febe57053221f0aeeb83e6cae073a05e"
+  integrity sha512-YQthT12rnqyAosc+xSprD3JpmrfxXYABM9FEFw7oVxTonsWmIYng1iIppqpIfGBFZ3YKMgJKx6UTREuv91EcKw==
+  dependencies:
+    varint "^5.0.0"
+
 multicodec@2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/multicodec/-/multicodec-2.0.4.tgz#d83f9ade800fd224860977401b2e4b9293a98811"
@@ -10532,7 +10539,7 @@ multicodec@2.0.4:
     uint8arrays "1.1.0"
     varint "^6.0.0"
 
-multicodec@^0.5.5, multicodec@^0.5.6:
+multicodec@^0.5.5:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/multicodec/-/multicodec-0.5.7.tgz#1fb3f9dd866a10a55d226e194abba2dcc1ee9ffd"
   integrity sha512-PscoRxm3f+88fAtELwUnZxGDkduE2HD9Q6GHUOywQLjOGT/HAdhjLDYNZ1e7VR0s0TP0EwZ16LNUTFpoBGivOA==
