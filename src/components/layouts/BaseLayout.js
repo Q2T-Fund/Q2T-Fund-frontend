@@ -6,7 +6,8 @@ import {
   Menu,
   Container,
   Sidebar,
-  Image
+  Image,
+  Grid
 } from 'semantic-ui-react'
 
 import '../css/BaseLayout.css'
@@ -59,12 +60,15 @@ export default class BaseLayout extends Component {
   render() {
     return (
       <Sidebar.Pushable>
+
         <VerticalSidebar
           animation={this.state.animation}
           direction={this.state.direction}
           visible={this.state.visible}
         />
+
         <Sidebar.Pusher dimmed={this.state.dimmed && this.state.visible}>
+
           <div class='sidebar-handle'>
             <Button onClick={() => this.setState({ visible: !this.state.visible })}>
               <Button.Content>
@@ -72,7 +76,19 @@ export default class BaseLayout extends Component {
               </Button.Content>
             </Button>
           </div>
-          <Slot name="page-content" />
+
+          <Grid>
+            <Grid.Row columns={3}>
+              <Grid.Column><Slot name="row1-col1" /></Grid.Column>
+              <Grid.Column><Slot name="row1-col2" /></Grid.Column>
+              <Grid.Column><Slot name="row1-col3" /></Grid.Column>
+            </Grid.Row>
+
+            <Grid.Row columns={1}>
+              <Grid.Column><Slot name="row2-col1" /></Grid.Column>
+            </Grid.Row>
+          </Grid>
+
         </Sidebar.Pusher>
       </Sidebar.Pushable>
     )
