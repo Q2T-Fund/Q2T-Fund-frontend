@@ -38,18 +38,20 @@ const App = () => {
                 <Switch>
                     <Route exact path="/"><HomePage /></Route>
                     <Route path="/stake"><StakePage /></Route>
-                    <Route path="/delegate"><DelegationPage /></Route>
+                    <Route path="/delegate">
+                        <LayoutProvider layouts={layouts}>
+                            <DelegationPage />
+                        </LayoutProvider>
+                    </Route>
                     <Route path="/projects-supported">
                         <LayoutProvider layouts={layouts}>
                             <DummyPage />
                         </LayoutProvider>
                     </Route>
-
-                    <Route path="/base"> <BaseLayout /> </Route>
                 </Switch>
 
             </Router>
-        </>		
+        </>
     	)
 
 
