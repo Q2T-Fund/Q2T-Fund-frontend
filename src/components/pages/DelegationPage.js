@@ -1,175 +1,206 @@
-import React, { Component, useReducer, useState } from "react";
+import React, { useState } from "react";
 import { DatePicker } from "antd"
 
 import 'antd/dist/antd.css';
 import "../css/DelegationPage.css"
 import '../css/BaseLayout.css'
 
-import { Grid, Label, Input, Form, Checkbox } from "semantic-ui-react"
-import { Slider } from "react-semantic-ui-range";
+import { Grid, Label } from "semantic-ui-react"
+// import { Slider } from "react-semantic-ui-range";
 import { Page, Section } from 'react-page-layout';
 import { ethers } from 'ethers'
 
+import { Form, Input, Slider, Radio } from 'formik-antd'
+import { Formik } from 'formik'
 
-// <Input placeholder="Enter Value" onChange={handleValueChange} />
-const Card = () => (
-  <div className="black-card">
+
+const Card = (props) => {
+ 
+  const handleClick = (e) => {
+    e.preventDefault()
+    alert(`category number (name): ${props.category}`)
+  }
+
+  return (
+  <div className="black-card" onClick={handleClick}>
     <div className="auto-flex">
       <img className="image-7" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-7-1@1x.png" />
       <div className="title raleway-bold-alto-22px">
-        Blockchain &<br />Open-Source</div>
+        {props.title}</div>
     </div>
-    <div className="description raleway-normal-alto-18px">"Description of this area of Public Goods."</div>
+    <div className="description raleway-normal-alto-18px">{props.description}</div>
     <img className="line-26" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-26-1@1x.png" />
     <div className="articles raleway-normal-alto-13px">
       xx Active Projects
     </div>
   </div>
-)
+  )
+}
 
 
 const ContractInteraction = () => {
-  const initialState = {
-    tokenAmount: 0,
-    repaymentPercent: 0,
-    totalReturn: 0,
-    currency: 'DAI'
-  }
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case 'updateAmount': {
-        return { ...state, tokenAmount: action.data }
-      }
-      case 'updateRepaymentPercent': {
-        return { ...state, repaymentPercent: action.data }
-      }
-      case 'updateTotalReturn': {
-        return { ...state, totalReturn: action.data }
-      }
-      case 'updateCurrency': {
-        return { ...state, currency: action.data }
-      }
-      default: {
-        throw new Error("Error mann!")
-      }
-    }
-  }
-  const [state, dispatch] = useReducer(reducer, initialState)
-  const settings = {
-    start: 0,
-    min: 0,
-    max: 50,
-    step: 1,
-    onChange: value => {
-      dispatch({ type: 'updateRepaymentPercent', data: value })
-    }
-  };
 
-  const amountOnChange = (e) => {
-    e.preventDefault()
-    const value = parseInt(e.target.value)
-    dispatch({ type: 'updateAmount', data: value })
-  }
+    return (
+      <>
 
-  const currencyOnChange = (e) => {
-    e.preventDefault()
-    const value = e.target.value
-    dispatch({ type: 'updateCurrency', data: value })
-    console.log('target',e.target);
-    console.log('currentTarget',e.currentTarget);
-  }
 
-  return (
-    <div class="x01b-delegation-agreement dove-gray-border-1px">
-      <div class="title raleway-bold-black-22px">Your Delegation Agreement</div>
-      <div class="overlap-group">
-        <img
-          class="path-1491"
-          src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1491@1x.png"
-        />
-        <p class="by-delegating-the-tr raleway-normal-black-14px-2">
-          <span class="span"
-          >By delegating the Treasury, you can fund and support projects for the Public Goods. The Quadratic Treasury will
-          be “locking” these funds to provide “</span
-          ><span class="span1-DQxoii">non-repayable loans</span
-          ><span class="span"
-          >” to these projects using Quadratic Funding and a milestone-based approach to prevent any form of fraud and
-          collusion.</span
+      <Formik
+            initialValues={ {tokenAmount: 0, repaymentPercent: 0, totalReturn: 0, currency: 'DAI'} }
+            validate={values => {
+              const errors = {};
+              if (!values.tokenAmount) {
+              errors.tokenAmount = 'Required';
+              } else if (values.tokenAmount <= 0) {
+                errors.tokenAmount = 'Provide a valid amount.';
+              }
+              return errors;
+              }}
+              onSubmit={(values, { setSubmitting }) => {
+                setTimeout(() => {
+                alert(JSON.stringify(values, null, 2));
+                setSubmitting(false);
+              }, 400);
+
+                // send tx to TreasuryDAO contract here. 
+                // https://docs.ethers.io/v4/api-contract.html
+                // need to initialize signedWallet before calling non-read-only functions?
+                TreasuryDAO.deposit(values.currency, values.tokenAmount)
+             }}
+
           >
-        </p>
-      </div>
-      <div class="auto-flex6">
-        <div class="auto-flex3">
-          <div class="auto-flex">
-            <div class="amount raleway-semi-bold-black-18px">Amount</div>
-            <input className="overlap-group1"
-              name="amount"
-              type="number"
-              value={0}
-              placeholder="5000"
-              onChange={e => amountOnChange(e)}
-            />
-            <div class="group-1330">
-              <Label> DAI
-                <input type="radio" name="DAI"
-                  value={"DAI"}
-                  checked={state.currency === "DAI"}
-                  onChange={e => currencyOnChange(e)}
-                />
-              </Label>
+          {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          handleSubmit,
+          isSubmitting,
+          /* and other goodies */
+          }) => (
+          <Form onSubmit={handleSubmit}>
+            
+            <>
+            <div class="x01b-delegation-agreement dove-gray-border-1px">
+              <div class="title raleway-bold-black-22px">Your Delegation Agreement</div>
+                <div class="overlap-group">
+                  <img
+                    class="path-1491"
+                    src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1491@1x.png"
+                  />
+                  <p class="by-delegating-the-tr raleway-normal-black-14px-2">
+                    <span class="span"
+                    >By delegating the Treasury, you can fund and support projects for the Public Goods. The Quadratic Treasury will
+                    be “locking” these funds to provide “</span
+                    ><span class="span1-DQxoii">non-repayable loans</span
+                    ><span class="span"
+                    >” to these projects using Quadratic Funding and a milestone-based approach to prevent any form of fraud and
+                    collusion.</span
+                    >
+                  </p>
+                </div>
+                <div class="auto-flex6">
+                  <div class="auto-flex3">
+                    <div class="auto-flex">
+                      <div class="amount raleway-semi-bold-black-18px">Amount</div>
+                      
+                      <Input
+                      type="number"
+                      name="tokenAmount"
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      value={values.tokenAmount}
+                      placeholder="5000"
+                      className="overlap-group1"
+                      />
+                    { <div>{errors.tokenAmount}</div> } 
 
-              <Label> USDC
-                <input type="radio" name="USDC"
-                  value={"USDC"}
-                  checked={state.currency === "USDC"}
-                  onChange={e => currencyOnChange(e)}
-                />
-              </Label>
-            </div>
-          </div>
-          <div class="auto-flex2">
-            <div class="repayment-structure raleway-semi-bold-black-18px">Repayment Structure</div>
-            <p class="text-1 raleway-normal-black-14px">
-              Decide whether you want it to be a full donation, or receive back part of your funds.
-          </p>
-            <div class="group-1324">
-              <Grid columns={2}>
-                <Grid.Column width={12}>
-                  <Slider value={state.repaymentPercent} color="black" settings={settings}>
-                  </Slider>
-                </Grid.Column>
-                <Grid.Column width={4}>
-                  <Label>{`${state.repaymentPercent} %`}</Label>
-                </Grid.Column>
-              </Grid>
-              <div class="text-3 raleway-bold-black-14px">20%</div>
-            </div>
-            <div class="auto-flex1">
-              <div class="number-1 raleway-bold-black-14px">0</div>
-              <div class="number-2 raleway-bold-black-14px">50</div>
-            </div>
-          </div>
-        </div>
-        <div class="auto-flex5">
-          <div class="your-return raleway-semi-bold-black-18px">Your Return</div>
-          <p class="text-2 raleway-normal-black-14px">
-            This is how much you will receive back from your funds. Plus interest!
-          </p>
-          <div class="auto-flex4">
-            <div class="rectangle-621-1"></div>
-            <div class="price raleway-bold-black-14px">1000 USD</div>
-          </div>
-        </div>
-      <div class="overlap-group2">
-        <div class="delegate-support epilogue-bold-white-22px">
-          <span class="span0">Delegate &amp; Support</span><span class="span1-movYKW">!</span>
-        </div>
-      </div>
-      <div class="bg-1 green-blue-border-2px"></div>
-      </div>
-    </div>
-  )
+                      <div class="group-1330">
+
+                    <Radio.Group name="currency" onBlur={handleBlur} value={values.currency}>
+                      <Radio value={"DAI"}>DAI</Radio>
+                      <Radio value={"USDC"}>USDC</Radio>
+                  </Radio.Group>
+
+                      </div>
+                    </div>
+                    <div class="auto-flex2">
+                      <div class="repayment-structure raleway-semi-bold-black-18px">Repayment Structure</div>
+                      <p class="text-1 raleway-normal-black-14px">
+                        Decide whether you want it to be a full donation, or receive back part of your funds.
+                    </p>
+
+
+
+                      <div class="auto-flex1">
+                        <div class="number-1 raleway-bold-black-14px">0</div>
+                        
+                        
+                
+                        <Slider 
+                          name="repaymentPercent"
+                          min={0}
+                          max={50}
+                          color="black"
+                          onBlur={handleBlur}
+                          value={values.repaymentPercent}
+                          className="repayment-percent-bar"
+                        />
+                        
+
+                        <div class="number-2 raleway-bold-black-14px">50</div>
+                        
+                      </div>
+
+                    <div class="repayment-percent-number raleway-normal-black-14px">
+                      {`${values.repaymentPercent} % Repayment Percent`}
+                    </div>
+
+                
+                    </div>
+                  </div>
+
+
+                  <div class="auto-flex5">
+                    <div class="your-return raleway-semi-bold-black-18px">Your Return</div>
+                    <p class="text-2 raleway-normal-black-14px">
+                      This is how much you will receive back from your funds. Plus interest!
+                    </p>
+                    <div class="auto-flex4">
+                      <div class="rectangle-621-1"></div>
+                      <div class="price raleway-bold-black-14px">{`${((values.repaymentPercent / 100) * values.tokenAmount).toFixed(0)} USD`}</div>
+                    </div>
+                  </div>
+                  
+                  <button type="submit" disabled={isSubmitting} class="submit-button">
+                    Delegate & Support!
+                  </button>
+                </div>
+              </div>
+            </>
+            
+
+        
+          
+          
+
+        
+
+           
+            </Form>
+          )}
+          </Formik>
+    
+ 
+      </>
+    )
+
 }
+
+
+
+  
+
 
 
 
@@ -691,22 +722,16 @@ console.log(TreasuryDAO)
 
 const DelegationPage = () => {
 
-
-
-
-
-
-
   return (
     <Page layout="base">
       <Section slot="row1-col1">
-        <Card />
+        <Card title={<>Blockchain & <br/> Open Source</>} description={"Develop cool stuff"} category="blockchain"/>
       </Section>
       <Section slot="row1-col2">
-        <Card />
+        <Card title={<>Arts, Events <br/> & Lifestyle</>} description={"Live a cool life"} category="arts"/>
       </Section>
       <Section slot="row1-col3">
-        <Card />
+        <Card title={<>Local <br/> Communities</>} description={"Live locally."} category="local"/>
       </Section>
 
       <Section slot="row2-col1">
@@ -715,8 +740,6 @@ const DelegationPage = () => {
     </Page>
   )
 }
-
-
 
 
 
