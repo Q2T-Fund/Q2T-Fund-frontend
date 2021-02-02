@@ -1,20 +1,18 @@
 import React, { useState } from "react";
 import '../css/HomePage.css'
 import { Button, Modal, Header, Icon, Grid, Image } from 'semantic-ui-react'
-import { SkillWallet } from "../skillWallet";
+import ConnectWalletModal from './../ConnectWallet'
 
 import metamask from '../../assets/metamask.svg'
 import skillwallet from '../../assets/skillwallet.png'
 import newuser from '../../assets/newuser.png'
 
-import {
-  useHistory
-} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const HomePage = () => {
 
   return (
-    <X01IWantTo {...X01IWantToData} />
+  <X01IWantTo {...X01IWantToData} />
   );
 }
 
@@ -24,37 +22,18 @@ export default HomePage;
 function X01IWantTo(props) {
   const [open1, setOpen1] = useState(false)
   const [open2, setOpen2] = useState(false)
-  let history = useHistory();
-
-  const loginWithSkillWallet = async (pageRedirect) => {
-    const addresses = await window.ethereum.enable()
-    await SkillWallet.init(addresses[0]);
-    const res = await SkillWallet.get();
-    console.log(res);
-    if (!res) {
-      // Show error;
-      return;
-    }
-    localStorage.setItem('skillWallet', JSON.stringify(res));
-    history.push(pageRedirect);
-  }
-
-  const loginWithMetamask = async (pageRedirect) => {
-    await window.ethereum.enable()
-    history.push(pageRedirect);
-  }
 
   const modal1 = () => {
 
     return (
-      <Modal
+        <Modal
         basic
         closeIcon
         onClose={() => setOpen1(false)}
         onOpen={() => setOpen1(true)}
         open={open1}
         size='small'
-        trigger={<Button size="massive" color="black" className="button1"><>Fund</></Button>}
+        trigger={<Button size="massive" color="black" className="button1"><>Fund Public Goods</></Button>}
       >
         <Header icon>
           <Icon name='ethereum' />
@@ -63,13 +42,13 @@ function X01IWantTo(props) {
         <Modal.Content>
           <Grid>
             <Grid.Row>
-              <Image src={skillwallet} size="tiny" className="login-icons" />
-              <Button size="massive" color="black" onClick={() => loginWithSkillWallet('/stake')}>SkillWallet</Button>
+              <Image src={skillwallet} size="tiny" className="login-icons"/>
+              <Link to="/stake"><Button size="massive" color="black">Skillwallet</Button></Link>
             </Grid.Row>
 
             <Grid.Row>
               <Image src={newuser} size="tiny" className="login-icons" />
-              <Button size="massive" color="black">New User</Button>
+              <Link to="/stake"><Button size="massive" color="black">New User</Button></Link>
             </Grid.Row>
           </Grid>
         </Modal.Content>
@@ -80,15 +59,15 @@ function X01IWantTo(props) {
   const modal2 = () => {
 
     return (
-      <Modal
+        <Modal
         basic
         closeIcon
         onClose={() => setOpen2(false)}
         onOpen={() => setOpen2(true)}
         open={open2}
         size='small'
-        trigger={<Button size="massive" color="black" className="button2">Support</Button>}
-      >
+        trigger={<Button size="massive" color="black" className="button2">Support my Project</Button>}
+        >
         <Header icon>
           <Icon name='ethereum' />
           Log in
@@ -97,11 +76,11 @@ function X01IWantTo(props) {
           <Grid>
             <Grid.Row>
               <Image src={metamask} size="tiny" className="login-icons"></Image>
-              <Button size="massive" color="black" onClick={() => loginWithMetamask('/delegate')}>Metamask</Button>
+              <Link to="/delegate"><Button size="massive" color="black">Metamask</Button></Link>
             </Grid.Row>
             <Grid.Row >
-              <Image src={skillwallet} size="tiny" className="login-icons" />
-              <Button size="massive" color="black" onClick={() => loginWithSkillWallet('/delegate')}>SkillWallet</Button>
+              <Image src={skillwallet} size="tiny" className="login-icons"/>
+              <Link to="/delegate"><Button size="massive" color="black">SkillWallet</Button></Link>
             </Grid.Row>
           </Grid>
         </Modal.Content>
@@ -163,25 +142,25 @@ function Image2(props) {
   return <img className="image-2" src={image2} />;
 }
 const image2Data = {
-  image2: "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-2-1@1x.png",
+    image2: "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-2-1@1x.png",
 };
 
 // We could import this as JSON from a separate file
 const X01IWantToData = {
-  spanText: "Quadratic Treasury",
-  spanText2: " (",
-  spanText3: "Q2T",
-  spanText4: <>) uses Quadratic Funding to fund (and fundraise for) projects in the area of public goods.<br /><br />It’s fair, and sybil-resistant. <br />And it’s the first decentralized platform to combine math and unique, non-forgeable identities to </>,
-  spanText5: "fully automate",
-  spanText6: " the funding process. ",
-  spanText7: "Continuously",
-  spanText8: ", and in a milestone-based approach.",
-  iWantTo: "I want to",
-  spanText9: "Support",
-  spanText10: <><br /></>,
-  spanText11: "Public Good",
-  spanText12: <>Fund<br /></>,
-  spanText13: "my Project.",
-  image2Props: image2Data,
+    spanText: "Quadratic Treasury",
+    spanText2: " (",
+    spanText3: "Q2T",
+    spanText4: <>) uses Quadratic Funding to fund (and fundraise for) projects in the area of public goods.<br/><br/>It’s fair, and sybil-resistant. <br/>And it’s the first decentralized platform to combine math and unique, non-forgeable identities to </>,
+    spanText5: "fully automate",
+    spanText6: " the funding process. ",
+    spanText7: "Continuously",
+    spanText8: ", and in a milestone-based approach.",
+    iWantTo: "I want to",
+    spanText9: "Support",
+    spanText10: <><br/></>,
+    spanText11: "Public Good",
+    spanText12: <>Fund<br/></>,
+    spanText13: "my Project.",
+    image2Props: image2Data,
 };
 
