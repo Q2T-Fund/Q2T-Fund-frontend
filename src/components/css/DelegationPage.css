@@ -228,7 +228,7 @@
   width: 864px;
 }
 .x01b-delegation-agreement .overlap-group1 {
-  border-radius: <codegenerator_web.anima_models.admodel_corner_radius.ADModelCornerRadius object at 0x7f3919cabaf0>px;
+  border-radius:10px;
   height: 42px;
   margin-top: 10px;
   position: relative;
@@ -763,7 +763,7 @@
   width: 305px;
 }
 .overlap-group2 {
-  border-radius: <codegenerator_web.anima_models.admodel_corner_radius.ADModelCornerRadius object at 0x7fa7325528b0>px;
+  border-radius: 10px;
   height: 25px;
   position: relative;
   width: 285px;
