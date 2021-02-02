@@ -185,11 +185,7 @@
   margin-top: 13px;
   min-width: 172px;
 }
-.x01b-delegation-agreement .icon-ionic--button-on {
-  height: 22px;
-  width: 22px;
-}
-.x01b-delegation-agreement .icon-ionic--button-on-1 {
+.radio {
   height: 22px;
   margin-left: 28px;
   width: 22px;
@@ -378,6 +374,7 @@
 }
 .dove-gray-border-1px {
   border: 1px solid var(--dove-gray);
+  align-items: baseline;
 }
 .green-blue-border-2px {
   border: 2px solid var(--green-blue);
