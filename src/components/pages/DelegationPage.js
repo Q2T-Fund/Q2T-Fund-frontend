@@ -17,526 +17,15 @@ import { Formik } from 'formik'
 
 require('dotenv').config()
 
+// why is '../../' !== '/....' ????????
 
-//const { abi } = require('.../contracts/abi/TreasuryDAO.abi.json')
-
-const abi = [	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "enum DataTypes.CommunityTemplate",	
-        "name": "_template",	
-        "type": "uint8"	
-      },	
-      {	
-        "internalType": "address",	
-        "name": "_aaveDataProvider",	
-        "type": "address"	
-      },	
-      {	
-        "internalType": "address",	
-        "name": "_dai",	
-        "type": "address"	
-      },	
-      {	
-        "internalType": "address",	
-        "name": "_usdc",	
-        "type": "address"	
-      }	
-    ],	
-    "stateMutability": "nonpayable",	
-    "type": "constructor"	
-  },	
-  {	
-    "anonymous": false,	
-    "inputs": [	
-      {	
-        "indexed": false,	
-        "internalType": "address",	
-        "name": "_treasuryAddress",	
-        "type": "address"	
-      },	
-      {	
-        "indexed": false,	
-        "internalType": "address",	
-        "name": "_communityAddress",	
-        "type": "address"	
-      },	
-      {	
-        "indexed": false,	
-        "internalType": "uint256",	
-        "name": "_id",	
-        "type": "uint256"	
-      }	
-    ],	
-    "name": "CommunityLinked",	
-    "type": "event"	
-  },	
-  {	
-    "anonymous": false,	
-    "inputs": [	
-      {	
-        "indexed": false,	
-        "internalType": "address",	
-        "name": "_depositor",	
-        "type": "address"	
-      },	
-      {	
-        "indexed": false,	
-        "internalType": "string",	
-        "name": "_currency",	
-        "type": "string"	
-      },	
-      {	
-        "indexed": false,	
-        "internalType": "uint256",	
-        "name": "_amount",	
-        "type": "uint256"	
-      }	
-    ],	
-    "name": "Deposited",	
-    "type": "event"	
-  },	
-  {	
-    "anonymous": false,	
-    "inputs": [	
-      {	
-        "indexed": true,	
-        "internalType": "address",	
-        "name": "previousOwner",	
-        "type": "address"	
-      },	
-      {	
-        "indexed": true,	
-        "internalType": "address",	
-        "name": "newOwner",	
-        "type": "address"	
-      }	
-    ],	
-    "name": "OwnershipTransferred",	
-    "type": "event"	
-  },	
-  {	
-    "anonymous": false,	
-    "inputs": [	
-      {	
-        "indexed": false,	
-        "internalType": "uint256",	
-        "name": "_id",	
-        "type": "uint256"	
-      }	
-    ],	
-    "name": "ThresholdReached",	
-    "type": "event"	
-  },	
-  {	
-    "inputs": [],	
-    "name": "aaveProtocolDataProvider",	
-    "outputs": [	
-      {	
-        "internalType": "contract IProtocolDataProvider",	
-        "name": "",	
-        "type": "address"	
-      }	
-    ],	
-    "stateMutability": "view",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "uint256",	
-        "name": "",	
-        "type": "uint256"	
-      }	
-    ],	
-    "name": "communityTeasuries",	
-    "outputs": [	
-      {	
-        "internalType": "address",	
-        "name": "",	
-        "type": "address"	
-      }	
-    ],	
-    "stateMutability": "view",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "address",	
-        "name": "_currency",	
-        "type": "address"	
-      },	
-      {	
-        "internalType": "uint256",	
-        "name": "_amount",	
-        "type": "uint256"	
-      },	
-      {	
-        "internalType": "address",	
-        "name": "_deligatee",	
-        "type": "address"	
-      }	
-    ],	
-    "name": "delegate",	
-    "outputs": [],	
-    "stateMutability": "nonpayable",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "string",	
-        "name": "_currency",	
-        "type": "string"	
-      },	
-      {	
-        "internalType": "uint256",	
-        "name": "_amount",	
-        "type": "uint256"	
-      }	
-    ],	
-    "name": "deposit",	
-    "outputs": [],	
-    "stateMutability": "nonpayable",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "string",	
-        "name": "",	
-        "type": "string"	
-      }	
-    ],	
-    "name": "depositableCurrenciesContracts",	
-    "outputs": [	
-      {	
-        "internalType": "address",	
-        "name": "",	
-        "type": "address"	
-      }	
-    ],	
-    "stateMutability": "view",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "address",	
-        "name": "",	
-        "type": "address"	
-      }	
-    ],	
-    "name": "depositors",	
-    "outputs": [	
-      {	
-        "internalType": "uint256",	
-        "name": "",	
-        "type": "uint256"	
-      }	
-    ],	
-    "stateMutability": "view",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "address",	
-        "name": "_currency",	
-        "type": "address"	
-      },	
-      {	
-        "internalType": "address",	
-        "name": "_member",	
-        "type": "address"	
-      }	
-    ],	
-    "name": "getBalance",	
-    "outputs": [	
-      {	
-        "internalType": "uint256",	
-        "name": "",	
-        "type": "uint256"	
-      }	
-    ],	
-    "stateMutability": "nonpayable",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "address",	
-        "name": "_currency",	
-        "type": "address"	
-      },	
-      {	
-        "internalType": "uint256",	
-        "name": "_id",	
-        "type": "uint256"	
-      }	
-    ],	
-    "name": "getDeligatee",	
-    "outputs": [	
-      {	
-        "internalType": "address",	
-        "name": "",	
-        "type": "address"	
-      }	
-    ],	
-    "stateMutability": "nonpayable",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "address",	
-        "name": "_currency",	
-        "type": "address"	
-      },	
-      {	
-        "internalType": "address",	
-        "name": "_deligatee",	
-        "type": "address"	
-      }	
-    ],	
-    "name": "getDeligateeBorrowedAmount",	
-    "outputs": [	
-      {	
-        "internalType": "uint256",	
-        "name": "",	
-        "type": "uint256"	
-      }	
-    ],	
-    "stateMutability": "nonpayable",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "address",	
-        "name": "_currency",	
-        "type": "address"	
-      }	
-    ],	
-    "name": "getDeligateeCount",	
-    "outputs": [	
-      {	
-        "internalType": "uint256",	
-        "name": "",	
-        "type": "uint256"	
-      }	
-    ],	
-    "stateMutability": "nonpayable",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "address",	
-        "name": "_currency",	
-        "type": "address"	
-      }	
-    ],	
-    "name": "getTreasuryBalance",	
-    "outputs": [	
-      {	
-        "internalType": "uint256",	
-        "name": "",	
-        "type": "uint256"	
-      }	
-    ],	
-    "stateMutability": "nonpayable",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "address",	
-        "name": "_currency",	
-        "type": "address"	
-      }	
-    ],	
-    "name": "getTreasuryBorrowedBalance",	
-    "outputs": [	
-      {	
-        "internalType": "uint256",	
-        "name": "",	
-        "type": "uint256"	
-      }	
-    ],	
-    "stateMutability": "nonpayable",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "address",	
-        "name": "",	
-        "type": "address"	
-      }	
-    ],	
-    "name": "isTreasuryActive",	
-    "outputs": [	
-      {	
-        "internalType": "bool",	
-        "name": "",	
-        "type": "bool"	
-      }	
-    ],	
-    "stateMutability": "view",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "address",	
-        "name": "_treasuryAddress",	
-        "type": "address"	
-      }	
-    ],	
-    "name": "linkCommunity",	
-    "outputs": [],	
-    "stateMutability": "nonpayable",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [],	
-    "name": "nextId",	
-    "outputs": [	
-      {	
-        "internalType": "uint256",	
-        "name": "",	
-        "type": "uint256"	
-      }	
-    ],	
-    "stateMutability": "view",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [],	
-    "name": "owner",	
-    "outputs": [	
-      {	
-        "internalType": "address",	
-        "name": "",	
-        "type": "address"	
-      }	
-    ],	
-    "stateMutability": "view",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [],	
-    "name": "renounceOwnership",	
-    "outputs": [],	
-    "stateMutability": "nonpayable",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [],	
-    "name": "template",	
-    "outputs": [	
-      {	
-        "internalType": "enum DataTypes.CommunityTemplate",	
-        "name": "",	
-        "type": "uint8"	
-      }	
-    ],	
-    "stateMutability": "view",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "uint256",	
-        "name": "_id",	
-        "type": "uint256"	
-      }	
-    ],	
-    "name": "thresholdReached",	
-    "outputs": [],	
-    "stateMutability": "nonpayable",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [],	
-    "name": "totalDeposited",	
-    "outputs": [	
-      {	
-        "internalType": "uint256",	
-        "name": "",	
-        "type": "uint256"	
-      }	
-    ],	
-    "stateMutability": "view",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "address",	
-        "name": "newOwner",	
-        "type": "address"	
-      }	
-    ],	
-    "name": "transferOwnership",	
-    "outputs": [],	
-    "stateMutability": "nonpayable",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "address",	
-        "name": "_currency",	
-        "type": "address"	
-      },	
-      {	
-        "internalType": "address",	
-        "name": "_deligatee",	
-        "type": "address"	
-      },	
-      {	
-        "internalType": "bool",	
-        "name": "_force",	
-        "type": "bool"	
-      }	
-    ],	
-    "name": "undelegate",	
-    "outputs": [],	
-    "stateMutability": "nonpayable",	
-    "type": "function"	
-  },	
-  {	
-    "inputs": [	
-      {	
-        "internalType": "address",	
-        "name": "_currency",	
-        "type": "address"	
-      },	
-      {	
-        "internalType": "uint256",	
-        "name": "_amount",	
-        "type": "uint256"	
-      }	
-    ],	
-    "name": "withdraw",	
-    "outputs": [],	
-    "stateMutability": "nonpayable",	
-    "type": "function"	
-  }	
-]
+const { abi } = require('../../contracts/abi/TreasuryDAO.abi.json')
 
 
-// ${process.env.REACT_APP_INFURA_API_KEY}
-
-// const provider = new ethers.providers.JsonRpcProvider(`https://kovan.infura.io/v3/b6611b1efc64497fa183f7dd59608581`,'kovan')
-// const signer = provider.getSigner() 
-// const TreasuryDAO = new ethers.Contract('0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad', abi, signer);
+const testAbi = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"cars","outputs":[{"internalType":"string","name":"model","type":"string"},{"internalType":"uint256","name":"stateNumber","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_govNumber","type":"uint256"},{"internalType":"string","name":"_model","type":"string"}],"name":"createRandomCar","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getMessage","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"message","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"retrieve","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_ind","type":"uint256"}],"name":"retrieveRandomCar","outputs":[{"components":[{"internalType":"string","name":"model","type":"string"},{"internalType":"uint256","name":"stateNumber","type":"uint256"}],"internalType":"struct Storage.Car","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"newMessage","type":"string"}],"name":"setMessage","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"num","type":"uint256"}],"name":"store","outputs":[],"stateMutability":"nonpayable","type":"function"}]
 
 const contractAdress ="0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad"
+const randomTestContractAddress = "0xCAbA441fa695bB1cFd80276698c20b78Ce9525c7"
 
 export const storeGigHash = async () => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -555,8 +44,46 @@ export const storeGigHash = async () => {
 
   console.log('starting wallet connect')
 
-  const createTx = await contract.deposit("DAI", 5000);
+  const createTx = await contract.deposit("DAI", 50);
   
+  console.log('after deposit ')
+
+  console.log(createTx)
+  // Wait for transaction to finish
+  const gigTransactionResult = await createTx.wait();
+
+
+  console.log('gigtransaction: ', gigTransactionResult)
+  const { events } = gigTransactionResult;
+
+  console.log(events);
+  const gigCreatedEvent = events.find(
+    e => e.event === 'Deposited',
+  );
+
+  if (!gigCreatedEvent) {
+    throw new Error('Something went wrong');
+  } else {
+    console.log('this failed')
+  }
+};
+
+
+export const testCall = async () => {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+  const signer = provider.getSigner();
+
+
+  // TODO: Create contract should join the user automatically instead of needing to call join after that.
+  // call the smart contract to create community
+  const contract = new ethers.Contract(
+    randomTestContractAddress,
+    testAbi,
+    signer,
+  );
+
+  const createTx = await contract.setMessage("sorry for using your contract sir.");
   console.log('after deposit ')
 
   console.log(createTx)
@@ -572,10 +99,12 @@ export const storeGigHash = async () => {
   );
 
   if (!gigCreatedEvent) {
-    throw new Error('Something went wrong');
+    // throw new Error('Something went wrong');
+    console.log("event not found. duh. ")
   } else {
-    console.log('this failed')
+    console.log('Event found')
   }
+
 };
 
 
@@ -624,16 +153,14 @@ const ContractInteraction = () => {
               }
               return errors;
               }}
-              onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
-                setSubmitting(false);
-              }, 400);
-
+              onSubmit={async (values, { setSubmitting } ) => {
                 // send tx to TreasuryDAO contract here. 
                 // https://docs.ethers.io/v4/api-contract.html
                 // need to initialize signedWallet before calling non-read-only functions?
-                storeGigHash();
+                // console.log(window.ethereum.selectedAddress)
+
+                // await storeGigHash()
+                await testCall();
              }}
 
           >
@@ -755,7 +282,8 @@ const ContractInteraction = () => {
           )}
           </Formik>
     
- 
+          <button onClick={() => storeGigHash()}>CLICK ME </button>
+
       </>
     )
 
@@ -780,6 +308,8 @@ const DelegationPage = () => {
       <Section slot="row2-col1">
         <ContractInteraction />
       </Section>
+
+
     </Page>
   )
 }
