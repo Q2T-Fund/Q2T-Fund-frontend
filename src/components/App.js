@@ -7,8 +7,6 @@ import NoWalletDetected from './NoWalletDetected'
 import HomePage from "./pages/HomePage"
 import DelegationPage from "./pages/DelegationPage"
 import StakePage from "./pages/StakePage"
-import DummyPage from "./pages/DummyPage";
-
 // router
 import { BrowserRouter as Router } from "react-router-dom"
 import { Switch, Link, Route } from "react-router-dom"
@@ -41,11 +39,6 @@ const App = () => {
                     <Route path="/delegate">
                         <LayoutProvider layouts={layouts}>
                             <DelegationPage />
-                        </LayoutProvider>
-                    </Route>
-                    <Route path="/projects-supported">
-                        <LayoutProvider layouts={layouts}>
-                            <DummyPage />
                         </LayoutProvider>
                     </Route>
                 </Switch>
