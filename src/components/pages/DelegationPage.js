@@ -1,11 +1,12 @@
+
 import React, { useState } from "react";
+
 import { DatePicker } from "antd"
 
 import 'antd/dist/antd.css';
 import "../css/DelegationPage.css"
 import '../css/BaseLayout.css'
 
-import { Grid, Label } from "semantic-ui-react"
 // import { Slider } from "react-semantic-ui-range";
 import { Page, Section } from 'react-page-layout';
 import { ethers } from 'ethers'
@@ -13,10 +14,11 @@ import { ethers } from 'ethers'
 import { Form, Input, Slider, Radio } from 'formik-antd'
 import { Formik } from 'formik'
 
+
 require('dotenv').config()
 
-//const { abi } = require('.../contracts/abi/TreasuryDAO.abi.json')
 
+//const { abi } = require('.../contracts/abi/TreasuryDAO.abi.json')
 
 const abi = [	
   {	
@@ -526,11 +528,56 @@ const abi = [
     "type": "function"	
   }	
 ]
+
+
 // ${process.env.REACT_APP_INFURA_API_KEY}
 
-const provider = new ethers.providers.JsonRpcProvider(`https://kovan.infura.io/v3/b6611b1efc64497fa183f7dd59608581`,'kovan')
-const signer = provider.getSigner() 
-const TreasuryDAO = new ethers.Contract('0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad', abi, signer);
+// const provider = new ethers.providers.JsonRpcProvider(`https://kovan.infura.io/v3/b6611b1efc64497fa183f7dd59608581`,'kovan')
+// const signer = provider.getSigner() 
+// const TreasuryDAO = new ethers.Contract('0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad', abi, signer);
+
+const contractAdress ="0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad"
+
+export const storeGigHash = async () => {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+  const signer = provider.getSigner();
+
+
+  // TODO: Create contract should join the user automatically instead of needing to call join after that.
+  // call the smart contract to create community
+  const contract = new ethers.Contract(
+    contractAdress,
+    abi,
+    signer,
+  );
+
+
+  console.log('starting wallet connect')
+
+  const createTx = await contract.deposit("DAI", 5000);
+  
+  console.log('after deposit ')
+
+  console.log(createTx)
+  // Wait for transaction to finish
+  const gigTransactionResult = await createTx.wait();
+
+  console.log('gigtransaction: ', gigTransactionResult)
+  const { events } = gigTransactionResult;
+
+  console.log(events);
+  const gigCreatedEvent = events.find(
+    e => e.event === 'Deposited',
+  );
+
+  if (!gigCreatedEvent) {
+    throw new Error('Something went wrong');
+  } else {
+    console.log('this failed')
+  }
+};
+
 
 
 
@@ -586,7 +633,7 @@ const ContractInteraction = () => {
                 // send tx to TreasuryDAO contract here. 
                 // https://docs.ethers.io/v4/api-contract.html
                 // need to initialize signedWallet before calling non-read-only functions?
-                TreasuryDAO.deposit(values.currency, values.tokenAmount)
+                storeGigHash();
              }}
 
           >
