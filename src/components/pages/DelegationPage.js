@@ -19,54 +19,77 @@ require('dotenv').config()
 
 // why is '../../' !== '/....' ????????
 
-const { abi } = require('../../contracts/abi/TreasuryDAO.abi.json')
-
-
+const { treasuryAbi } = require('../../contracts/abi/TreasuryDAO.abi.json')
+const { erc20abi } = require('../../contracts/abi/ERC20.abi.json')
 const testAbi = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"cars","outputs":[{"internalType":"string","name":"model","type":"string"},{"internalType":"uint256","name":"stateNumber","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_govNumber","type":"uint256"},{"internalType":"string","name":"_model","type":"string"}],"name":"createRandomCar","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getMessage","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"message","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"retrieve","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_ind","type":"uint256"}],"name":"retrieveRandomCar","outputs":[{"components":[{"internalType":"string","name":"model","type":"string"},{"internalType":"uint256","name":"stateNumber","type":"uint256"}],"internalType":"struct Storage.Car","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"string","name":"newMessage","type":"string"}],"name":"setMessage","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"num","type":"uint256"}],"name":"store","outputs":[],"stateMutability":"nonpayable","type":"function"}]
 
-const contractAdress ="0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad"
+
+
+const treasuryContractAddress ="0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad"
 const randomTestContractAddress = "0xCAbA441fa695bB1cFd80276698c20b78Ce9525c7"
+const daiContractAddress = "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD"
 
-export const storeGigHash = async (currency, amount) => {
+
+export const depositTx = async (currency, amount, repaymentPercent) => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
-
   const signer = provider.getSigner();
 
-  // TODO: Create contract should join the user automatically instead of needing to call join after that.
-  // call the smart contract to create community
   const contract = new ethers.Contract(
-    contractAdress,
-    abi,
+    treasuryContractAddress,
+    treasuryAbi,
     signer,
   );
-  console.log(contract)
+
+  const createTx = await contract.deposit(currency, amount, repaymentPercent);
+  const transactionResult = await createTx.wait();
 
 
-  console.log('starting wallet connect')
+  console.log('transactionResult: ', transactionResult)
+  const { events } = transactionResult;
 
-  const createTx = await contract.deposit(currency, amount);
+  console.log('events: ', events);
+  // const createdEvents = events.find(
+  //   e => e.event === 'Deposited',
+  // );
 
-  console.log('after deposit ')
+  // if (!createdEvents) {
+  //   throw new Error('Something went wrong');
+  // } else {
+  //   console.log('Event was found', createdEvents)
+  // }
+};
 
-  console.log(createTx)
-  // Wait for transaction to finish
-  const gigTransactionResult = await createTx.wait();
 
 
-  console.log('gigtransaction: ', gigTransactionResult)
-  const { events } = gigTransactionResult;
+export const approveDai = async (address, amount) => {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
 
-  console.log(events);
-  const gigCreatedEvent = events.find(
-    e => e.event === 'Deposited',
+  const contract = new ethers.Contract(
+    daiContractAddress,
+    erc20abi,
+    signer,
   );
 
-  if (!gigCreatedEvent) {
-    throw new Error('Something went wrong');
-  } else {
-    console.log('this failed')
-  }
-};
+  const createTx = await contract.approve(address, amount);
+
+  const transactionResult = await createTx.wait();
+
+  console.log('dai_approve(): ', transactionResult)
+  const { events } = transactionResult;
+
+  console.log('events: ',events);
+  // const createdEvents = events.find(
+  //   e => e.event === 'Approve',
+  // );
+
+  // if (!createdEvents) {
+  //   throw new Error('Something went wrong');
+  // } else {
+  //   console.log('Event was found', createdEvents)
+  // }
+
+}
 
 
 export const testCall = async () => {
@@ -90,20 +113,20 @@ export const testCall = async () => {
   // Wait for transaction to finish
   const gigTransactionResult = await createTx.wait();
 
-  console.log('gigtransaction: ', gigTransactionResult)
-  const { events } = gigTransactionResult;
+  // console.log('gigtransaction: ', gigTransactionResult)
+  // const { events } = gigTransactionResult;
 
-  console.log(events);
-  const gigCreatedEvent = events.find(
-    e => e.event === 'Deposited',
-  );
+  // console.log(events);
+  // const gigCreatedEvent = events.find(
+  //   e => e.event === 'Deposited',
+  // );
 
-  if (!gigCreatedEvent) {
-    // throw new Error('Something went wrong');
-    console.log("event not found. duh. ")
-  } else {
-    console.log('Event found')
-  }
+  // if (!gigCreatedEvent) {
+  //   // throw new Error('Something went wrong');
+  //   console.log("event not found. duh. ")
+  // } else {
+  //   console.log('Event found')
+  // }
 
 };
 
@@ -159,13 +182,17 @@ const ContractInteraction = () => {
           return errors;
         }}
         onSubmit={async (values, { setSubmitting } ) => {
-          // send tx to TreasuryDAO contract here.
-          // https://docs.ethers.io/v4/api-contract.html
-          // need to initialize signedWallet before calling non-read-only functions?
-          // console.log(window.ethereum.selectedAddress)
 
-          // await storeGigHash()
-          await testCall();
+
+          // await depositTx(values.currency, values.tokenAmount, values.repaymentPercent)
+          await approveDai(treasuryContractAddress, values.tokenAmount)
+          console.log('values: ', values)
+          await depositTx(values.currency, values.tokenAmount, values.repaymentPercent)
+          
+          // await depositTx("DAI", 10, 0);
+
+          //await testCall();
+          console.log(values)
         }}>
           {({
           values,
@@ -271,8 +298,7 @@ const ContractInteraction = () => {
                     </div>
                   </div>
 
-                  <button
-                    onClick={() => storeGigHash(values.currency, values.tokenAmount)}>
+                  <button type="submit">
                     Delegate & Support!
                   </button>
                 </div>
