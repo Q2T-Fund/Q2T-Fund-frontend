@@ -29,6 +29,9 @@ const treasuryContractAddress ="0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad"
 const randomTestContractAddress = "0xCAbA441fa695bB1cFd80276698c20b78Ce9525c7"
 const daiContractAddress = "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD"
 
+const e18 = "000000000000000000";
+
+
 
 export const depositTx = async (currency, amount, repaymentPercent) => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -71,7 +74,9 @@ export const approveDai = async (address, amount) => {
     signer,
   );
 
-  const createTx = await contract.approve(address, amount);
+  const newAmount = amount.toString() + e18
+
+  const createTx = await contract.approve(address, newAmount);
 
   const transactionResult = await createTx.wait();
 
@@ -187,6 +192,7 @@ const ContractInteraction = () => {
           // await depositTx(values.currency, values.tokenAmount, values.repaymentPercent)
           await approveDai(treasuryContractAddress, values.tokenAmount)
           console.log('values: ', values)
+          
           await depositTx(values.currency, values.tokenAmount, values.repaymentPercent)
           
           // await depositTx("DAI", 10, 0);
