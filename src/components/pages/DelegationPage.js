@@ -27,11 +27,10 @@ const testAbi = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor
 const contractAdress ="0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad"
 const randomTestContractAddress = "0xCAbA441fa695bB1cFd80276698c20b78Ce9525c7"
 
-export const storeGigHash = async () => {
+export const storeGigHash = async (currency, amount) => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
 
   const signer = provider.getSigner();
-
 
   // TODO: Create contract should join the user automatically instead of needing to call join after that.
   // call the smart contract to create community
@@ -40,12 +39,13 @@ export const storeGigHash = async () => {
     abi,
     signer,
   );
+  console.log(contract)
 
 
   console.log('starting wallet connect')
 
-  const createTx = await contract.deposit("DAI", 50);
-  
+  const createTx = await contract.deposit(currency, amount);
+
   console.log('after deposit ')
 
   console.log(createTx)
@@ -113,7 +113,7 @@ export const testCall = async () => {
 
 
 const Card = (props) => {
- 
+
   const handleClick = (e) => {
     e.preventDefault()
     alert(`category number (name): ${props.category}`)
@@ -143,27 +143,30 @@ const ContractInteraction = () => {
 
 
       <Formik
-            initialValues={ {tokenAmount: 0, repaymentPercent: 0, totalReturn: 0, currency: 'DAI'} }
-            validate={values => {
-              const errors = {};
-              if (!values.tokenAmount) {
-              errors.tokenAmount = 'Required';
-              } else if (values.tokenAmount <= 0) {
-                errors.tokenAmount = 'Provide a valid amount.';
-              }
-              return errors;
-              }}
-              onSubmit={async (values, { setSubmitting } ) => {
-                // send tx to TreasuryDAO contract here. 
-                // https://docs.ethers.io/v4/api-contract.html
-                // need to initialize signedWallet before calling non-read-only functions?
-                // console.log(window.ethereum.selectedAddress)
+        initialValues={{
+          tokenAmount: 0,
+          repaymentPercent: 0,
+          totalReturn: 0,
+          currency: 'DAI'
+        }}
+        validate={values => {
+          const errors = {};
+          if (!values.tokenAmount) {
+          errors.tokenAmount = 'Required';
+          } else if (values.tokenAmount <= 0) {
+            errors.tokenAmount = 'Provide a valid amount.';
+          }
+          return errors;
+        }}
+        onSubmit={async (values, { setSubmitting } ) => {
+          // send tx to TreasuryDAO contract here.
+          // https://docs.ethers.io/v4/api-contract.html
+          // need to initialize signedWallet before calling non-read-only functions?
+          // console.log(window.ethereum.selectedAddress)
 
-                // await storeGigHash()
-                await testCall();
-             }}
-
-          >
+          // await storeGigHash()
+          await testCall();
+        }}>
           {({
           values,
           errors,
@@ -175,7 +178,7 @@ const ContractInteraction = () => {
           /* and other goodies */
           }) => (
           <Form onSubmit={handleSubmit}>
-            
+
             <>
             <div class="x01b-delegation-agreement dove-gray-border-1px">
               <div class="title raleway-bold-black-22px">Your Delegation Agreement</div>
@@ -199,24 +202,24 @@ const ContractInteraction = () => {
                   <div class="auto-flex3">
                     <div class="auto-flex">
                       <div class="amount raleway-semi-bold-black-18px">Amount</div>
-                      
+
                       <Input
-                      type="number"
-                      name="tokenAmount"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.tokenAmount}
-                      placeholder="5000"
-                      className="overlap-group1"
+                        type="number"
+                        name="tokenAmount"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.tokenAmount}
+                        placeholder="5000"
+                        className="overlap-group1"
                       />
-                    { <div>{errors.tokenAmount}</div> } 
+                    { <div>{errors.tokenAmount}</div> }
 
                       <div class="group-1330">
 
                     <Radio.Group name="currency" onBlur={handleBlur} value={values.currency}>
                       <Radio value={"DAI"}>DAI</Radio>
                       <Radio value={"USDC"}>USDC</Radio>
-                  </Radio.Group>
+                    </Radio.Group>
 
                       </div>
                     </div>
@@ -230,10 +233,10 @@ const ContractInteraction = () => {
 
                       <div class="auto-flex1">
                         <div class="number-1 raleway-bold-black-14px">0</div>
-                        
-                        
-                
-                        <Slider 
+
+
+
+                        <Slider
                           name="repaymentPercent"
                           min={0}
                           max={50}
@@ -242,17 +245,17 @@ const ContractInteraction = () => {
                           value={values.repaymentPercent}
                           className="repayment-percent-bar"
                         />
-                        
+
 
                         <div class="number-2 raleway-bold-black-14px">50</div>
-                        
+
                       </div>
 
                     <div class="repayment-percent-number raleway-normal-black-14px">
                       {`${values.repaymentPercent} % Repayment Percent`}
                     </div>
 
-                
+
                     </div>
                   </div>
 
@@ -267,22 +270,21 @@ const ContractInteraction = () => {
                       <div class="price raleway-bold-black-14px">{`${((values.repaymentPercent / 100) * values.tokenAmount).toFixed(0)} USD`}</div>
                     </div>
                   </div>
-                  
-                  <button type="submit" disabled={isSubmitting} class="submit-button">
+
+                  <button
+                    onClick={() => storeGigHash(values.currency, values.tokenAmount)}>
                     Delegate & Support!
                   </button>
                 </div>
               </div>
             </>
-            
 
-        
-  
+
+
+
             </Form>
           )}
           </Formik>
-    
-          <button onClick={() => storeGigHash()}>CLICK ME </button>
 
       </>
     )
