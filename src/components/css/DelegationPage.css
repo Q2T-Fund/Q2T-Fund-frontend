@@ -66,12 +66,59 @@
   border-radius: 38px;
   display: flex;
   flex-direction: column;
-  height: 310px;
+  height: 400px;
   overflow: hidden;
   padding: 16px 0;
   width: 948px;
   margin-left: 10em;
+  margin-top: 3em;
+  margin-bottom: 3em;
 }
+
+.x01b-delegation-agreement .submit-button {
+  display: flex;
+  letter-spacing: 0px;
+  line-height: 20px;
+  text-decoration: underline;
+  white-space: nowrap;
+  font-weight: bold;
+  padding: 0.5em;
+}
+
+.submit-button {
+	background-color:#d4d4d4;
+	border-radius:13px;
+	border:2px solid #000000;
+	display:inline-block;
+	cursor:pointer;
+	color:#303030;
+	font-family: "Raleway", Helvetica, Arial, serif;
+	font-size:19px;
+	font-weight:bold;
+	padding:21px 76px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+}
+.submit-button:hover {
+	background-color:#919191;
+}
+.submit-button:active {
+	position:relative;
+	top:1px;
+}
+
+
+.message-container {
+  display: flex;
+  width: 85%;
+  height: 7em;
+  margin-bottom: 5em;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 .x01b-delegation-agreement .amount {
   letter-spacing: 0px;
   line-height: 18px;
@@ -133,6 +180,17 @@
   margin-top: 10px;
   min-width: 864px;
 }
+
+.x01b-delegation-agreement .submit-button-container {
+  align-items: flex-end;
+  display: flex;
+  margin-top: 12em;
+  margin-left: -100em;
+  justify-content: center;
+  width: 100vw;
+}
+
+
 .x01b-delegation-agreement .bg {
   border-radius: 9px;
   height: 42px;
@@ -231,6 +289,7 @@
   position: relative;
   width: 864px;
   margin-left: 10em;
+  margin-bottom: 3em;
 }
 .x01b-delegation-agreement .overlap-group1 {
   border-radius:10px;
@@ -460,6 +519,16 @@
   font-style: normal;
   font-weight: 600;
 }
+
+.success-font {
+  color: rgb(118, 182, 75);
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+
 .x01b-delegation-agreement {
   background-color: var(--alabaster);
   position: relative;
@@ -1097,13 +1166,6 @@
   width: 146px;
 }
 
-
-.submit-button {
-  display: flex;
-  margin-top: 10em;
-  margin-right: 10em;
-  background-color: chartreuse;
-}
 
 :root {
   --alabaster: rgba(250, 251, 251, 1);

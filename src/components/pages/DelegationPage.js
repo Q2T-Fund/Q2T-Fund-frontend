@@ -1,13 +1,14 @@
 
 import React, { useState } from "react";
 
-import { DatePicker } from "antd"
+// import { DatePicker } from "antd"
+import { notification } from 'antd';
+import { HeartOutlined } from "@ant-design/icons"
 
 import 'antd/dist/antd.css';
 import "../css/DelegationPage.css"
 import '../css/BaseLayout.css'
 
-// import { Slider } from "react-semantic-ui-range";
 import { Page, Section } from 'react-page-layout';
 import { ethers } from 'ethers'
 
@@ -34,35 +35,17 @@ const e18 = "000000000000000000";
 
 
 
-export const depositTx = async (currency, amount, repaymentPercent) => {
-  // const provider = new ethers.providers.getDefaultProvider("kovan")
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  const signer = provider.getSigner();
-
-  const contract = new ethers.Contract(
-    treasuryContractAddress,
-    treasuryAbi,
-    signer,
-  );
-
-  const createTx = await contract.deposit(currency, amount, repaymentPercent);
-  const transactionResult = await createTx.wait();
 
 
-  console.log('deposit results: ', transactionResult)
-  const { events } = transactionResult;
 
-  console.log('events: ', events);
-  const createdEvents = events.find(
-    e => e.event === 'Deposited',
-  );
-
-  if (!createdEvents) {
-    throw new Error('Something went wrong');
-  } else {
-    console.log('Event was found', createdEvents)
-  }
-};
+const openNotification = (title, description, success) => {
+  notification.open({
+    message: `${title}`,
+    description: `${description}`,
+    duration: 0,
+    icon: <HeartOutlined />
+  });
+}
 
 
 
@@ -98,75 +81,50 @@ export const approveDai = async (address, amount) => {
 
 }
 
-
-export const testCall = async () => {
+export const depositTx = async (currency, amount, repaymentPercent) => {
+  // const provider = new ethers.providers.getDefaultProvider("kovan")
   const provider = new ethers.providers.Web3Provider(window.ethereum);
-
   const signer = provider.getSigner();
 
-
-  // TODO: Create contract should join the user automatically instead of needing to call join after that.
-  // call the smart contract to create community
   const contract = new ethers.Contract(
-    randomTestContractAddress,
-    testAbi,
+    treasuryContractAddress,
+    treasuryAbi,
     signer,
   );
 
-  const createTx = await contract.setMessage("sorry for using your contract sir.");
-  console.log('after deposit ')
+  const createTx = await contract.deposit(currency, amount, repaymentPercent);
+  const transactionResult = await createTx.wait();
 
-  console.log(createTx)
-  // Wait for transaction to finish
-  const gigTransactionResult = await createTx.wait();
 
-  // console.log('gigtransaction: ', gigTransactionResult)
-  // const { events } = gigTransactionResult;
+  console.log('deposit results: ', transactionResult)
+  const { events } = transactionResult;
 
-  // console.log(events);
-  // const gigCreatedEvent = events.find(
-  //   e => e.event === 'Deposited',
-  // );
+  console.log('events: ', events);
+  const createdEvents = events.find(
+    e => e.event === 'Deposited',
+  );
 
-  // if (!gigCreatedEvent) {
-  //   // throw new Error('Something went wrong');
-  //   console.log("event not found. duh. ")
-  // } else {
-  //   console.log('Event found')
-  // }
+  if (!createdEvents) {
+    console.log("event not found: ")
+    openNotification("Transaction Failed!", `Something went wrong... Make sure to confirm both metamask prompts.`, false)
+  } else {
+        
+    console.log('Event was found', createdEvents)
+    const etherScanLink = `https://kovan.etherscan.io/tx/${createdEvents.transactionHash}`
 
+
+    openNotification("Transaction Success!", `Congratulations, you can view your transaction here: ${etherScanLink}`, true)
+  }
 };
 
 
 
 
 
-
-const Card = (props) => {
-
-  const handleClick = (e) => {
-    e.preventDefault()
-    alert(`category number (name): ${props.category}`)
-  }
-
-  return (
-  <div className="black-card" onClick={handleClick}>
-    <div className="auto-flex">
-      <img className="image-7" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-7-1@1x.png" />
-      <div className="title raleway-bold-alto-22px">
-        {props.title}</div>
-    </div>
-    <div className="description raleway-normal-alto-18px">{props.description}</div>
-    <img className="line-26" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-26-1@1x.png" />
-    <div className="articles raleway-normal-alto-13px">
-      xx Active Projects
-    </div>
-  </div>
-  )
-}
-
-
 const ContractInteraction = () => {
+
+
+
 
     return (
       <>
@@ -300,15 +258,18 @@ const ContractInteraction = () => {
                     </div>
                   </div>
 
-                  <button type="submit" class="">
-                    Delegate & Support! 
-                  </button>
+                  <div class="submit-button-container">
+                    <button type="submit" class="submit-button">
+                      Delegate & Support! 
+                    </button>
+                  </div>
                 </div>
               </div>
+
+              <div class="message-container">
+                <div class="success-font">{null}</div>
+                </div>
             </>
-
-
-
 
             </Form>
           )}
@@ -317,6 +278,30 @@ const ContractInteraction = () => {
       </>
     )
 
+}
+
+
+const Card = (props) => {
+
+const handleClick = (e) => {
+  e.preventDefault()
+  alert(`category number (name): ${props.category}`)
+}
+
+return (
+<div className="black-card" onClick={handleClick}>
+  <div className="auto-flex">
+    <img className="image-7" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-7-1@1x.png" />
+    <div className="title raleway-bold-alto-22px">
+      {props.title}</div>
+  </div>
+  <div className="description raleway-normal-alto-18px">{props.description}</div>
+  <img className="line-26" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-26-1@1x.png" />
+  <div className="articles raleway-normal-alto-13px">
+    xx Active Projects
+  </div>
+</div>
+)
 }
 
 
