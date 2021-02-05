@@ -7,7 +7,6 @@ import 'antd/dist/antd.css';
 import "../css/DelegationPage.css"
 import '../css/BaseLayout.css'
 
-// import { Slider } from "react-semantic-ui-range";
 import { Page, Section } from 'react-page-layout';
 
 import { Form, Input, Slider, Radio } from 'formik-antd'
@@ -22,23 +21,8 @@ const { abi } = require('../../contracts/abi/TreasuryDAO.abi.json')
 const treasuryAbi = abi
 const treasuryContractAddress ="0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad"
 
-export const depositTx = async (currency, amount, repaymentPercent) => {
-  // const provider = new ethers.providers.getDefaultProvider("kovan")
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  const signer = provider.getSigner();
-
-  const contract = new ethers.Contract(
-    treasuryContractAddress,
-    treasuryAbi,
-    signer,
-  );
-
-  const createTx = await contract.deposit(currency, amount, repaymentPercent);
-  const transactionResult = await createTx.wait();
 
 
-  console.log('deposit results: ', transactionResult)
-  const { events } = transactionResult;
 
   console.log('events: ', events);
   const createdEvents = events.find(
@@ -60,29 +44,10 @@ export const depositTx = async (currency, amount, repaymentPercent) => {
 
 const Card = (props) => {
 
-  const handleClick = (e) => {
-    e.preventDefault()
-    alert(`category number (name): ${props.category}`)
-  }
-
-  return (
-  <div className="black-card" onClick={handleClick}>
-    <div className="auto-flex">
-      <img className="image-7" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-7-1@1x.png" />
-      <div className="title raleway-bold-alto-22px">
-        {props.title}</div>
-    </div>
-    <div className="description raleway-normal-alto-18px">{props.description}</div>
-    <img className="line-26" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-26-1@1x.png" />
-    <div className="articles raleway-normal-alto-13px">
-      xx Active Projects
-    </div>
-  </div>
-  )
-}
-
-
 const ContractInteraction = () => {
+
+
+
 
     return (
       <>
@@ -216,10 +181,11 @@ const ContractInteraction = () => {
                   </button>
                 </div>
               </div>
+
+              <div class="message-container">
+                <div class="success-font">{null}</div>
+                </div>
             </>
-
-
-
 
             </Form>
           )}
@@ -228,6 +194,30 @@ const ContractInteraction = () => {
       </>
     )
 
+}
+
+
+const Card = (props) => {
+
+const handleClick = (e) => {
+  e.preventDefault()
+  alert(`category number (name): ${props.category}`)
+}
+
+return (
+<div className="black-card" onClick={handleClick}>
+  <div className="auto-flex">
+    <img className="image-7" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-7-1@1x.png" />
+    <div className="title raleway-bold-alto-22px">
+      {props.title}</div>
+  </div>
+  <div className="description raleway-normal-alto-18px">{props.description}</div>
+  <img className="line-26" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-26-1@1x.png" />
+  <div className="articles raleway-normal-alto-13px">
+    xx Active Projects
+  </div>
+</div>
+)
 }
 
 
