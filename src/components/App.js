@@ -35,7 +35,11 @@ const App = () => {
                 <Router>
                 <Switch>
                     <Route exact path="/"><HomePage /></Route>
-                    <Route path="/stake"><StakingPage /></Route>
+                    <Route path="/stake">
+                        <LayoutProvider layouts={layouts}>
+                            <StakingPage />
+                        </LayoutProvider>
+                    </Route>
                     <Route path="/delegate">
                         <LayoutProvider layouts={layouts}>
                             <DelegationPage />

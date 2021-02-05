@@ -4,12 +4,53 @@ import { ethers } from 'ethers'
 import { Form, Input, Slider, Radio } from 'formik-antd'
 import { Formik } from 'formik'
 
+import "../css/DelegationPage.css"
+
 require('dotenv').config()
 
-const { abi } = require('../json/abi/TreasuryDAO.abi.json')
+const { abi } = require('../../contracts/abi/TreasuryDAO.abi.json')
 const provider = new ethers.providers.JsonRpcProvider(`https://kovan.infura.io/v3/${process.env.REACT_APP_INFURA_API_KEY}`, 'kovan')
 const signer = provider.getSigner()
 const TreasuryDAO = new ethers.Contract('0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad', abi, signer);
+const contractAdress = "0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad"
+
+export const storeGigHash = async () => {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+
+  const signer = provider.getSigner();
+
+
+  // TODO: Create contract should join the user automatically instead of needing to call join after that.
+  // call the smart contract to create community
+  const contract = new ethers.Contract(
+    contractAdress,
+    abi,
+    signer,
+  );
+
+
+  console.log('starting wallet connect')
+
+  const createTx = await contract.deposit("DAI", 50);
+
+  console.log('after deposit ')
+
+  console.log(createTx)
+  // Wait for transaction to finish
+  const gigTransactionResult = await createTx.wait()
+  const { events } = gigTransactionResult
+
+  const gigCreatedEvent = events.find(
+    e => e.event === 'Deposited',
+  );
+
+  if (!gigCreatedEvent) {
+    throw new Error('Something went wrong');
+  } else {
+    console.log('this failed')
+  }
+};
+
 
 export default function StakingForm() {
  return (
@@ -29,7 +70,7 @@ export default function StakingForm() {
       }
       return errors;
     }}
-    onSubmit={testCall}>{
+    onSubmit={storeGigHash}>{
       ({
         values,
         errors,
@@ -42,7 +83,7 @@ export default function StakingForm() {
       }) => (
           <Form onSubmit={handleSubmit}>
             <div class="x01b-delegation-agreement dove-gray-border-1px">
-              <div class="title raleway-bold-black-22px">Your Delegation Agreement</div>
+              <div class="title raleway-bold-black-22px">Stake</div>
               <div class="overlap-group">
                 <img
                   class="path-1491"
@@ -50,11 +91,9 @@ export default function StakingForm() {
                 />
                 <p class="by-delegating-the-tr raleway-normal-black-14px-2">
                   <span class="span">
-                    By delegating the Treasury, you can fund and support projects for the Public Goods. The Quadratic Treasury will be “locking” these funds to provide “
-              </span><span class="span1-DQxoii">non-repayable loans</span>
-                  <span class="span">
-                    ” to these projects using Quadratic Funding and a milestone-based approach to prevent any form of fraud and
-                    collusion.
+                    Stablecoins are non-volatile cryptocurrencies. They are pegged to the USD so that they remain stable:
+                    1 DAI = 1 USD
+                    1 USDC = 1 USD
               </span>
                 </p>
               </div>
@@ -125,7 +164,7 @@ export default function StakingForm() {
                 <button
                   onClick={() => storeGigHash(values.currency, values.tokenAmount)}>
                   Delegate & Support!
-          </button>
+                </button>
               </div>
             </div>
           </Form>
