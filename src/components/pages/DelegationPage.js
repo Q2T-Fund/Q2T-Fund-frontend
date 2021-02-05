@@ -289,7 +289,7 @@ const handleClick = (e) => {
 }
 
 return (
-<div className="black-card" onClick={handleClick}>
+<div className={props.type} onClick={handleClick}>
   <div className="auto-flex">
     <img className="image-7" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-7-1@1x.png" />
     <div className="title raleway-bold-alto-22px">
@@ -311,13 +311,13 @@ const DelegationPage = () => {
   return (
     <Page layout="base">
       <Section slot="row1-col1">
-        <Card title={<>Blockchain & <br/> Open Source</>} description={"Develop cool stuff"} category="blockchain"/>
+        <Card type="black-card" title={<>Blockchain & <br/> Open Source</>} description={"Develop cool stuff"} category="blockchain"/>
       </Section>
       <Section slot="row1-col2">
-        <Card title={<>Arts, Events <br/> & Lifestyle</>} description={"Live a cool life"} category="arts"/>
+        <Card type="unavailable-card" title={<>Arts, Events <br/> & Lifestyle</>} description={"Coming soon!"} category="arts"/>
       </Section>
       <Section slot="row1-col3">
-        <Card title={<>Local <br/> Communities</>} description={"Live locally."} category="local"/>
+        <Card type="unavailable-card" title={<>Local <br/> Communities</>} description={"Coming soon!"} category="local"/>
       </Section>
 
       <Section slot="row2-col1">
