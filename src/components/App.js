@@ -6,7 +6,7 @@ import NoWalletDetected from './NoWalletDetected'
 // pages
 import HomePage from "./pages/HomePage"
 import DelegationPage from "./pages/DelegationPage"
-import StakePage from "./pages/StakePage"
+import StakingPage from "./pages/StakingPage"
 // router
 import { BrowserRouter as Router } from "react-router-dom"
 import { Switch, Link, Route } from "react-router-dom"
@@ -35,7 +35,7 @@ const App = () => {
                 <Router>
                 <Switch>
                     <Route exact path="/"><HomePage /></Route>
-                    <Route path="/stake"><StakePage /></Route>
+                    <Route path="/stake"><StakingPage /></Route>
                     <Route path="/delegate">
                         <LayoutProvider layouts={layouts}>
                             <DelegationPage />
