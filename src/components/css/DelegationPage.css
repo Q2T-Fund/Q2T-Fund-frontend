@@ -670,6 +670,17 @@
   padding: 14px 23px;
   width: 75%;
 }
+.unavailable-card {
+  align-items: center;
+  background-color: #6e7069;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 286px;
+  padding: 14px 23px;
+  width: 75%;
+}
+
 .group-1326 {
   align-items: center;
   background-color: black;
