@@ -271,7 +271,8 @@ const ContractInteraction = () => {
                     </div>
                   </div>
 
-                  <button
+                  <button className="submit-button"
+                    type="submit"
                     onClick={() => storeGigHash(values.currency, values.tokenAmount)}>
                     Delegate & Support!
                   </button>
