@@ -222,7 +222,7 @@
   text-align: center;
   white-space: nowrap;
   margin-top: 0.5em;
-  
+
 }
 .x01b-delegation-agreement .overlap-group {
   height: 59px;
@@ -368,10 +368,6 @@
   text-align: left;
   text-decoration: underline;
   white-space: nowrap;
-}
-:root {
-  --dove-gray: rgba(112, 112, 112, 1);
-  --green-blue: rgba(20, 110, 170, 1);
 }
 
 
@@ -1103,6 +1099,10 @@
   margin-top: 10em;
   margin-right: 10em;
   background-color: chartreuse;
+}
+
+div#root{
+  height: 100%;
 }
 
 :root {

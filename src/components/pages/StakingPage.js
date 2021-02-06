@@ -6,7 +6,7 @@ import { Page, Section } from 'react-page-layout';
 import StakingForm from '../forms/StakingForm'
 
 import 'antd/dist/antd.css';
-import '../css/BaseLayout.css'
+import "../css/DelegationPage.css"
 
 export default function StakingPage() {
 
