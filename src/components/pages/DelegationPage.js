@@ -106,13 +106,14 @@ export const depositTx = async (currency, amount, repaymentPercent) => {
 
   if (!createdEvents) {
     console.log("event not found: ")
+
     openNotification("Transaction Failed!", `Something went wrong... Make sure to confirm both metamask prompts.`, false)
   } else {
         
     console.log('Event was found', createdEvents)
     const etherScanLink = `https://kovan.etherscan.io/tx/${createdEvents.transactionHash}`
-
-
+    const description = <div>Congratulations, you can view your transaction here: <a href={etherScanLink}>{etherScanLink}</a></div>
+    
     openNotification("Transaction Success!", `Congratulations, you can view your transaction here: ${etherScanLink}`, true)
   }
 };
@@ -298,7 +299,7 @@ return (
   <div className="description raleway-normal-alto-18px">{props.description}</div>
   <img className="line-26" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-26-1@1x.png" />
   <div className="articles raleway-normal-alto-13px">
-    xx Active Projects
+    {props.activeProjects} Active Projects
   </div>
 </div>
 )
@@ -311,13 +312,13 @@ const DelegationPage = () => {
   return (
     <Page layout="base">
       <Section slot="row1-col1">
-        <Card type="black-card" title={<>Blockchain & <br/> Open Source</>} description={"Develop cool stuff"} category="blockchain"/>
+        <Card type="black-card" title={<>Blockchain & <br/> Open Source</>} description={"Develop cool stuff"} category="blockchain" activeProjects={2}/>
       </Section>
       <Section slot="row1-col2">
-        <Card type="unavailable-card" title={<>Arts, Events <br/> & Lifestyle</>} description={"Coming soon!"} category="arts"/>
+        <Card type="unavailable-card" title={<>Arts, Events <br/> & Lifestyle</>} description={"Coming soon!"} category="arts" activeProjects="xx"/>
       </Section>
       <Section slot="row1-col3">
-        <Card type="unavailable-card" title={<>Local <br/> Communities</>} description={"Coming soon!"} category="local"/>
+        <Card type="unavailable-card" title={<>Local <br/> Communities</>} description={"Coming soon!"} category="local" activeProjects="xx"/>
       </Section>
 
       <Section slot="row2-col1">
