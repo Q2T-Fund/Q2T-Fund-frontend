@@ -28,6 +28,17 @@ export class SkillWallet {
 
     }
 
+    static async getSkillWalletID() {
+        if (!SkillWallet.isInitialized) {
+            throw Error('Skill Wallet not initialized.');
+        }
+
+        console.log('getting idx doc')
+        const idxRes = await this.idx.get(process.env.REACT_APP_IDX_DEFINITION_ID);
+        return idxRes.skillWalletID;
+    }
+
+
     static async store(obj) {
         if (!SkillWallet.isInitialized) {
             throw Error('Skill Wallet not initialized.');

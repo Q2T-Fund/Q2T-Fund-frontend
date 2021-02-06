@@ -36,6 +36,7 @@ function X01IWantTo(props) {
       return;
     }
     localStorage.setItem('skillWallet', JSON.stringify(res));
+    localStorage.setItem('skillWalletID', await SkillWallet.getSkillWalletID());
     history.push(pageRedirect);
   }
 
@@ -43,9 +44,6 @@ function X01IWantTo(props) {
     await window.ethereum.enable()
     history.push(pageRedirect);
   }
-
-
-
 
   const modal1 = () => {
 
@@ -116,7 +114,7 @@ function X01IWantTo(props) {
 
             <Grid.Row>
               <Image src={newuser} size="tiny" className="login-icons" />
-              <Link to="/stake"><Button size="massive" color="black">New User</Button></Link>
+              <Button size="massive" color="black" onClick={() => window.open('https://app.distributed.town/community/join', '_blank')}>New User</Button>
             </Grid.Row>
           </Grid>
         </Modal.Content>
