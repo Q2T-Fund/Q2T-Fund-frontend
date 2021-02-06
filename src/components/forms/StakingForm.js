@@ -94,7 +94,7 @@ export default function StakingForm() {
                     Stablecoins are non-volatile cryptocurrencies. They are pegged to the USD so that they remain stable:
                     1 DAI = 1 USD
                     1 USDC = 1 USD
-              </span>
+                  </span>
                 </p>
               </div>
               <div class="auto-flex6">

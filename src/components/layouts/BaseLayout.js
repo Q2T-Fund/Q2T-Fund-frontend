@@ -68,7 +68,7 @@ export default class BaseLayout extends Component {
 
         <Sidebar.Pusher dimmed={this.state.dimmed && this.state.visible}>
 
-          <div class='sidebar-handle'>
+          <div className='sidebar-handle'>
             <Button onClick={() => this.setState({ visible: !this.state.visible })}>
               <Button.Content>
                 <Icon name='content' />

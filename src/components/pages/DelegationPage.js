@@ -104,16 +104,11 @@ const ContractInteraction = () => {
           }
           return errors;
         }}
-        onSubmit={async (values, { setSubmitting } ) => {
-          // send tx to TreasuryDAO contract here.
-          // https://docs.ethers.io/v4/api-contract.html
-          // need to initialize signedWallet before calling non-read-only functions?
-          // console.log(window.ethereum.selectedAddress)
+        onSubmit={async (values, { setSubmitting }) => {
+          await approveDai(treasuryContractAddress, values.tokenAmount)
+          await depositTx(values.currency, values.tokenAmount, values.repaymentPercent)
 
-          // await storeGigHash()
-          await testCall();
-        }}>
-          {({
+        }}>{({
           values,
           errors,
           touched,
@@ -122,32 +117,31 @@ const ContractInteraction = () => {
           handleSubmit,
           isSubmitting,
           /* and other goodies */
-          }) => (
+        }) => (
           <Form onSubmit={handleSubmit}>
 
             <>
-            <div class="x01b-delegation-agreement dove-gray-border-1px">
-              <div class="title raleway-bold-black-22px">Your Delegation Agreement</div>
-                <div class="overlap-group">
+            <div className="x01b-delegation-agreement dove-gray-border-1px">
+              <div className="title raleway-bold-black-22px">Your Delegation Agreement</div>
+                <div className="overlap-group">
                   <img
-                    class="path-1491"
+                    className="path-1491"
                     src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1491@1x.png"
                   />
-                  <p class="by-delegating-the-tr raleway-normal-black-14px-2">
-                    <span class="span"
-                    >By delegating the Treasury, you can fund and support projects for the Public Goods. The Quadratic Treasury will
-                    be “locking” these funds to provide “</span
-                    ><span class="span1-DQxoii">non-repayable loans</span
-                    ><span class="span"
-                    >” to these projects using Quadratic Funding and a milestone-based approach to prevent any form of fraud and
+                  <p className="by-delegating-the-tr raleway-normal-black-14px-2">
+                    <span className="span">By delegating the Treasury, you can fund and support projects for the Public Goods. The Quadratic Treasury will
+                    be “locking” these funds to provide “</span>
+                    <span className="span1-DQxoii">non-repayable loans</span>
+                    <span className="span">
+                    ” to these projects using Quadratic Funding and a milestone-based approach to prevent any form of fraud and
                     collusion.</span
                     >
                   </p>
                 </div>
-                <div class="auto-flex6">
-                  <div class="auto-flex3">
-                    <div class="auto-flex">
-                      <div class="amount raleway-semi-bold-black-18px">Amount</div>
+                <div className="auto-flex6">
+                  <div className="auto-flex3">
+                    <div className="auto-flex">
+                      <div className="amount raleway-semi-bold-black-18px">Amount</div>
 
                       <Input
                         type="number"
@@ -160,7 +154,7 @@ const ContractInteraction = () => {
                       />
                     { <div>{errors.tokenAmount}</div> }
 
-                      <div class="group-1330">
+                      <div className="group-1330">
 
                     <Radio.Group name="currency" onBlur={handleBlur} value={values.currency}>
                       <Radio value={"DAI"}>DAI</Radio>
@@ -169,16 +163,16 @@ const ContractInteraction = () => {
 
                       </div>
                     </div>
-                    <div class="auto-flex2">
-                      <div class="repayment-structure raleway-semi-bold-black-18px">Repayment Structure</div>
-                      <p class="text-1 raleway-normal-black-14px">
+                    <div className="auto-flex2">
+                      <div className="repayment-structure raleway-semi-bold-black-18px">Repayment Structure</div>
+                      <p className="text-1 raleway-normal-black-14px">
                         Decide whether you want it to be a full donation, or receive back part of your funds.
                     </p>
 
 
 
-                      <div class="auto-flex1">
-                        <div class="number-1 raleway-bold-black-14px">0</div>
+                      <div className="auto-flex1">
+                        <div className="number-1 raleway-bold-black-14px">0</div>
 
 
 
@@ -193,11 +187,11 @@ const ContractInteraction = () => {
                         />
 
 
-                        <div class="number-2 raleway-bold-black-14px">50</div>
+                        <div className="number-2 raleway-bold-black-14px">50</div>
 
                       </div>
 
-                    <div class="repayment-percent-number raleway-normal-black-14px">
+                    <div className="repayment-percent-number raleway-normal-black-14px">
                       {`${values.repaymentPercent} % Repayment Percent`}
                     </div>
 
@@ -206,20 +200,18 @@ const ContractInteraction = () => {
                   </div>
 
 
-                  <div class="auto-flex5">
-                    <div class="your-return raleway-semi-bold-black-18px">Your Return</div>
-                    <p class="text-2 raleway-normal-black-14px">
+                  <div className="auto-flex5">
+                    <div className="your-return raleway-semi-bold-black-18px">Your Return</div>
+                    <p className="text-2 raleway-normal-black-14px">
                       This is how much you will receive back from your funds. Plus interest!
                     </p>
-                    <div class="auto-flex4">
-                      <div class="rectangle-621-1"></div>
-                      <div class="price raleway-bold-black-14px">{`${((values.repaymentPercent / 100) * values.tokenAmount).toFixed(0)} USD`}</div>
+                    <div className="auto-flex4">
+                      <div className="rectangle-621-1"></div>
+                      <div className="price raleway-bold-black-14px">{`${((values.repaymentPercent / 100) * values.tokenAmount).toFixed(0)} USD`}</div>
                     </div>
                   </div>
 
-                  <button className="submit-button"
-                    type="submit"
-                  >
+                  <button className="submit-button" type="submit">
                     Delegate & Support!
                   </button>
                 </div>
