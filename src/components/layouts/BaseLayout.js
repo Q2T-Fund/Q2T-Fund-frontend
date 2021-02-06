@@ -1,3 +1,4 @@
+import { getDefaultProvider } from 'ethers';
 import React, { Component } from 'react';
 import { Slot } from 'react-page-layout';
 import {
@@ -10,9 +11,30 @@ import {
   Grid
 } from 'semantic-ui-react'
 
+import Address from '../Address'
+
 import '../css/BaseLayout.css'
 
-const VerticalSidebar = ({ animation, direction, visible }) => (
+const VerticalSidebar = ({ animation, direction, visible }) => {
+  const INFURA_ID = "460f40a260564ac4a4f4b3fffb032dad"
+  const ETHERSCAN_KEY = "PSW8C433Q667DVEX5BCRMGNAH9FSGFZ7Q8"
+
+  const kovanProvider = getDefaultProvider("kovan", { infura: INFURA_ID, etherscan: ETHERSCAN_KEY, quorum: 1 })
+
+/*
+
+  Displays an address with a blockie, links to a block explorer, and can resolve ENS
+
+  <Address
+    value={address}
+    ensProvider={mainnetProvider}
+    blockExplorer={optional_blockExplorer}
+    fontSize={optional_fontSize}
+  />
+
+*/
+
+  return (
   <Sidebar
     as={Menu}
     animation={animation}
@@ -24,7 +46,10 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
     width='thin'
   >
     <Container>
-      <Image src={"https://cdn.animaapp.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/photo-1@1x.png"}/>
+      <Address 
+      value={window.ethereum.selectedAddress}
+      ensProvider={kovanProvider}
+      />
     </Container>
     <Menu.Item as='a'>
       <Icon name='home' />
@@ -43,7 +68,8 @@ const VerticalSidebar = ({ animation, direction, visible }) => (
       Settings
     </Menu.Item>
   </Sidebar>
-)
+  )
+}
 
 export default class BaseLayout extends Component {
 
