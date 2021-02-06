@@ -57,7 +57,7 @@ function X01IWantTo(props) {
         onOpen={() => setOpen1(true)}
         open={open1}
         size='small'
-        trigger={<Button size="massive" color="black" className="button1"><>Support Public Goods</></Button>}
+        trigger={<Button size="massive" color="black" className="button1"><>Fund Public Goods</></Button>}
       >
         <Header icon>
           <Icon name='ethereum' />
@@ -97,7 +97,7 @@ function X01IWantTo(props) {
         onOpen={() => setOpen2(true)}
         open={open2}
         size='small'
-        trigger={<Button size="massive" color="black" className="button2">Fund my Project</Button>}
+        trigger={<Button size="massive" color="black" className="button2">Support my Project</Button>}
         >
         <Header icon>
           <Icon name='ethereum' />
