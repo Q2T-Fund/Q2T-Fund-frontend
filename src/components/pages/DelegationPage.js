@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 
-import { DatePicker } from "antd"
+import { ethers } from 'ethers'
 
 import 'antd/dist/antd.css';
 import "../css/DelegationPage.css"
@@ -9,11 +9,12 @@ import '../css/BaseLayout.css'
 
 // import { Slider } from "react-semantic-ui-range";
 import { Page, Section } from 'react-page-layout';
-import { ethers } from 'ethers'
 
 import { Form, Input, Slider, Radio } from 'formik-antd'
 import { Formik } from 'formik'
 
+import openNotification from '../OpenNotification';
+import approveDai from '../ApproveDai';
 
 require('dotenv').config()
 
