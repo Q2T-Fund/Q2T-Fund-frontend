@@ -36,6 +36,7 @@ function X01IWantTo(props) {
       return;
     }
     localStorage.setItem('skillWallet', JSON.stringify(res));
+    localStorage.setItem('skillWalletID', await SkillWallet.getSkillWalletID());
     history.push(pageRedirect);
   }
 
@@ -43,9 +44,6 @@ function X01IWantTo(props) {
     await window.ethereum.enable()
     history.push(pageRedirect);
   }
-
-
-
 
   const modal1 = () => {
 
@@ -57,7 +55,7 @@ function X01IWantTo(props) {
         onOpen={() => setOpen1(true)}
         open={open1}
         size='small'
-        trigger={<Button size="massive" color="black" className="button1"><>Support Public Goods</></Button>}
+        trigger={<Button size="massive" color="black" className="button1"><>Support</></Button>}
       >
         <Header icon>
           <Icon name='ethereum' />
@@ -93,7 +91,7 @@ function X01IWantTo(props) {
         onOpen={() => setOpen2(true)}
         open={open2}
         size='small'
-        trigger={<Button size="massive" color="black" className="button2">Fund my Project</Button>}
+        trigger={<Button size="massive" color="black" className="button2">Fund</Button>}
         >
         <Header icon>
           <Icon name='ethereum' />
@@ -108,7 +106,7 @@ function X01IWantTo(props) {
 
             <Grid.Row>
               <Image src={newuser} size="tiny" className="login-icons" />
-              <Link to="/stake"><Button size="massive" color="black">New User</Button></Link>
+              <Button size="massive" color="black" onClick={() => window.open('https://app.distributed.town/community/join', '_blank')}>New User</Button>
             </Grid.Row>
           </Grid>
         </Modal.Content>
