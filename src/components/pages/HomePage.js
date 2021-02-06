@@ -69,7 +69,11 @@ function X01IWantTo(props) {
             </Grid.Row>
             <Grid.Row >
               <Image src={skillwallet} size="tiny" className="login-icons"/>
-              <Button size="massive" color="black" onClick={() => loginWithSkillWallet('/delegate')}>SkillWallet</Button>
+              <Button size="massive" color="black" onClick={() => {
+                loginWithSkillWallet('/delegate')
+                setOpen1(false)
+                }
+                }>SkillWallet</Button>
             </Grid.Row>
 
           </Grid>
@@ -101,7 +105,11 @@ function X01IWantTo(props) {
           <Grid>
 			 <Grid.Row>
               <Image src={skillwallet} size="tiny" className="login-icons"/>
-              <Button size="massive" color="black" onClick={() => loginWithSkillWallet('/stake')}>Skillwallet</Button>
+              <Button size="massive" color="black" onClick={() => { 
+              loginWithSkillWallet('/stake') 
+              setOpen2(false) 
+              } 
+              }>Skillwallet</Button>
             </Grid.Row>
 
             <Grid.Row>
