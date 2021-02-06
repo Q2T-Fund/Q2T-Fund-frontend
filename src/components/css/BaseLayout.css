@@ -9,6 +9,7 @@
   overflow: hidden;
   height: 100vh;
   width: 100vw;
+  display: flex;
 }
 
 .pusher {
@@ -16,8 +17,21 @@
 }
 
 .sidebar-handle {
-  height: 100vh;
+  height: 100%;
   background-color: #1b1c1d;
   padding: 1em;
   width: 5em;
 }
+
+.sidebar.menu {
+  overflow: hidden !important;
+}
+
+.grid {
+  height: 100%;
+  width: 100%;
+  margin: 0 !important;
+}
+
+/* .column.row {
+} */

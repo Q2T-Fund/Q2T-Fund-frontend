@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import '../css/HomePage.css'
 import { Button, Modal, Header, Icon, Grid, Image } from 'semantic-ui-react'
-import ConnectWalletModal from './../ConnectWallet'
+
+import { SkillWallet } from "../skillWallet"
 
 import metamask from '../../assets/metamask.svg'
 import skillwallet from '../../assets/skillwallet.png'
 import newuser from '../../assets/newuser.png'
 
-import { Link } from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 
 const HomePage = () => {
 
@@ -22,6 +23,29 @@ export default HomePage;
 function X01IWantTo(props) {
   const [open1, setOpen1] = useState(false)
   const [open2, setOpen2] = useState(false)
+
+  let history = useHistory()
+
+  const loginWithSkillWallet = async (pageRedirect) => {
+    const addresses = await window.ethereum.enable()
+    await SkillWallet.init(addresses[0]);
+    const res = await SkillWallet.get();
+    console.log(res);
+    if (!res) {
+      // Show error;
+      return;
+    }
+    localStorage.setItem('skillWallet', JSON.stringify(res));
+    history.push(pageRedirect);
+  }
+
+  const loginWithMetamask = async (pageRedirect) => {
+    await window.ethereum.enable()
+    history.push(pageRedirect);
+  }
+
+
+
 
   const modal1 = () => {
 
@@ -41,20 +65,27 @@ function X01IWantTo(props) {
         </Header>
         <Modal.Content>
           <Grid>
-            <Grid.Row>
+             <Grid.Row>
+              <Image src={metamask} size="tiny" className="login-icons"></Image>
+              <Button size="massive" color="black" onClick={() => loginWithMetamask('/delegate')}>Metamask</Button>
+            </Grid.Row>
+            <Grid.Row >
               <Image src={skillwallet} size="tiny" className="login-icons"/>
-              <Link to="/stake"><Button size="massive" color="black">Skillwallet</Button></Link>
+              <Button size="massive" color="black" onClick={() => {
+                loginWithSkillWallet('/delegate')
+                setOpen1(false)
+                }
+                }>SkillWallet</Button>
             </Grid.Row>
 
-            <Grid.Row>
-              <Image src={newuser} size="tiny" className="login-icons" />
-              <Link to="/stake"><Button size="massive" color="black">New User</Button></Link>
-            </Grid.Row>
           </Grid>
         </Modal.Content>
       </Modal>
     )
   }
+
+
+
 
   const modal2 = () => {
 
@@ -74,13 +105,18 @@ function X01IWantTo(props) {
         </Header>
         <Modal.Content>
           <Grid>
-            <Grid.Row>
-              <Image src={metamask} size="tiny" className="login-icons"></Image>
-              <Link to="/delegate"><Button size="massive" color="black">Metamask</Button></Link>
-            </Grid.Row>
-            <Grid.Row >
+			 <Grid.Row>
               <Image src={skillwallet} size="tiny" className="login-icons"/>
-              <Link to="/delegate"><Button size="massive" color="black">SkillWallet</Button></Link>
+              <Button size="massive" color="black" onClick={() => { 
+              loginWithSkillWallet('/stake') 
+              setOpen2(false) 
+              } 
+              }>Skillwallet</Button>
+            </Grid.Row>
+
+            <Grid.Row>
+              <Image src={newuser} size="tiny" className="login-icons" />
+              <Link to="/stake"><Button size="massive" color="black">New User</Button></Link>
             </Grid.Row>
           </Grid>
         </Modal.Content>
@@ -125,7 +161,7 @@ function X01IWantTo(props) {
         <Image2 image2={image2Props.image2} />
 
         <h1 className="i-want-to raleway-semi-bold-black-40px">{iWantTo}</h1>
-        <div className="auto-flex">
+        <div className="buttons">
 
           {modal1()}
           {modal2()}
