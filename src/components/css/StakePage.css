@@ -14,6 +14,26 @@
   border: 3px solid rgba(0, 0, 0, 1);
 }
 
+.x02-stake .input {
+  
+  display: flex;
+  height: 3.5em;
+  margin-top: 37em;
+  margin-left: 26.5em;
+  width: 14.5em;
+
+}
+
+
+.x02-stake .submit-button {
+  display: flex;
+  width: 4em;
+  height: 2em;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20em;
+}
+
 
 .dove-gray-border-1px {
   border: 1px solid var(--dove-gray);
@@ -87,10 +107,11 @@
   font-size: 12px;
 }
 .x02-stake {
-  background-color: var(--alabaster);
-  height: 768px;
+  margin-top: -2em;
+  margin-left: -22em;
+  height: 100vh;
   position: relative;
-  width: 1366px;
+  width: 100vw;
 }
 .x02-stake .add-funds {
   height: 31px;
@@ -177,7 +198,7 @@
   white-space: nowrap;
 }
 .x02-stake .community-name {
-  color: white;
+  color: black;
   font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 20px;
   font-weight: 700;
@@ -202,16 +223,18 @@
 }
 .x02-stake .dai {
   height: 21px;
-  left: 373px;
+  left: 355px;
   letter-spacing: 0px;
   line-height: 30px;
   mix-blend-mode: darken;
   position: absolute;
   text-align: right;
-  top: 582px;
+  top: 280px;
   white-space: nowrap;
   width: 198px;
 }
+
+
 .x02-stake .dai-1 {
   left: 398px;
   letter-spacing: 0px;
@@ -263,6 +286,7 @@
   min-width: 220px;
   position: absolute;
   top: 293px;
+  
 }
 .x02-stake .group-1328 {
   align-items: flex-end;
@@ -438,7 +462,7 @@
   line-height: 18px;
   position: absolute;
   text-align: center;
-  top: 616px;
+  top: 620px;
   white-space: nowrap;
 }
 .x02-stake .number-1 {
@@ -480,12 +504,15 @@
   white-space: nowrap;
 }
 .x02-stake .overlap-group {
-  height: 768px;
+  height: 100vh;
   left: 0px;
   position: absolute;
   top: 0px;
-  width: 1366px;
+  width: 100vw;
 }
+
+
+/* this is the sidebar */
 .x02-stake .overlap-group1 {
   height: 767px;
   left: 0px;
@@ -494,7 +521,6 @@
   width: 305px;
 }
 .x02-stake .overlap-group2 {
-  border-radius: <codegenerator_web.anima_models.admodel_corner_radius.ADModelCornerRadius object at 0x7f271ce668b0>px;
   height: 25px;
   position: relative;
   width: 220px;
@@ -504,6 +530,7 @@
   margin-top: -0px;
   position: relative;
   width: 31px;
+
 }
 .x02-stake .overlap-group2-2 {
   height: 11px;
@@ -685,17 +712,19 @@
   position: absolute;
   top: 231px;
   width: 276px;
+  
 }
 .x02-stake .rectangle-19 {
   -webkit-backdrop-filter: blur(30px) brightness(115%);
   backdrop-filter: blur(30px) brightness(115%);
   background-color: var(--gallery);
   box-shadow: 5px 3px 6px rgba(47, 46, 179, 0.361);
-  height: 768px;
+  display: flex;
+  height: 100vh;
   left: 305px;
   position: absolute;
   top: 0px;
-  width: 1061px;
+  width: 100vw;
 }
 .x02-stake .rectangle-621 {
   background-color: black;
@@ -713,6 +742,7 @@
   margin-top: -2px;
   width: 74px;
 }
+/* rectangle-621-1 is apy percent. width chagnes amount of filled in bar */
 .x02-stake .scarcity-score {
   left: 1111px;
   letter-spacing: 0px;
@@ -823,6 +853,16 @@
   position: absolute;
   text-align: left;
   top: 606px;
+  width: 228px;
+}
+.x02-stake .text-55 {
+  height: 59px;
+  left: 637px;
+  letter-spacing: 0px;
+  line-height: 18px;
+  position: absolute;
+  text-align: left;
+  top: 623px;
   width: 228px;
 }
 .x02-stake .text-6 {
