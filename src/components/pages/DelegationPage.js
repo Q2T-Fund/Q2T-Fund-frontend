@@ -15,6 +15,7 @@ import { ethers } from 'ethers'
 import { Form, Input, Slider, Radio } from 'formik-antd'
 import { Formik } from 'formik'
 
+import { approveDai } from '../../api/contracts';
 
 require('dotenv').config()
 
@@ -29,9 +30,7 @@ const testAbi = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor
 
 const treasuryContractAddress ="0x5A29c96878764519E9266A87543E97211aA8283c"
 const randomTestContractAddress = "0xCAbA441fa695bB1cFd80276698c20b78Ce9525c7"
-const daiContractAddress = "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD"
 
-const e18 = "000000000000000000";
 
 
 
@@ -48,38 +47,6 @@ const openNotification = (title, description, success) => {
 }
 
 
-
-export const approveDai = async (address, amount) => {
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  const signer = provider.getSigner();
-
-  const contract = new ethers.Contract(
-    daiContractAddress,
-    erc20abi,
-    signer,
-  );
-
-  const newAmount = amount.toString() + e18
-
-  const createTx = await contract.approve(address, newAmount);
-
-  const transactionResult = await createTx.wait();
-
-  console.log('dai_approve(): ', transactionResult)
-  const { events } = transactionResult;
-
-  console.log('events: ',events);
-  // const createdEvents = events.find(
-  //   e => e.event === 'Approve',
-  // );
-
-  // if (!createdEvents) {
-  //   throw new Error('Something went wrong');
-  // } else {
-  //   console.log('Event was found', createdEvents)
-  // }
-
-}
 
 export const depositTx = async (currency, amount, repaymentPercent) => {
   // const provider = new ethers.providers.getDefaultProvider("kovan")
