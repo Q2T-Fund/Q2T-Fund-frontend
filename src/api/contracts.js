@@ -23,12 +23,12 @@ export const approveDai = async (address, amount) => {
   const { events } = transactionResult;
 
 }
-export const fund = async (currency, amount) => {
+export const fund = async (communityTreasuryAddress, currency, amount) => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
 
   const contract = new ethers.Contract(
-    '0x3CFCae3fe95f555783E13DF1ce6697602608f66D',
+    communityTreasuryAddress,
     treasuryABI,
     signer,
   );

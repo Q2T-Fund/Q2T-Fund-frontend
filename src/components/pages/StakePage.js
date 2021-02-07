@@ -1,9 +1,9 @@
-import React, {useState } from "react"
+import React, {useState, useEffect } from "react"
 
-import { ethers } from 'ethers'
 import { Form, Input, Radio } from 'formik-antd'
 import { Formik } from 'formik'
-
+import { fetchCommunity, fetchUser } from '../../api/community';
+import { approveDai, fund } from '../../api/contracts';
 import 'antd/dist/antd.css';
 import "../css/StakePage.css"
 
@@ -12,7 +12,7 @@ import { VerticalSidebar } from "../layouts/BaseLayout"
 import {
   Sidebar,
 } from 'semantic-ui-react'
-
+const communityTreasuryAddress = '0x3CFCae3fe95f555783E13DF1ce6697602608f66D';
 const StakePage = () =>  {
 
   const [state, setState] = useState({
@@ -38,12 +38,7 @@ const StakePage = () =>  {
     </Sidebar.Pusher>
   </Sidebar.Pushable>
 
-      
-  
   );
-  
-  
-  
 
 }
 
@@ -51,6 +46,27 @@ export default StakePage
 
 
 const Stake = () => {
+
+  const [user, setUser] = useState(undefined);
+  const [community, setCommunity] = useState({
+    openGigs:0,
+    members:0
+  });
+
+  useEffect(() => {
+    async function fetchData() {
+      const skillWallet = JSON.parse(localStorage.getItem('skillWallet'));
+      const [u, c] = await Promise.all([fetchUser(), fetchCommunity(skillWallet.communityID)])
+      setCommunity(c);
+      setUser(u)
+    }
+    fetchData();
+  }, []);
+
+  const submitStake = async (values) => {
+    await approveDai(communityTreasuryAddress, values.tokenAmount);
+    await fund(communityTreasuryAddress, values.currency, values.tokenAmount);
+  }
 
   return (
     <>
@@ -70,7 +86,9 @@ const Stake = () => {
       }
       return errors;
     }}
-    onSubmit={values => console.log(values)}
+    onSubmit={async (values, { setSubmitting }) => {
+      await submitStake(values)
+    }}
     >
     {({
     values,
@@ -95,7 +113,7 @@ const Stake = () => {
 
        {/* community card */}
 
-       <div className="number raleway-bold-slimy-green-20px">{"scarcity score"}</div>
+       <div className="number raleway-bold-slimy-green-20px">{community.scarcityScore}</div>
         
 
        
@@ -108,17 +126,17 @@ const Stake = () => {
         {/* Open Projects, members, LiquidityPool! */}
 
         <div className={`group-1273 border-class-2 `}>
-           <div className="number-1 raleway-bold-black-16px">{`here goes members!`}</div>
+           <div className="number-1 raleway-bold-black-16px">{community.members}</div>
         </div>
 
 
         <div className="group-1328 border-class-2">
-          <div className="number-2 raleway-bold-black-16px">{`here goes open projects!`}</div>
+          <div className="number-2 raleway-bold-black-16px">{community.openGigs}</div>
         </div>
 
 
         <div className={`group-1273 border-class-2 group-1329`}>
-          <div className="number-1 raleway-bold-black-16px">{"300 thousand!"}</div>
+          <div className="number-1 raleway-bold-black-16px">3k</div>
          </div>
 
       {/* Open Projects, members, LiquidityPool! */}
@@ -190,20 +208,9 @@ const Stake = () => {
         </Radio.Group>
         </div>
 
-        {/* {/* <div className="number-3">{number3}</div> */}
         <div className="price raleway-bold-black-14px">{`${values.tokenAmount * 0.5} USD`}</div>
-        
-        
-        {/* <div className="dai raleway-bold-black-14px">{}</div> */}
-        {/* <div className="usdc raleway-bold-black-14px">{usdc}</div> */}
-        {/* <div className="dai-1 raleway-bold-black-14px">{dai2}</div> */} */}
         <p className="text-8 raleway-normal-black-14px"><>Stablecoins are non-volatile cryptocurrencies. They are “pegged” to Fiat (USD), so to remain stable:<br/>1 DAI  = 1 US Dollar<br/>1 USDC = 1 US Dollar</></p>
-        {/* <img className="icon-ionic--button-on" src={iconIonicMdRadioButtonOn} />
-        <img className="icon-ionic--button-on-1" src={iconIonicMdRadioButtonOn2} />
-        <div className="bg-1"></div>
-        <div className="bg-2"></div> */}
 
-      
         <Input
         type="number"
         name="tokenAmount"
@@ -217,7 +224,7 @@ const Stake = () => {
 
       <div className="checkup-card">{"Checkup Card"}</div>
 
-        <div className="community-name">{"Community Name here!"}</div>
+        <div className="community-name">{community.name}</div>
       </div>
 
     </div>
