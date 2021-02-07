@@ -7,7 +7,6 @@ import {
   Menu,
   Container,
   Sidebar,
-  Image,
   Grid
 } from 'semantic-ui-react'
 
@@ -46,9 +45,10 @@ const VerticalSidebar = ({ animation, direction, visible }) => {
     width='thin'
   >
     <Container>
-      <Address 
-      value={window.ethereum.selectedAddress}
-      ensProvider={kovanProvider}
+      <Address
+        value={window.ethereum.selectedAddress}
+        ensProvider={kovanProvider}
+        size='short'
       />
     </Container>
     <Menu.Item as='a'>

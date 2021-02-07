@@ -28,9 +28,9 @@ const Address = (props) => {
 
   if (!props.value) {
     return (
-      <span>
+      <div>
         <Skeleton avatar paragraph={{ rows: 1 }} />
-      </span>
+      </div>
     );
   }
 
@@ -47,11 +47,11 @@ const Address = (props) => {
   const etherscanLink = blockExplorerLink(props.value, props.blockExplorer);
   if (props.minimized) {
     return (
-      <span style={{ verticalAlign: "middle" }}>
+      <div style={{ verticalAlign: "middle" }}>
         <a style={{ color: "#ffffff" }} target={"_blank"} href={etherscanLink} rel="noopener noreferrer">
           <Blockies seed={props.value.toLowerCase()} size={8} scale={2} />
         </a>
-      </span>
+      </div>
     );
   }
 
@@ -75,12 +75,12 @@ const Address = (props) => {
   }
 
   return (
-    <span>
-      <span style={{ verticalAlign: "middle" }}>
-        <Blockies seed={props.value.toLowerCase()} size={8} scale={props.fontSize?props.fontSize/7:4} />
-      </span>
-      <span style={{ verticalAlign: "middle", paddingLeft: 5, fontSize: props.fontSize?props.fontSize:28 }}>{text}</span>
-    </span>
+    <div>
+      <div style={{ verticalAlign: "middle" }}>
+        <Blockies seed={props.value.toLowerCase()} size={8} scale={props.fontSize?props.fontSize:14} />
+      </div>
+      <div style={{ verticalAlign: "middle", paddingLeft: 5, fontSize: props.fontSize?props.fontSize:20 }}>{text}</div>
+    </div>
   );
 }
 
@@ -145,7 +145,7 @@ function useLocalStorage(key, initialValue) {
         return initialValue;
       }
     });
-  
+
     // Return a wrapped version of useState's setter function that ...
     // ... persists the new value to localStorage.
     const setValue = value => {
@@ -162,7 +162,6 @@ function useLocalStorage(key, initialValue) {
         console.log(error);
       }
     };
-  
+
     return [storedValue, setValue];
   }
-  
