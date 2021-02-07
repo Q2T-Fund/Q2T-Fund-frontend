@@ -1,8 +1,16 @@
-import React from "react"
+import React, { useEffect } from "react"
+import { fund } from "../../api/contracts";
 
 import "../css/StakePage.css"
 
 const StakePage = () =>  {
+
+  useEffect(() => {
+    console.log('useeffect')
+    fund('DAI', 20)
+    .then(a => console.log('success'))
+    .catch(err => console.log(err))
+  }, []);
   return <X02Stake {...X02StakeData} />;
 }
 
