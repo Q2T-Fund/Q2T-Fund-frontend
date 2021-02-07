@@ -5,19 +5,11 @@ import NoWalletDetected from './NoWalletDetected'
 
 // pages
 import HomePage from "./pages/HomePage"
-import DelegationPage from "./pages/DelegationPage"
+import { DelegationPage } from "./pages/DelegationPage"
 import StakingPage from "./pages/StakingPage"
 // router
 import { BrowserRouter as Router } from "react-router-dom"
 import { Switch, Link, Route } from "react-router-dom"
-import SidebarExampleTransitions from "./SidebarExample";
-import { LayoutProvider } from "react-page-layout";
-import BaseLayout from './BaseLayout'
-import DummyPage from "./DummyPage";
-
-const layouts = {
-    'base': BaseLayout
-}
 
 // layouts
 import { LayoutProvider } from "react-page-layout"
@@ -33,14 +25,13 @@ const App = () => {
     // in this fashion:
     // const { address } = state
     // instead of being sourced from the useState function
-    const [address, setAddress] = useState(undefined)
 
 
     // now actual functionality
 
     return (
     	<>
-                <Router>
+            <Router>
                 <Switch>
                     <Route exact path="/"><HomePage /></Route>
                     <Route path="/stake">
