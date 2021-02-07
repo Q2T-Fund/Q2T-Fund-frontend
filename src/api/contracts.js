@@ -5,10 +5,18 @@ const { erc20abi } = require('../contracts/abi/ERC20.abi.json');
 const daiContractAddress = "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD"
 const e18 = "000000000000000000";
 
+export const validateKovanNet = async () => {
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const network = await provider.getNetwork();
+  if (network.name !== 'kovan') {
+    return false;
+  }
+  return true;
+}
+
 export const approveDai = async (address, amount) => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
-
   const contract = new ethers.Contract(
     daiContractAddress,
     erc20abi,
@@ -25,6 +33,10 @@ export const approveDai = async (address, amount) => {
 }
 export const fund = async (communityTreasuryAddress, currency, amount) => {
   const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const network = await provider.getNetwork();
+  if (network.name !== 'kovan') {
+    return false;
+  }
   const signer = provider.getSigner();
 
   const contract = new ethers.Contract(

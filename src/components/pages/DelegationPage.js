@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 // import { DatePicker } from "antd"
-import { notification } from "antd";
-import { HeartOutlined } from "@ant-design/icons";
 
 import "antd/dist/antd.css";
 import "../css/DelegationPage.css";
@@ -13,7 +11,9 @@ import { ethers } from "ethers";
 
 import { Form, Input, Slider, Radio } from "formik-antd";
 import { Formik } from "formik";
-import {approveDai } from "../../api/contracts";
+import { approveDai } from "../../api/contracts";
+import { openNotification } from "../utils/common";
+import { validateKovanNet } from '../../api/contracts';
 
 require("dotenv").config();
 
@@ -21,14 +21,6 @@ require("dotenv").config();
 
 const { treasuryAbi } = require("../../contracts/abi/TreasuryDAO.abi.json");
 const treasuryContractAddress = "0x5A29c96878764519E9266A87543E97211aA8283c";
-const openNotification = (title, description, success) => {
-  notification.open({
-    message: `${title}`,
-    description: `${description}`,
-    duration: 0,
-    icon: <HeartOutlined />,
-  });
-};
 
 
 export const depositTx = async (currency, amount, repaymentPercent) => {
@@ -62,13 +54,6 @@ export const depositTx = async (currency, amount, repaymentPercent) => {
   } else {
     console.log("Event was found", createdEvents);
     const etherScanLink = `https://kovan.etherscan.io/tx/${createdEvents.transactionHash}`;
-    const description = (
-      <div>
-        Congratulations, you can view your transaction here:{" "}
-        <a href={etherScanLink}>{etherScanLink}</a>
-      </div>
-    );
-
     openNotification(
       "Transaction Success!",
       `Congratulations, you can view your transaction here: ${etherScanLink}`,
@@ -97,6 +82,15 @@ const ContractInteraction = () => {
           return errors;
         }}
         onSubmit={async (values, { setSubmitting }) => {
+          const isKovan = await validateKovanNet();
+          if (!isKovan) {
+            openNotification(
+              "Transaction Failed!",
+              `Please switch to Kovan network before proceeding.`,
+              false
+            );
+            return;
+          }
           await approveDai(treasuryContractAddress, values.tokenAmount);
           await depositTx(
             values.currency,
