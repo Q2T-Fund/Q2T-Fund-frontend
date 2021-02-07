@@ -4,52 +4,51 @@ import { ethers } from 'ethers'
 import { Form, Input, Slider, Radio } from 'formik-antd'
 import { Formik } from 'formik'
 
+import openNotification from '../OpenNotification';
+
 import "../css/DelegationPage.css"
 
 require('dotenv').config()
 
 const { abi } = require('../../contracts/abi/TreasuryDAO.abi.json')
-const provider = new ethers.providers.JsonRpcProvider(`https://kovan.infura.io/v3/${process.env.REACT_APP_INFURA_API_KEY}`, 'kovan')
-const signer = provider.getSigner()
-const TreasuryDAO = new ethers.Contract('0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad', abi, signer);
-const contractAdress = "0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad"
+const treasuryAbi = abi
+const treasuryContractAddress = "0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad"
 
-export const storeGigHash = async () => {
+export const depositTx = async (currency, amount, repaymentPercent) => {
+  // const provider = new ethers.providers.getDefaultProvider("kovan")
   const provider = new ethers.providers.Web3Provider(window.ethereum);
-
   const signer = provider.getSigner();
 
-
-  // TODO: Create contract should join the user automatically instead of needing to call join after that.
-  // call the smart contract to create community
   const contract = new ethers.Contract(
-    contractAdress,
-    abi,
+    treasuryContractAddress,
+    treasuryAbi,
     signer,
   );
 
+  const createTx = await contract.deposit(currency, amount, repaymentPercent);
+  const transactionResult = await createTx.wait();
 
-  console.log('starting wallet connect')
 
-  const createTx = await contract.deposit("DAI", 50);
+  console.log('deposit results: ', transactionResult)
+  const { events } = transactionResult;
 
-  console.log('after deposit ')
-
-  console.log(createTx)
-  // Wait for transaction to finish
-  const gigTransactionResult = await createTx.wait()
-  const { events } = gigTransactionResult
-
-  const gigCreatedEvent = events.find(
+  console.log('events: ', events);
+  const createdEvents = events.find(
     e => e.event === 'Deposited',
   );
 
-  if (!gigCreatedEvent) {
-    throw new Error('Something went wrong');
+  if (!createdEvents) {
+    console.log("event not found: ")
+
+    openNotification("Transaction Failed!", `Something went wrong... Make sure to confirm both metamask prompts.`, false)
   } else {
-    console.log('this failed')
+
+    console.log('Event was found', createdEvents)
+    const etherScanLink = `https://kovan.etherscan.io/tx/${createdEvents.transactionHash}`
+
+    openNotification("Transaction Success!", `Congratulations, you can view your transaction here: ${etherScanLink}`, true)
   }
-};
+}
 
 
 export default function StakingForm() {
@@ -70,7 +69,7 @@ export default function StakingForm() {
       }
       return errors;
     }}
-    onSubmit={storeGigHash}>{
+    onSubmit={depositTx}>{
       ({
         values,
         errors,
@@ -161,9 +160,8 @@ export default function StakingForm() {
                   </div>
                 </div>
 
-                <button
-                  onClick={() => storeGigHash(values.currency, values.tokenAmount)}>
-                  Delegate & Support!
+                <button className="submit-button" type="submit">
+                  Stake & Support!
                 </button>
               </div>
             </div>
