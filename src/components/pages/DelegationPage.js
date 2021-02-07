@@ -13,95 +13,14 @@ import { ethers } from "ethers";
 
 import { Form, Input, Slider, Radio } from "formik-antd";
 import { Formik } from "formik";
+import {approveDai } from "../../api/contracts";
 
 require("dotenv").config();
 
 // why is '../../' !== '/....' ????????
 
 const { treasuryAbi } = require("../../contracts/abi/TreasuryDAO.abi.json");
-const { erc20abi } = require("../../contracts/abi/ERC20.abi.json");
-const testAbi = [
-  { inputs: [], stateMutability: "nonpayable", type: "constructor" },
-  {
-    inputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    name: "cars",
-    outputs: [
-      { internalType: "string", name: "model", type: "string" },
-      { internalType: "uint256", name: "stateNumber", type: "uint256" },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [
-      { internalType: "uint256", name: "_govNumber", type: "uint256" },
-      { internalType: "string", name: "_model", type: "string" },
-    ],
-    name: "createRandomCar",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "getMessage",
-    outputs: [{ internalType: "string", name: "", type: "string" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "message",
-    outputs: [{ internalType: "string", name: "", type: "string" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [],
-    name: "retrieve",
-    outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "uint256", name: "_ind", type: "uint256" }],
-    name: "retrieveRandomCar",
-    outputs: [
-      {
-        components: [
-          { internalType: "string", name: "model", type: "string" },
-          { internalType: "uint256", name: "stateNumber", type: "uint256" },
-        ],
-        internalType: "struct Storage.Car",
-        name: "",
-        type: "tuple",
-      },
-    ],
-    stateMutability: "view",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "string", name: "newMessage", type: "string" }],
-    name: "setMessage",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-  {
-    inputs: [{ internalType: "uint256", name: "num", type: "uint256" }],
-    name: "store",
-    outputs: [],
-    stateMutability: "nonpayable",
-    type: "function",
-  },
-];
-
 const treasuryContractAddress = "0x5A29c96878764519E9266A87543E97211aA8283c";
-const randomTestContractAddress = "0xCAbA441fa695bB1cFd80276698c20b78Ce9525c7";
-const daiContractAddress = "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD";
-
-const e18 = "000000000000000000";
-
 const openNotification = (title, description, success) => {
   notification.open({
     message: `${title}`,
@@ -111,32 +30,6 @@ const openNotification = (title, description, success) => {
   });
 };
 
-export const approveDai = async (address, amount) => {
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  const signer = provider.getSigner();
-
-  const contract = new ethers.Contract(daiContractAddress, erc20abi, signer);
-
-  const newAmount = amount.toString() + e18;
-
-  const createTx = await contract.approve(address, newAmount);
-
-  const transactionResult = await createTx.wait();
-
-  console.log("dai_approve(): ", transactionResult);
-  const { events } = transactionResult;
-
-  console.log("events: ", events);
-  // const createdEvents = events.find(
-  //   e => e.event === 'Approve',
-  // );
-
-  // if (!createdEvents) {
-  //   throw new Error('Something went wrong');
-  // } else {
-  //   console.log('Event was found', createdEvents)
-  // }
-};
 
 export const depositTx = async (currency, amount, repaymentPercent) => {
   // const provider = new ethers.providers.getDefaultProvider("kovan")
@@ -204,7 +97,6 @@ const ContractInteraction = () => {
           return errors;
         }}
         onSubmit={async (values, { setSubmitting }) => {
-          // await depositTx(values.currency, values.tokenAmount, values.repaymentPercent)
           await approveDai(treasuryContractAddress, values.tokenAmount);
           await depositTx(
             values.currency,
