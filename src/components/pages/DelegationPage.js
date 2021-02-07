@@ -19,10 +19,25 @@ require('dotenv').config()
 
 const { abi } = require('../../contracts/abi/TreasuryDAO.abi.json')
 const treasuryAbi = abi
-const treasuryContractAddress ="0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad"
+const treasuryContractAddress = "0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad"
+
+export const depositTx = async (currency, amount, repaymentPercent) => {
+  // const provider = new ethers.providers.getDefaultProvider("kovan")
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
+
+  const contract = new ethers.Contract(
+    treasuryContractAddress,
+    treasuryAbi,
+    signer,
+  );
+
+  const createTx = await contract.deposit(currency, amount, repaymentPercent);
+  const transactionResult = await createTx.wait();
 
 
-
+  console.log('deposit results: ', transactionResult)
+  const { events } = transactionResult;
 
   console.log('events: ', events);
   const createdEvents = events.find(
@@ -37,18 +52,12 @@ const treasuryContractAddress ="0x890813fc77EEA0D3830870EA2FE0CeF8462EB4Ad"
 
     console.log('Event was found', createdEvents)
     const etherScanLink = `https://kovan.etherscan.io/tx/${createdEvents.transactionHash}`
-    const description = <div>Congratulations, you can view your transaction here: <a href={etherScanLink}>{etherScanLink}</a></div>
-    
+
     openNotification("Transaction Success!", `Congratulations, you can view your transaction here: ${etherScanLink}`, true)
   }
-};
-
-const Card = (props) => {
+}
 
 const ContractInteraction = () => {
-
-
-
 
     return (
       <>
@@ -183,8 +192,8 @@ const ContractInteraction = () => {
                 </div>
               </div>
 
-              <div class="message-container">
-                <div class="success-font">{null}</div>
+              <div className="message-container">
+                <div className="success-font">{null}</div>
                 </div>
             </>
 
@@ -197,58 +206,43 @@ const ContractInteraction = () => {
 
 }
 
-
 const Card = (props) => {
 
-const handleClick = (e) => {
-  e.preventDefault()
-  alert(`category number (name): ${props.category}`)
-}
-
-return (
-<div className={props.type} onClick={handleClick}>
-  <div className="auto-flex">
-    <img className="image-7" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-7-1@1x.png" />
-    <div className="title raleway-bold-alto-22px">
-      {props.title}</div>
-  </div>
-  <div className="description raleway-normal-alto-18px">{props.description}</div>
-  <img className="line-26" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-26-1@1x.png" />
-  <div className="articles raleway-normal-alto-13px">
-    {props.activeProjects} Active Projects
-  </div>
-</div>
-)
-}
-
-
-
-const DelegationPage = () => {
+  const handleClick = (e) => {
+    e.preventDefault()
+    alert(`category number (name): ${props.category}`)
+  }
 
   return (
-    <Page layout="base">
-      <Section slot="row1-col1">
-        <Card type="black-card" title={<>Blockchain & <br/> Open Source</>} description={"Develop cool stuff"} category="blockchain" activeProjects={2}/>
-      </Section>
-      <Section slot="row1-col2">
-        <Card type="unavailable-card" title={<>Arts, Events <br/> & Lifestyle</>} description={"Coming soon!"} category="arts" activeProjects="xx"/>
-      </Section>
-      <Section slot="row1-col3">
-        <Card type="unavailable-card" title={<>Local <br/> Communities</>} description={"Coming soon!"} category="local" activeProjects="xx"/>
-      </Section>
-
-      <Section slot="row2-col1">
-        <ContractInteraction />
-      </Section>
-
-
-    </Page>
+    <div className={props.type} onClick={handleClick}>
+      <div className="auto-flex">
+        <img className="image-7" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-7-1@1x.png" />
+        <div className="title raleway-bold-alto-22px">{props.title}</div>
+      </div>
+      <div className="description raleway-normal-alto-18px">{props.description}</div>
+      <img className="line-26" src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-26-1@1x.png" />
+      <div className="articles raleway-normal-alto-13px">
+        {props.activeProjects} Active Projects
+      </div>
+    </div>
   )
 }
 
+export const DelegationPage = () => (
+  <Page layout="base">
+    <Section slot="row1-col1">
+      <Card type="black-card" title={<>Blockchain & <br/> Open Source</>} description={"Develop cool stuff"} category="blockchain" activeProjects={2}/>
+    </Section>
+    <Section slot="row1-col2">
+      <Card type="unavailable-card" title={<>Arts, Events <br/> & Lifestyle</>} description={"Coming soon!"} category="arts" activeProjects="xx"/>
+    </Section>
+    <Section slot="row1-col3">
+      <Card type="unavailable-card" title={<>Local <br/> Communities</>} description={"Coming soon!"} category="local" activeProjects="xx"/>
+    </Section>
 
+    <Section slot="row2-col1">
+      <ContractInteraction />
+    </Section>
 
-
-export default DelegationPage;
-
-
+  </Page>
+)
