@@ -110,7 +110,12 @@ export default class BaseLayout extends Component {
             </Grid.Row>
 
             <Grid.Row columns={1}>
-              <Grid.Column><Slot name="row2-col1" /></Grid.Column>
+              <Grid.Column>
+                <div className="form-container">
+                  <Slot name="row2-top" className="row2-top" />
+                  <Slot name="row2-content" className="row2-content" />
+                </div>
+              </Grid.Column>
             </Grid.Row>
           </Grid>
 

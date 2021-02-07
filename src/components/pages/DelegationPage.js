@@ -8,6 +8,7 @@ import "../css/DelegationPage.css"
 import '../css/BaseLayout.css'
 
 import { Page, Section } from 'react-page-layout';
+import { Grid } from 'semantic-ui-react'
 
 import { Form, Input, Slider, Radio } from 'formik-antd'
 import { Formik } from 'formik'
@@ -237,9 +238,11 @@ export const DelegationPage = () => (
       <Card type="unavailable-card" title={<>Local <br/> Communities</>} description={"Coming soon!"} category="local" activeProjects="xx"/>
     </Section>
 
-    <Section slot="row2-col1">
+    <Section slot="row2-top">
+      <TitleAndDescription />
+    </Section>
+    <Section slot="row2-content">
       <ContractInteraction />
     </Section>
-
   </Page>
 )
