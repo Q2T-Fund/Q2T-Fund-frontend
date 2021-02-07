@@ -57,6 +57,13 @@ export const depositTx = async (currency, amount, repaymentPercent) => {
   }
 }
 
+const TitleAndDescription = () => (
+  <>
+    <h1>Your Delegation Agreement</h1>
+    <p>By delegating the Treasury, you can fund and support projects for the Public Goods. The Quadratic Treasury will be “locking” these funds to provide “<u><b>non-repayable loans</b></u>” to these projects using Quadratic Funding and a milestone-based approach to prevent any form of fraud and collusion.</p>
+  </>
+)
+
 const ContractInteraction = () => {
 
     return (
@@ -95,25 +102,15 @@ const ContractInteraction = () => {
         }) => (
           <Form onSubmit={handleSubmit}>
 
-            <>
-            <div className="x01b-delegation-agreement dove-gray-border-1px">
-              <div className="title raleway-bold-black-22px">Your Delegation Agreement</div>
-                <div className="overlap-group">
-                  <img
-                    className="path-1491"
-                    src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/path-1491@1x.png"
-                  />
-                  <p className="by-delegating-the-tr raleway-normal-black-14px-2">
-                    <span className="span">By delegating the Treasury, you can fund and support projects for the Public Goods. The Quadratic Treasury will
-                    be “locking” these funds to provide “</span>
-                    <span className="span1-DQxoii">non-repayable loans</span>
-                    <span className="span">
-                    ” to these projects using Quadratic Funding and a milestone-based approach to prevent any form of fraud and
-                    collusion.</span
-                    >
-                  </p>
-                </div>
-                <div className="auto-flex6">
+            <Grid columns={3}>
+              <Grid.Column></Grid.Column>
+              <Grid.Column></Grid.Column>
+              <Grid.Column></Grid.Column>
+            </Grid>
+
+            <div className="x01b-delegation-agreement">
+
+              <div className="auto-flex6">
                   <div className="auto-flex3">
                     <div className="auto-flex">
                       <div className="amount raleway-semi-bold-black-18px">Amount</div>
