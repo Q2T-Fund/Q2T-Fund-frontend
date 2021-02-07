@@ -167,33 +167,27 @@ const ContractInteraction = () => {
                     <div className="repayment-percent-number raleway-normal-black-14px">
                       {`${values.repaymentPercent} % Repayment Percent`}
                     </div>
-
+                          <div className="your-return raleway-semi-bold-black-18px">Your Return</div>
+                          <p className="text-2 raleway-normal-black-14px">
+                            This is how much you will receive back from your funds. Plus interest!</p>
+                          <div className="auto-flex4">
+                            <div className="rectangle-621-1"></div>
+                            <div className="price raleway-bold-black-14px">{`${((values.repaymentPercent / 100) * values.tokenAmount).toFixed(0)} USD`}</div>
+                          </div>
 
                     </div>
                   </div>
 
-
-                  <div className="auto-flex5">
-                    <div className="your-return raleway-semi-bold-black-18px">Your Return</div>
-                    <p className="text-2 raleway-normal-black-14px">
-                      This is how much you will receive back from your funds. Plus interest!
-                    </p>
-                    <div className="auto-flex4">
-                      <div className="rectangle-621-1"></div>
-                      <div className="price raleway-bold-black-14px">{`${((values.repaymentPercent / 100) * values.tokenAmount).toFixed(0)} USD`}</div>
-                    </div>
-                  </div>
-
-                  <button className="submit-button" type="submit">
-                    Delegate & Support!
+                      <button className="submit-button" type="submit">
+                        Delegate & Support!
                   </button>
-                </div>
-              </div>
 
-              <div className="message-container">
-                <div className="success-font">{null}</div>
                 </div>
-            </>
+            </div>
+
+            <div className="message-container">
+              <div className="success-font">{null}</div>
+            </div>
 
             </Form>
           )}
