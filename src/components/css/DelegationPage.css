@@ -1,16 +1,15 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
 @import url("https://fonts.googleapis.com/css?family=Raleway:700,500,600,400|Epilogue:700|Lato:700");
 
-@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
-@import url("https://fonts.googleapis.com/css?family=Raleway:500,400,600,700|Epilogue:700|Lato:700");
 * {
   box-sizing: border-box;
 }
+html{
+  width: 100vw;
+}
 .border-class-1 {
   border: 2px solid rgba(0, 0, 0, 1);
-}
-.dove-gray-border-1px {
-  border: 1px solid var(--dove-gray);
+  font-family: "Raleway", Helvetica, Arial, serif;
 }
 .epilogue-bold-white-22px {
   color: white;
@@ -22,57 +21,45 @@
 }
 .raleway-bold-black-14px {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
 }
 .raleway-bold-black-18px {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 700;
 }
 .raleway-bold-black-22px {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 22px;
   font-style: normal;
   font-weight: 700;
 }
-.raleway-normal-black-14px {
+p {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
 }
 .raleway-normal-black-14px-2 {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 14px;
 }
 .raleway-semi-bold-black-18px {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
 }
-.x01b-delegation-agreement {
+.form-container {
   align-items: center;
-  background-color: white;
+  background-color: #c6ced9;
   border-radius: 38px;
   display: flex;
   flex-direction: column;
-  height: 400px;
   overflow: hidden;
   padding: 16px 0;
-  width: 948px;
-  margin-left: 10em;
-  margin-top: 3em;
-  margin-bottom: 3em;
 }
 
 .x01b-delegation-agreement .submit-button {
@@ -111,7 +98,6 @@
   display: flex;
   width: 85%;
   height: 7em;
-  margin-bottom: 5em;
   justify-content: center;
   align-items: center;
 }
@@ -125,7 +111,6 @@
   text-align: left;
   text-decoration: underline;
   white-space: nowrap;
-  margin-left: 1em;
 }
 .x01b-delegation-agreement .auto-flex {
   align-items: flex-start;
@@ -133,23 +118,19 @@
   flex-direction: column;
   min-height: 111px;
   width: 172px;
-  margin-left: 10em;
 }
 .x01b-delegation-agreement .auto-flex1 {
   align-items: flex-start;
   display: flex;
   height: 18px;
-  margin-top: 3px;
   min-width: 287px;
 }
 .x01b-delegation-agreement .auto-flex2 {
   align-items: flex-start;
-  align-self: flex-end;
+  align-self: flex-start;
   display: flex;
   flex-direction: column;
-  margin-left: 72px;
   min-height: 122px;
-  width: 287px;
 }
 .x01b-delegation-agreement .auto-flex3 {
   align-items: flex-start;
@@ -160,14 +141,12 @@
 .x01b-delegation-agreement .auto-flex4 {
   align-items: flex-end;
   display: flex;
-  margin-top: 7px;
   min-width: 162px;
 }
 .x01b-delegation-agreement .auto-flex5 {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  margin-left: 94px;
   margin-top: 0.14px;
   min-height: 100px;
   width: 239px;
@@ -175,15 +154,11 @@
 .x01b-delegation-agreement .auto-flex6 {
   align-items: flex-start;
   display: flex;
-  margin-right: 10px;
-  margin-top: 10px;
-  min-width: 864px;
 }
 
 .x01b-delegation-agreement .submit-button-container {
   align-items: flex-end;
   display: flex;
-  margin-top: 12em;
   margin-left: -100em;
   justify-content: center;
   width: 100vw;
@@ -193,33 +168,24 @@
 .x01b-delegation-agreement .bg {
   border-radius: 9px;
   height: 42px;
-  left: 0px;
-  position: absolute;
-  top: 0px;
   width: 170px;
 }
 .x01b-delegation-agreement .bg-1 {
   align-self: flex-start;
   height: 1px;
-  margin-left: 16px;
   margin-top: -1px;
   width: 618px;
 }
 .x01b-delegation-agreement .by-delegating-the-tr {
   height: 59px;
-  left: 0px;
   letter-spacing: 0px;
   line-height: 18px;
-  position: absolute;
   text-align: left;
-  top: 0px;
-  width: 864px;
 }
 .x01b-delegation-agreement .dai {
   letter-spacing: 0px;
   line-height: 14px;
   margin-bottom: 0.07px;
-  margin-left: 16px;
   min-height: 18px;
   min-width: 26px;
   text-align: center;
@@ -236,28 +202,21 @@
 .x01b-delegation-agreement .group-1324 {
   align-items: center;
   display: flex;
-  margin-top: 6px;
   min-width: 285px;
 }
 .x01b-delegation-agreement .group-1330 {
   align-items: flex-end;
   display: flex;
-  margin-top: 1em;
-  margin-left: 1em;
   min-width: 172px;
 }
 .radio {
   height: 22px;
-  margin-left: 28px;
   width: 22px;
 }
 .x01b-delegation-agreement .number {
-  left: 115px;
   letter-spacing: 0px;
   line-height: 18px;
-  position: absolute;
   text-align: center;
-  top: 12px;
   white-space: nowrap;
 }
 .x01b-delegation-agreement .number-1 {
@@ -273,7 +232,6 @@
 .x01b-delegation-agreement .number-2 {
   letter-spacing: 0px;
   line-height: 14px;
-  margin-left: 1em;
   min-height: 18px;
   min-width: 18px;
   text-align: center;
@@ -283,20 +241,13 @@
 }
 .x01b-delegation-agreement .overlap-group {
   height: 59px;
-  margin-right: 10px;
-  margin-top: 12px;
   position: relative;
-  width: 864px;
-  margin-left: 10em;
-  margin-bottom: 3em;
 }
 .x01b-delegation-agreement .overlap-group1 {
   border-radius:10px;
   height: 42px;
-  margin-top: 10px;
   position: relative;
   width: 170px;
-  margin-left: 1em;
 }
 .x01b-delegation-agreement .overlap-group2 {
   align-items: flex-end;
@@ -305,22 +256,16 @@
   display: flex;
   height: 59px;
   justify-content: flex-end;
-  margin-top: 4px;
   min-width: 948px;
   padding: 14px 351px;
 }
 .x01b-delegation-agreement .path-1491 {
   height: 0px;
-  left: 307px;
-  position: absolute;
-  top: 46px;
   width: 422px;
 }
 .x01b-delegation-agreement .price {
   letter-spacing: 0px;
   line-height: 14px;
-  margin-bottom: 0px;
-  margin-left: 41px;
   min-height: 18px;
   min-width: 68px;
   text-align: center;
@@ -348,7 +293,6 @@
 }
 .x01b-delegation-agreement .span {
   color: rgba(0, 0, 0, 1);
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 14px;
 }
 .x01b-delegation-agreement .span0 {
@@ -356,12 +300,6 @@
   font-family: "Epilogue", Helvetica, Arial, serif;
   font-size: 22px;
   font-weight: 700;
-  text-decoration: underline;
-}
-.x01b-delegation-agreement .span1-DQxoii {
-  color: rgba(0, 0, 0, 1);
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 14px;
   text-decoration: underline;
 }
 .x01b-delegation-agreement .span1-movYKW {
@@ -374,7 +312,6 @@
   height: 38px;
   letter-spacing: 0px;
   line-height: 18px;
-  margin-top: 8px;
   min-height: 38px;
   text-align: left;
   width: 287px;
@@ -383,7 +320,6 @@
   height: 38px;
   letter-spacing: 0px;
   line-height: 18px;
-  margin-top: 8px;
   min-height: 38px;
   text-align: left;
   width: 239px;
@@ -391,7 +327,6 @@
 .x01b-delegation-agreement .text-3 {
   letter-spacing: 0px;
   line-height: 14px;
-  margin-left: 2px;
   margin-top: 1.75px;
   min-height: 18px;
   min-width: 30px;
@@ -401,19 +336,16 @@
 .x01b-delegation-agreement .title {
   letter-spacing: 0.15px;
   line-height: 22px;
-  margin-right: 12px;
   min-height: 28px;
   min-width: 298px;
   text-align: center;
   text-decoration: underline;
   white-space: nowrap;
-  margin-left: 7em;
 }
 .x01b-delegation-agreement .usdc {
   letter-spacing: 0px;
   line-height: 14px;
   margin-bottom: 0.07px;
-  margin-left: 16px;
   min-height: 18px;
   min-width: 40px;
   text-align: center;
@@ -437,79 +369,65 @@
 .border-class-1 {
   border: 2px solid rgba(0, 0, 0, 1);
 }
-.dove-gray-border-1px {
-  border: 1px solid var(--dove-gray);
-  align-items: baseline;
-}
 .green-blue-border-2px {
   border: 2px solid var(--green-blue);
 }
 .raleway-bold-alto-22px {
   color: var(--alto);
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 22px;
   font-style: normal;
   font-weight: 700;
 }
 .raleway-bold-black-14px {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 700;
 }
 .raleway-bold-black-20px {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
 }
 .raleway-bold-black-24px {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 700;
 }
 .raleway-bold-black-30px {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
 }
 .raleway-medium-black-20px {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;
 }
 .raleway-normal-alto-13px {
   color: var(--alto);
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 13px;
   font-style: normal;
   font-weight: 400;
 }
 .raleway-normal-alto-18px {
   color: var(--alto);
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
 }
 .raleway-normal-black-14px {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
 }
 .raleway-semi-bold-black-18px {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
@@ -517,18 +435,15 @@
 
 .success-font {
   color: rgb(118, 182, 75);
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 24px;
   font-style: normal;
   font-weight: 600;
 }
 
 
-.x01b-delegation-agreement {
-  background-color: var(--alabaster);
-  position: relative;
-  width: 1366px;
-}
+
+
+
 .add-funds {
   height: 31px;
   letter-spacing: 1.18px;
@@ -601,13 +516,11 @@
   width: 170px;
 }
 .by-delegating-the-tr {
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 14px;
   height: 59px;
   letter-spacing: 0px;
   line-height: 18px;
   text-align: left;
-  width: 864px;
   margin-left: 1.5em;
 }
 .dai {
@@ -818,7 +731,6 @@
   width: 146px;
 }
 .number {
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 0px;
@@ -837,10 +749,6 @@
   line-height: 14px;
   text-align: center;
   white-space: nowrap;
-}
-.overlap-group {
-  height: 768px;
-  width: 1366px;
 }
 .overlap-group1 {
   height: 767px;
@@ -972,8 +880,6 @@
 
 .repayment-percent-number {
   display: flex;
-  margin-top: 1em;
-  margin-left: 5em;
 }
 
 
@@ -1049,7 +955,6 @@
 }
 .span {
   color: rgba(0, 0, 0, 1);
-  font-family: "Raleway", Helvetica, Arial, serif;
 }
 .span0 {
   color: rgba(255, 255, 255, 1);
@@ -1059,7 +964,6 @@
 }
 .span1-DQxoii {
   color: rgba(0, 0, 0, 1);
-  font-family: "Raleway", Helvetica, Arial, serif;
   text-decoration: underline;
 }
 .span1-wdFYhX {
@@ -1130,7 +1034,6 @@
   white-space: nowrap;
 }
 .title-3 {
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 22px;
   font-weight: 700;
   letter-spacing: 0.15px;
@@ -1175,8 +1078,6 @@
 
 .submit-button {
   display: flex;
-  margin-top: 10em;
-  margin-right: 10em;
   background-color: chartreuse;
 }
 
