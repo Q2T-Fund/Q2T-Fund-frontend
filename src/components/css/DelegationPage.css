@@ -540,6 +540,18 @@
   text-align: left;
   white-space: nowrap;
 }
+
+
+.articles-white-card {
+  letter-spacing: 0px;
+  line-height: 24px;
+  margin-bottom: -7px;
+  min-height: 17px;
+  min-width: 107px;
+  text-align: left;
+  white-space: nowrap;
+  color:black;
+}
 .articles-1 {
   letter-spacing: 0px;
   line-height: 24px;
@@ -629,7 +641,22 @@
   flex: 1;
   width: 100%;
   padding: 20px;
+  min-height: 15vw;
 }
+
+.description-white-card {
+  letter-spacing: 0px;
+  line-height: 24px;
+  text-align: left;
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  color:black;
+  min-height: 15vw;
+
+}
+
+
 .description-1 {
   height: 77px;
   letter-spacing: 0px;
@@ -645,6 +672,18 @@
 .black-card {
   align-items: center;
   background-color: black;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 286px;
+  padding: 16px;
+}
+
+
+.white-card {
+  align-items: center;
+  background-color: white;
+  color: #1b1c1d;  
   border-radius: 16px;
   display: flex;
   flex-direction: column;
@@ -1090,6 +1129,17 @@
   min-width: 144px;
   text-align: left;
   white-space: nowrap;
+}
+
+
+.title-white-card {
+  letter-spacing: 0.15px;
+  line-height: 22px;
+  min-height: 54px;
+  min-width: 144px;
+  text-align: left;
+  white-space: nowrap;
+  color:black;
 }
 .title-1 {
   letter-spacing: 0.15px;
