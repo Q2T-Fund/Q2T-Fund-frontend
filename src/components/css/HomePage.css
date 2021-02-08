@@ -28,6 +28,8 @@
   color: var(--ebb);
   font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 24px;
+  margin: auto
+
 }
 .raleway-normal-white-26px {
   color: white;
@@ -46,7 +48,7 @@
   background-color: white;
   display: flex;
   width: 100%;
-  height: 100vh;
+  height: 100vh;  
 }
 
 .x01-i-want-to .fundmy-project {
@@ -78,7 +80,7 @@
   background-color: var(--black);
   display: flex;
   height: 100vh;
-  min-width: 452px;
+  min-width: 500  px;
   padding: 250px 44px;
 }
 .x01-i-want-to .overlap-group1 {
@@ -125,7 +127,6 @@
   min-height: 385px;
   text-align: center;
   width: 356px;
-  margin-left: 5em;
 }
 .x01-i-want-to .rectangle-1596 {
   background-color: var(--governor-bay);

@@ -13,7 +13,7 @@ import { Link, useHistory } from "react-router-dom"
 const HomePage = () => {
 
   return (
-  <X01IWantTo {...X01IWantToData} />
+    <X01IWantTo {...X01IWantToData} />
   );
 }
 
@@ -45,17 +45,28 @@ function X01IWantTo(props) {
     history.push(pageRedirect);
   }
 
+  const spanSmallText = {
+    "font-weight": "100",
+    "font-size": "medium"
+  }
+  const spanBigText = {
+    "font-weight": "600",
+    "font-size": "larger"
+  }
   const modal1 = () => {
 
     return (
-        <Modal
+      <Modal
         basic
         closeIcon
         onClose={() => setOpen1(false)}
         onOpen={() => setOpen1(true)}
         open={open1}
         size='small'
-        trigger={<Button size="massive" color="black" className="button1"><>Support Public Goods.</></Button>}
+        trigger={<Button size="massive" color="black" className="button1">
+          <span style={spanBigText}>Support</span><br></br>
+          <span style={spanSmallText}>Public Goods.</span>
+        </Button >}
       >
         <Header icon>
           <Icon name='ethereum' />
@@ -63,22 +74,22 @@ function X01IWantTo(props) {
         </Header>
         <Modal.Content>
           <Grid>
-             <Grid.Row>
+            <Grid.Row>
               <Image src={metamask} size="tiny" className="login-icons"></Image>
               <Button size="massive" color="black" onClick={() => loginWithMetamask('/delegate')}>Metamask</Button>
             </Grid.Row>
             <Grid.Row >
-              <Image src={skillwallet} size="tiny" className="login-icons"/>
+              <Image src={skillwallet} size="tiny" className="login-icons" />
               <Button size="massive" color="black" onClick={() => {
                 loginWithSkillWallet('/delegate')
                 setOpen1(false)
-                }
-                }>SkillWallet</Button>
+              }
+              }>SkillWallet</Button>
             </Grid.Row>
 
           </Grid>
         </Modal.Content>
-      </Modal>
+      </Modal >
     )
   }
 
@@ -88,27 +99,30 @@ function X01IWantTo(props) {
   const modal2 = () => {
 
     return (
-        <Modal
+      <Modal
         basic
         closeIcon
         onClose={() => setOpen2(false)}
         onOpen={() => setOpen2(true)}
         open={open2}
         size='small'
-        trigger={<Button size="massive" color="black" className="button2">Fund<br></br> my Project.</Button>}
-        >
+        trigger={<Button size="massive" color="black" className="button2">
+          <span style={spanBigText}>Fund</span><br></br>
+          <span style={spanSmallText}>my Project.</span>
+        </Button >}
+      >
         <Header icon>
           <Icon name='ethereum' />
           Log in
         </Header>
         <Modal.Content>
           <Grid>
-			 <Grid.Row>
-              <Image src={skillwallet} size="tiny" className="login-icons"/>
-              <Button size="massive" color="black" onClick={() => { 
-              loginWithSkillWallet('/stake') 
-              setOpen2(false) 
-              } 
+            <Grid.Row>
+              <Image src={skillwallet} size="tiny" className="login-icons" />
+              <Button size="massive" color="black" onClick={() => {
+                loginWithSkillWallet('/stake')
+                setOpen2(false)
+              }
               }>Skillwallet</Button>
             </Grid.Row>
 
@@ -176,25 +190,25 @@ function Image2(props) {
   return <img className="image-2" src={image2} />;
 }
 const image2Data = {
-    image2: "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-2-1@1x.png",
+  image2: "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-2-1@1x.png",
 };
 
 // We could import this as JSON from a separate file
 const X01IWantToData = {
-    spanText: "Quadratic Treasury",
-    spanText2: " (",
-    spanText3: "Q2T",
-    spanText4: <>) uses Quadratic Funding to fund (and fundraise for) projects in the area of public goods.<br/><br/>It’s fair, and sybil-resistant. <br/>And it’s the first decentralized platform to combine math and unique, non-forgeable identities to </>,
-    spanText5: "fully automate",
-    spanText6: " the funding process. ",
-    spanText7: "Continuously",
-    spanText8: ", and in a milestone-based approach.",
-    iWantTo: "I want to",
-    spanText9: "Support",
-    spanText10: <><br/></>,
-    spanText11: "Public Good",
-    spanText12: <>Fund<br/></>,
-    spanText13: "my Project.",
-    image2Props: image2Data,
+  spanText: "Quadratic Treasury",
+  spanText2: " (",
+  spanText3: "Q2T",
+  spanText4: <>) uses Quadratic Funding to fund (and fundraise for) projects in the area of public goods.<br /><br />It’s fair, and sybil-resistant. <br />And it’s the first decentralized platform to combine math and unique, non-forgeable identities to </>,
+  spanText5: "fully automate",
+  spanText6: " the funding process. ",
+  spanText7: "Continuously",
+  spanText8: ", and in a milestone-based approach.",
+  iWantTo: "I want to",
+  spanText9: "Support",
+  spanText10: <><br /></>,
+  spanText11: "Public Good",
+  spanText12: <>Fund<br /></>,
+  spanText13: "my Project.",
+  image2Props: image2Data,
 };
 
