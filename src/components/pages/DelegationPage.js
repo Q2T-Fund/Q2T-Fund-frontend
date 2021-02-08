@@ -1,68 +1,20 @@
-import React from "react";
-
-// import { DatePicker } from "antd"
+import React, { useState } from "react";
+import { Page, Section } from "react-page-layout";
+import { Form, Input, Slider, Radio } from "formik-antd";
+import { Formik } from "formik";
+import { approveDai } from "../../api/contracts";
+import { openNotification } from "../utils/common";
+import { validateKovanNet, depositTx, getTreasuryDAOAddress } from '../../api/contracts';
 
 import "antd/dist/antd.css";
 import "../css/DelegationPage.css";
 import "../css/BaseLayout.css";
 
-import { Page, Section } from "react-page-layout";
-import { ethers } from "ethers";
-
-import { Form, Input, Slider, Radio } from "formik-antd";
-import { Formik } from "formik";
-import { approveDai } from "../../api/contracts";
-import { openNotification } from "../utils/common";
-import { validateKovanNet } from '../../api/contracts';
-
 require("dotenv").config();
 
-// why is '../../' !== '/....' ????????
 
-const { treasuryAbi } = require("../../contracts/abi/TreasuryDAO.abi.json");
-const treasuryContractAddress = "0x5A29c96878764519E9266A87543E97211aA8283c";
-
-
-export const depositTx = async (currency, amount, repaymentPercent) => {
-  // const provider = new ethers.providers.getDefaultProvider("kovan")
-  const provider = new ethers.providers.Web3Provider(window.ethereum);
-  const signer = provider.getSigner();
-
-  const contract = new ethers.Contract(
-    treasuryContractAddress,
-    treasuryAbi,
-    signer
-  );
-
-  const createTx = await contract.deposit(currency, amount, repaymentPercent);
-  const transactionResult = await createTx.wait();
-
-  console.log("deposit results: ", transactionResult);
-  const { events } = transactionResult;
-
-  console.log("events: ", events);
-  const createdEvents = events.find((e) => e.event === "Deposited");
-
-  if (!createdEvents) {
-    console.log("event not found: ");
-
-    openNotification(
-      "Transaction Failed!",
-      `Something went wrong... Make sure to confirm both metamask prompts.`,
-      false
-    );
-  } else {
-    console.log("Event was found", createdEvents);
-    const etherScanLink = `https://kovan.etherscan.io/tx/${createdEvents.transactionHash}`;
-    openNotification(
-      "Transaction Success!",
-      `Congratulations, you can view your transaction here: ${etherScanLink}`,
-      true
-    );
-  }
-};
-
-const ContractInteraction = () => {
+const ContractInteraction = (props) => {
+  console.log(props.template);
   return (
     <>
       <Formik
@@ -91,8 +43,10 @@ const ContractInteraction = () => {
             );
             return;
           }
-          await approveDai(treasuryContractAddress, values.tokenAmount);
+          const address = getTreasuryDAOAddress(props.template)
+          await approveDai(address, values.tokenAmount);
           await depositTx(
+            address,
             values.currency,
             values.tokenAmount,
             values.repaymentPercent
@@ -227,35 +181,38 @@ const ContractInteraction = () => {
 };
 
 const Card = (props) => {
-  const handleClick = (e) => {
-    e.preventDefault();
-    alert(`category number (name): ${props.category}`);
-  };
-
   return (
-    <div className={props.type} onClick={handleClick}>
+    <div className={props.type} onClick={props.onClick}>
       <div className="top-card">
         <img
           className="image-7"
-          src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-7-1@1x.png"
+          src={ props.type === 'black-card' 
+          ? "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-7-1@1x.png"
+          : '/unknown.png'
+  }
         />
-        <div className="title raleway-bold-alto-22px">{props.title}</div>
+        <div className={props.type === 'black-card' ? "title raleway-bold-alto-22px" : "title-white-card raleway-bold-alto-22px"}>
+          {props.title}
+        </div>
       </div>
-      <div className="description raleway-normal-alto-18px">
+      <div className={props.type === 'black-card' ? "description raleway-normal-alto-18px" : "description-white-card raleway-normal-alto-18px"}>
         {props.description}
       </div>
       <img
         className="line-26"
         src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-26-1@1x.png"
       />
-      <div className="articles raleway-normal-alto-13px">
+      <div className={props.type === 'black-card' ? "articles raleway-normal-alto-13px" : "articles-white-card raleway-normal-alto-13px"}>
         {props.activeProjects} Active Projects
       </div>
     </div>
   );
 };
 
+
 const DelegationPage = () => {
+  const [template, setTemplate] = useState('open-source');
+
   return (
     <Page layout="base" className="top-cards">
       <Section slot="header">
@@ -268,46 +225,49 @@ const DelegationPage = () => {
       </Section>
       <Section slot="row1-col1">
         <Card
-          type="black-card"
+          type={template === 'open-source' ? 'white-card' : 'black-card'}
           title={
             <>
               Blockchain & <br /> Open Source
             </>
           }
-          description={"Develop cool stuff"}
+          description="Help researchers and small, functional web3 teams to bring innovation and support the open-source movement for a more sustainable, collaborative world."
           category="blockchain"
           activeProjects={2}
+          onClick={() => setTemplate('open-source')}
         />
       </Section>
       <Section slot="row1-col2">
         <Card
-          type="unavailable-card"
+          type={template === 'art' ? 'white-card' : 'black-card'}
           title={
             <>
               Arts, Events <br /> & Lifestyle
             </>
           }
-          description={"Coming soon!"}
+          description="Art groups, writers, and live events in all of their variety. From entertainment, to music performances - Art is the purest form of human connection."
           category="arts"
           activeProjects="xx"
+          onClick={() => setTemplate('art')}
         />
       </Section>
       <Section slot="row1-col3">
         <Card
-          type="unavailable-card"
+          type={template === 'local' ? 'white-card' : 'black-card'}
           title={
             <>
               Local <br /> Communities
             </>
           }
-          description={"Coming soon!"}
+          description="Local Projects bring support to people in need - from impoverished areas, to innovative local hubs where locals can get together and create something greater than oneself."
           category="local"
           activeProjects="xx"
+          onClick={() => setTemplate('local')}
         />
       </Section>
 
       <Section slot="row2-col1">
-        <ContractInteraction />
+        <ContractInteraction template={template} />
       </Section>
     </Page>
   );
