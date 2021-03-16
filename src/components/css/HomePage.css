@@ -185,3 +185,15 @@
   --gallery: rgba(237, 237, 237, 0.85);
   --governor-bay: rgba(47, 45, 179, 1);
 }
+
+
+/* MY STYLING - DON'T DELETE */
+.spanBigText {
+  font-weight: 600;
+  font-size: larger;
+}
+
+.spanSmallText {
+  font-weight: 100;
+  font-size: medium;
+}
