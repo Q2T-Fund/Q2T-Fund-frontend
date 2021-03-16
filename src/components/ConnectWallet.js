@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 // ethers to interact with the Ethereum network and our contract
 import { ethers } from "ethers";
 
-import NetworkErrorMessage from './NetworkErrorMessage'
+import NetworkErrorMessage from './error-messages/NetworkErrorMessage'
 import { SkillWallet } from "./skillWallet";
 
 

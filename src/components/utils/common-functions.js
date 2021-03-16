@@ -1,6 +1,4 @@
-
 import React from "react";
-
 import { notification } from "antd";
 import { HeartOutlined, CloseOutlined } from "@ant-design/icons";
 
@@ -21,5 +19,4 @@ export const openNotification = (title, description, success) => {
       icon: <CloseOutlined />,
     });
   }
-   
   };

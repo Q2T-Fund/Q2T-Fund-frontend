@@ -1,5 +1,5 @@
 import { ethers } from 'ethers'
-import { openNotification } from '../components/utils/common';
+import { openNotification } from '../components/utils/common-functions';
 
 const { treasuryABI } = require('../contracts/abi/Treasury.abi.json');
 const { erc20abi } = require('../contracts/abi/ERC20.abi.json');

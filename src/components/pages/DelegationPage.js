@@ -3,7 +3,7 @@ import { Page, Section } from "react-page-layout";
 import { Form, Input, Slider, Radio } from "formik-antd";
 import { Formik } from "formik";
 import { approveDai } from "../../api/contracts";
-import { openNotification } from "../utils/common";
+import { openNotification } from "../utils/common-functions";
 import { validateKovanNet, depositTx, getTreasuryDAOAddress } from '../../api/contracts';
 
 import "antd/dist/antd.css";

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // contract's artifacts and address here
-import NoWalletDetected from './NoWalletDetected'
+import NoWalletDetected from './error-messages/NoWalletDetected'
 
 // pages
 import HomePage from "./pages/HomePage"
@@ -26,9 +26,6 @@ const App = () => {
     // const { address } = state
     // instead of being sourced from the useState function
     const [address, setAddress] = useState(undefined)
-
-
-    // now actual functionality
 
     return (
     	<>

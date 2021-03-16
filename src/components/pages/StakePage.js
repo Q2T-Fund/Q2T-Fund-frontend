@@ -7,7 +7,7 @@ import { approveDai, fund, validateKovanNet } from '../../api/contracts';
 import 'antd/dist/antd.css';
 import "../css/StakePage.css"
 
-import { openNotification } from "../utils/common";
+import { openNotification } from "../utils/common-functions";
 import { VerticalSidebar } from "../layouts/BaseLayout"
 
 import {
