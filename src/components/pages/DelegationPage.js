@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Card from '../common/Card';
 import { Page, Section } from "react-page-layout";
 import { Form, Input, Slider, Radio } from "formik-antd";
 import { Formik } from "formik";
@@ -14,7 +15,8 @@ require("dotenv").config();
 
 
 const ContractInteraction = (props) => {
-  console.log(props.template);
+  const address = getTreasuryDAOAddress(props.template);
+
   return (
     <>
       <Formik
@@ -24,6 +26,7 @@ const ContractInteraction = (props) => {
           totalReturn: 0,
           currency: "DAI",
         }}
+
         validate={(values) => {
           const errors = {};
           if (!values.tokenAmount) {
@@ -33,6 +36,7 @@ const ContractInteraction = (props) => {
           }
           return errors;
         }}
+
         onSubmit={async (values, { setSubmitting }) => {
           const isKovan = await validateKovanNet();
           if (!isKovan) {
@@ -43,7 +47,6 @@ const ContractInteraction = (props) => {
             );
             return;
           }
-          const address = getTreasuryDAOAddress(props.template)
           await approveDai(address, values.tokenAmount);
           await depositTx(
             address,
@@ -177,35 +180,6 @@ const ContractInteraction = (props) => {
         )}
       </Formik>
     </>
-  );
-};
-
-const Card = (props) => {
-  return (
-    <div className={props.type} onClick={props.onClick}>
-      <div className="top-card">
-        <img
-          className="image-7"
-          src={ props.type === 'black-card' 
-          ? "https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/image-7-1@1x.png"
-          : '/unknown.png'
-  }
-        />
-        <div className={props.type === 'black-card' ? "title raleway-bold-alto-22px" : "title-white-card raleway-bold-alto-22px"}>
-          {props.title}
-        </div>
-      </div>
-      <div className={props.type === 'black-card' ? "description raleway-normal-alto-18px" : "description-white-card raleway-normal-alto-18px"}>
-        {props.description}
-      </div>
-      <img
-        className="line-26"
-        src="https://anima-uploads.s3.amazonaws.com/projects/60126ea786f83e0fcc799456/releases/60126ec431580128926bc3d9/img/line-26-1@1x.png"
-      />
-      <div className={props.type === 'black-card' ? "articles raleway-normal-alto-13px" : "articles-white-card raleway-normal-alto-13px"}>
-        {props.activeProjects} Active Projects
-      </div>
-    </div>
   );
 };
 
