@@ -35,8 +35,6 @@ export async function connectWallet(address, setAddress, networkError, setNetwor
   // });
   const res = await SkillWallet.get();
 
-  console.log(res);
-
   // right now hardhat, changeable
   if (window.ethereum.networkVersion !== HARDHAT_NETWORK_ID) {
     setNetworkError("Please connect Metamask to Localhost:8545")

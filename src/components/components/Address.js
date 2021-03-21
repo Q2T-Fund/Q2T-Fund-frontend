@@ -1,26 +1,95 @@
 import React, { useState, useEffect } from "react";
 import Blockies from "react-blockies";
 import { Typography, Skeleton } from "antd";
-
-
 import { getAddress } from "@ethersproject/address";
+
+const { Text } = Typography;
+const blockExplorerLink = (address, blockExplorer) => `${blockExplorer || "https://etherscan.io/"}${"address/"}${address}`;
+
+const lookupAddress = async (provider, address) => {
+  try {
+    // Accuracy of reverse resolution is not enforced.
+    // We then manually ensure that the reported ens name resolves to address
+    const reportedName = await provider.lookupAddress(address);
+    const resolvedAddress = await provider.resolveName(reportedName);
+    if (getAddress(address) === getAddress(resolvedAddress)) {
+      return reportedName;
+    }
+  } catch (e) {
+    // Do nothing
+  }
+  return "";
+};
+
+const useLookupAddress = (provider, address) => {
+  const [ensName, setEnsName] = useState(address);
+  const [ensCache, setEnsCache] = useLocalStorage('ensCache_'+address);
+
+  useEffect(() => {
+    if( ensCache && ensCache.timestamp>Date.now()){
+      setEnsName(ensCache.name)
+    }else{
+      if (provider) {
+        lookupAddress(provider, address).then((name) => {
+          setEnsName(name)
+          setEnsCache({
+            timestamp:Date.now()+360000,
+            name:name
+          })
+        });
+      }
+    }
+  }, [ensCache, provider, address, setEnsName, setEnsCache]);
+
+  return ensName;
+};
+
+// Hook from useHooks! (https://usehooks.com/useLocalStorage/)
+function useLocalStorage(key, initialValue) {
+    // State to store our value
+    // Pass initial state function to useState so logic is only executed once
+    const [storedValue, setStoredValue] = useState(() => {
+      try {
+        // Get from local storage by key
+        const item = window.localStorage.getItem(key);
+        // Parse stored json or if none return initialValue
+        return item ? JSON.parse(item) : initialValue;
+      } catch (error) {
+        // If error also return initialValue
+        console.log(error);
+        return initialValue;
+      }
+    });
+  
+    // Return a wrapped version of useState's setter function that ...
+    // ... persists the new value to localStorage.
+    const setValue = value => {
+      try {
+        // Allow value to be a function so we have same API as useState
+        const valueToStore =
+          value instanceof Function ? value(storedValue) : value;
+        // Save state
+        setStoredValue(valueToStore);
+        // Save to local storage
+        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      } catch (error) {
+        // A more advanced implementation would handle the error case
+        console.log(error);
+      }
+    };
+  
+    return [storedValue, setValue];
+  }
+
 /*
-
   Displays an address with a blockie, links to a block explorer, and can resolve ENS
-
   <Address
     value={address}
     ensProvider={mainnetProvider}
     blockExplorer={optional_blockExplorer}
     fontSize={optional_fontSize}
   />
-
 */
-
-const { Text } = Typography;
-
-const blockExplorerLink = (address, blockExplorer) => `${blockExplorer || "https://etherscan.io/"}${"address/"}${address}`;
-
 
 
 const Address = (props) => {
@@ -85,84 +154,4 @@ const Address = (props) => {
 }
 
 export default Address;
-
-
-
-const lookupAddress = async (provider, address) => {
-  try {
-    // Accuracy of reverse resolution is not enforced.
-    // We then manually ensure that the reported ens name resolves to address
-    const reportedName = await provider.lookupAddress(address);
-    const resolvedAddress = await provider.resolveName(reportedName);
-    if (getAddress(address) === getAddress(resolvedAddress)) {
-      return reportedName;
-    }
-  } catch (e) {
-    // Do nothing
-  }
-  return "";
-};
-
-const useLookupAddress = (provider, address) => {
-  const [ensName, setEnsName] = useState(address);
-  const [ensCache, setEnsCache] = useLocalStorage('ensCache_'+address);
-
-  useEffect(() => {
-    if( ensCache && ensCache.timestamp>Date.now()){
-      setEnsName(ensCache.name)
-    }else{
-      if (provider) {
-        lookupAddress(provider, address).then((name) => {
-          setEnsName(name)
-          setEnsCache({
-            timestamp:Date.now()+360000,
-            name:name
-          })
-        });
-      }
-    }
-  }, [ensCache, provider, address, setEnsName, setEnsCache]);
-
-  return ensName;
-};
-
-
-
-
-// Hook from useHooks! (https://usehooks.com/useLocalStorage/)
-function useLocalStorage(key, initialValue) {
-    // State to store our value
-    // Pass initial state function to useState so logic is only executed once
-    const [storedValue, setStoredValue] = useState(() => {
-      try {
-        // Get from local storage by key
-        const item = window.localStorage.getItem(key);
-        // Parse stored json or if none return initialValue
-        return item ? JSON.parse(item) : initialValue;
-      } catch (error) {
-        // If error also return initialValue
-        console.log(error);
-        return initialValue;
-      }
-    });
-  
-    // Return a wrapped version of useState's setter function that ...
-    // ... persists the new value to localStorage.
-    const setValue = value => {
-      try {
-        // Allow value to be a function so we have same API as useState
-        const valueToStore =
-          value instanceof Function ? value(storedValue) : value;
-        // Save state
-        setStoredValue(valueToStore);
-        // Save to local storage
-        window.localStorage.setItem(key, JSON.stringify(valueToStore));
-      } catch (error) {
-        // A more advanced implementation would handle the error case
-        console.log(error);
-      }
-    };
-  
-    return [storedValue, setValue];
-  }
   

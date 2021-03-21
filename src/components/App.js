@@ -3,10 +3,10 @@ import React, { useState } from "react";
 // contract's artifacts and address here
 import NoWalletDetected from './error-messages/NoWalletDetected'
 
-// pages
-import HomePage from "./pages/HomePage"
-import DelegationPage from "./pages/DelegationPage"
-import StakePage from "./pages/StakePage"
+// components
+import HomePage from "./components/HomePage"
+import DelegationPage from "./components/DelegationPage"
+import StakePage from "./components/StakePage"
 // router
 import { BrowserRouter as Router } from "react-router-dom"
 import { Switch, Link, Route } from "react-router-dom"
