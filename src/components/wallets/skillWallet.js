@@ -1,4 +1,4 @@
-import { storeSkillWallet, getSkillWalletByID, initialize } from "./threaddb.config";
+import { storeSkillWallet, getSkillWalletByID, initialize } from "../threaddb.config";
 import { ThreeIdConnect, EthereumAuthProvider } from '3id-connect'
 import Ceramic from '@ceramicnetwork/http-client'
 import { IDX } from '@ceramicstudio/idx'

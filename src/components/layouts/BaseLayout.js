@@ -11,7 +11,7 @@ import {
   Grid,
 } from "semantic-ui-react";
 
-import Address from "../components/Address";
+import Address from "../Address";
 
 import "../css/BaseLayout.css";
 

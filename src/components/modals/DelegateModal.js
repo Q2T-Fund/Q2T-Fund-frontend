@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import '../css/HomePage.css';
 import { Button, Modal, Header, Icon, Grid, Image } from 'semantic-ui-react';
-import { SkillWallet } from "../skillWallet"
+import { SkillWallet } from "../wallets/skillWallet"
 import metamask from '../../assets/metamask.svg'
 import skillwallet from '../../assets/skillwallet.png'
 import {useHistory } from "react-router-dom"
@@ -39,7 +39,7 @@ const DelegateModal = () => {
           onOpen={() => setOpen1(true)}
           open={open1}
           size='small'
-          trigger={<Button size="massive" color="black" className="button1">
+          trigger={<Button size="massive" color="black" className="button1" style={{width: "9em"}}>
             <span className="spanBigText">Support</span><br></br>
             <span className="spanSmallText">Public Goods.</span>
           </Button >}
