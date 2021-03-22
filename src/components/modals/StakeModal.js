@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import '../css/HomePage.css';
 import { Button, Modal, Header, Icon, Grid, Image } from 'semantic-ui-react';
-import { SkillWallet } from "../skillWallet"
+import { SkillWallet } from "../wallets/skillWallet"
 import skillwallet from '../../assets/skillwallet.png'
 import {useHistory } from "react-router-dom"
 import newuser from '../../assets/newuser.png'

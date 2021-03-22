@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Card from '../common/Card';
+import Card from './common/Card';
 import { Page, Section } from "react-page-layout";
 import DelegateForm from "./DelegateForm";
 import "antd/dist/antd.css";
-import "../css/DelegationPage.css";
-import "../css/BaseLayout.css";
+import "./css/DelegationPage.css";
+import "./css/BaseLayout.css";
 
 require("dotenv").config();
 

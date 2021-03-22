@@ -1,12 +1,12 @@
 import React from 'react';
-import "../css/DelegationPage.css";
-import "../css/BaseLayout.css";
+import "./css/DelegationPage.css";
+import "./css/BaseLayout.css";
 import { Form, Input, Slider, Radio } from "formik-antd";
 import { Formik } from "formik";
-import { approveDai } from "../../api/contracts";
-import { openNotification } from "../utils/common-functions";
-import { validateKovanNet, depositTx, getTreasuryDAOAddress } from '../../api/contracts';
-import lineBreak from "../../assets/delegate-form-line-break.png";
+import { approveDai } from "../api/contracts";
+import { openNotification } from "./utils/common-functions";
+import { validateKovanNet, depositTx, getTreasuryDAOAddress } from '../api/contracts';
+import lineBreak from "../assets/delegate-form-line-break.png";
 
 const DelegateForm = (props) => {
     const address = getTreasuryDAOAddress(props.template);
