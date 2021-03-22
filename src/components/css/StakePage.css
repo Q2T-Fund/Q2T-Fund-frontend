@@ -1,794 +1,252 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
 @import url("https://fonts.googleapis.com/css?family=Raleway:700,600,400,500|Epilogue:700|Lato:700");
 
+.stake-background-container {
+    margin-left: 60px;
+    height: 100vh;
+    position: relative;
+    width: 100vw;
+}
 
-* {
-  box-sizing: border-box;
+p {
+    color: black;
+    font-family: "Raleway", Helvetica, Arial, serif;
+    font-size: 14px;
+    font-style: normal;
+    text-decoration: none !important;
+    word-wrap: break-word; 
+    white-space: pre-wrap
+}
+
+h1 {
+    text-decoration: underline;
+    font-size: 30px !important;
+    margin: 5px 0 !important;
+    line-height: 30px !important;
+}
+
+h2 {
+    font-weight: 500 !important;
+    margin: 18px 0 !important;
+    font-style: normal !important;
+    height: 51px;
+    letter-spacing: 0.23px;
+}
+
+h3 {
+    font-size: 17px;
+    text-decoration: underline;
+}
+
+span {
+    color: black;
 }
 
 .border-class-1 {
-  border: 2px solid rgba(0, 0, 0, 1);
-}
+    border: 2px solid rgba(0, 0, 0, 1);
+  }
 
 .border-class-2 {
-  border: 3px solid rgba(0, 0, 0, 1);
+border: 3px solid rgba(0, 0, 0, 1);
 }
 
-.input {
-  display: flex;
-  height: 3.5em;
-  margin-top: 37em;
-  margin-left: 26.5em;
-  width: 14.5em;
+.optional-background-blur {
+    -webkit-backdrop-filter: blur(30px) brightness(115%);
+    backdrop-filter: blur(30px) brightness(115%);
+    background-color: var(--gallery);
+    box-shadow: 5px 3px 6px rgba(47, 46, 179, 0.361);
+    display: flex;
+    height: 100vh;
+    left: 305px;
+    position: absolute;
+    top: 0px;
+    width: 100vw;
 }
 
-.submit-button {
-  display: flex;
-  width: 4em;
-  height: 2em;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20em;
+.form-and-card-container {
+    display: flex;
+    height: 70%;
 }
 
+.stake-form-container {
+    border: 1px solid var(--dove-gray);
+    background-color: white;
+    border-radius: 38px;
+    margin-right: 100px;
+    width: 45%;
+    min-width: 500px;
+    display: flex;
+    justify-content: space-evenly;
+}
 
-.dove-gray-border-1px {
-  border: 1px solid var(--dove-gray);
+.stake-form-container > div {
+    width: 45%;
+    display: flex;
+    margin: 20px 0;
+    flex-direction: column;
+    align-items: center;
 }
-.raleway-bold-black-14px {
-  color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
+
+.dai {
+    margin: 20px 0;
 }
-.raleway-bold-black-16px {
-  color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
+
+.left-column-text {
+    text-align: center;
 }
-.raleway-bold-black-30px {
-  color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 700;
+
+.form-subsection > h3 {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
 }
-.raleway-bold-slimy-green-20px {
-  color: var(--slimy-green);
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
+
+.form-subsection > h3, .input2, p{
+    margin: 5px 0;
 }
-.raleway-medium-black-24px {
-  color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 500;
+
+.amount {
+    width: 100%;
 }
-.raleway-normal-black-14px {
-  color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
+
+.stake-form-container > div >div {
+    margin-top: 40px;
 }
-.raleway-semi-bold-black-18px {
-  color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
+
+.input2 {
+    width: 200px;
+    height: 40px;
+    margin: 20px 0;
 }
-.raleway-semi-bold-dove-gray-12px {
-  color: var(--dove-gray);
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 12px;
+
+.group-1324 {
+    align-items: flex-start;
+    display: flex;
+    height: 30px;
+    min-width: 45px;
 }
-.x02-stake {
-  margin-top: -2em;
-  margin-left: -22em;
-  height: 100vh;
-  position: relative;
-  width: 100vw;
-  /* background-color: blue; */
-}
-.x02-stake .add-funds {
-  height: 31px;
-  left: 102px;
-  letter-spacing: 1.18px;
-  line-height: 18px;
-  position: absolute;
-  text-align: center;
-  top: 603px;
-  width: 146px;
-}
-.x02-stake .amount {
-  left: 437px;
-  letter-spacing: 0px;
-  line-height: 18px;
-  position: absolute;
-  text-align: left;
-  /* text-decoration: underline; */
-  top: 498px;
-  white-space: nowrap;
-}
-.x02-stake .bg {
-  height: 42px;
-  left: 373px;
-  position: absolute;
-  top: 543px;
-  width: 196px;
-}
-.x02-stake .check-on-etherscan {
-  left: 1073px;
-  letter-spacing: 0px;
-  line-height: 18px;
-  position: absolute;
-  text-align: center;
-  top: 508px;
-  white-space: nowrap;
-}
-.x02-stake .checkup-card {
-  color: white;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 18px;
-  font-weight: 600;
-  left: 1101px;
-  letter-spacing: 0.88px;
-  line-height: 18px;
-  position: absolute;
-  text-align: center;
-  top: 288px;
-  white-space: nowrap;
-}
-.x02-stake .community-apy {
-  left: 676px;
-  letter-spacing: 0px;
-  line-height: 18px;
-  position: absolute;
-  text-align: left;
-  text-decoration: underline;
-  top: 230px;
-  white-space: nowrap;
-}
-.x02-stake .community-name {
-  color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 20px;
-  font-weight: 700;
-  left: 1073px;
-  letter-spacing: 0.98px;
-  line-height: 18px;
-  position: absolute;
-  text-align: center;
-  text-decoration: underline;
-  top: 253px;
-  white-space: nowrap;
-}
-.x02-stake .currency {
-  left: 432px;
-  letter-spacing: 0px;
-  line-height: 18px;
-  position: absolute;
-  text-align: left;
-  text-decoration: underline;
-  top: 230px;
-  white-space: nowrap;
-}
-.x02-stake .dai {
-  height: 21px;
-  left: 355px;
-  letter-spacing: 0px;
-  line-height: 30px;
-  mix-blend-mode: darken;
-  position: absolute;
-  text-align: right;
-  top: 280px;
-  white-space: nowrap;
-  width: 198px;
+
+.return {
+    width: 100%;
 }
 
 
-.x02-stake .dai-1 {
-  left: 398px;
-  letter-spacing: 0px;
-  line-height: 14px;
-  position: absolute;
-  text-align: center;
-  top: 275px;
-  white-space: nowrap;
+/********** PROGRESS BARS **********/
+.overlap {
+    height: 25px;
+    /* position: relative; */
+    /* background-color: red; */
 }
-.x02-stake .dashboard {
-  align-self: flex-end;
-  height: 26px;
-  letter-spacing: 0px;
-  line-height: 20px;
-  margin-left: 6px;
-  min-height: 26px;
-  text-align: center;
-  width: 146px;
+.progress-bar {
+    background-color: var(--alice-blue);
+    width: 200px;
+    border-radius: 10px;
 }
-.x02-stake .delegate-stake {
-  color: white;
-  font-family: "Epilogue", Helvetica, Arial, serif;
-  font-size: 22px;
-  left: 517px;
-  letter-spacing: 1.08px;
-  line-height: 18px;
-  position: absolute;
-  text-align: center;
-  top: 709px;
-  white-space: nowrap;
-}
-.x02-stake .group-1273 {
-  align-items: flex-end;
-  background-color: white;
-  border-radius: 18.5px;
-  display: flex;
-  height: 37px;
-  left: 1222px;
-  min-width: 37px;
-  padding: 7.5px 6.5px;
-  position: absolute;
-  top: 350px;
-}
-.x02-stake .group-1324 {
-  align-items: flex-start;
-  display: flex;
-  height: 25px;
-  left: 637px;
-  min-width: 220px;
-  position: absolute;
-  top: 293px;
-  
-}
-.x02-stake .group-1328 {
-  align-items: flex-end;
-  background-color: white;
-  border-radius: 18.5px;
-  display: flex;
-  height: 37px;
-  left: 1222px;
-  min-width: 37px;
-  padding: 7.5px 11.5px;
-  position: absolute;
-  top: 414px;
-}
-.x02-stake .group-1329 {
-  top: 480px;
-}
-.x02-stake .group-21 {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 2px;
-  min-height: 23px;
-  padding: 0px 0;
-  width: 19px;
-}
-.x02-stake .group-22 {
-  align-items: flex-start;
-  background-color: white;
-  border-radius: 28px;
-  display: flex;
-  height: 56px;
-  justify-content: flex-end;
-  left: 43px;
-  min-width: 218px;
-  padding: 11.8px 15px;
-  position: absolute;
-  top: 425px;
-}
-.x02-stake .group-23 {
-  align-items: center;
-  background-color: white;
-  border-radius: 28px;
-  display: flex;
-  height: 56px;
-  justify-content: flex-end;
-  left: 43px;
-  min-width: 218px;
-  padding: 13px 15px;
-  position: absolute;
-  top: 349px;
-}
-.x02-stake .group-24 {
-  align-items: flex-start;
-  background-color: white;
-  border-radius: 28px;
-  display: flex;
-  height: 56px;
-  justify-content: flex-end;
-  left: 43px;
-  min-width: 218px;
-  padding: 11.5px 15px;
-  position: absolute;
-  top: 272px;
-}
-.x02-stake .group-25 {
-  align-items: flex-start;
-  background-color: white;
-  border-radius: 28px;
-  display: flex;
-  height: 56px;
-  left: 44px;
-  min-width: 218px;
-  padding: 14px 16px;
-  position: absolute;
-  top: 195px;
-}
-.x02-stake .group-26 {
-  align-items: flex-start;
-  display: flex;
-  height: 30px;
-  left: 63px;
-  min-width: 31px;
-  position: absolute;
-  top: 682px;
-}
-.x02-stake .liquidity-pool {
-  left: 1074px;
-  letter-spacing: 0px;
-  line-height: 30px;
-  position: absolute;
-  text-align: center;
-  text-decoration: underline;
-  top: 480px;
-  white-space: nowrap;
-}
-.x02-stake .members {
-  height: 21px;
-  left: 1090px;
-  letter-spacing: 0px;
-  line-height: 30px;
-  position: absolute;
-  text-align: center;
-  text-decoration: underline;
-  top: 347px;
-  white-space: nowrap;
-  width: 74px;
-}
-.x02-stake .number {
-  left: 1159px;
-  letter-spacing: 0.98px;
-  line-height: 18px;
-  position: absolute;
-  text-align: center;
-  top: 620px;
-  white-space: nowrap;
-}
-.x02-stake .number-1 {
-  letter-spacing: 0.78px;
-  line-height: 14px;
-  min-height: 21px;
-  min-width: 20px;
-  text-align: center;
-  white-space: nowrap;
-}
-.x02-stake .number-2 {
-  letter-spacing: 0.78px;
-  line-height: 14px;
-  min-height: 21px;
-  min-width: 10px;
-  text-align: center;
-  white-space: nowrap;
-}
-.x02-stake .open-projects {
-  left: 1076px;
-  letter-spacing: 0px;
-  line-height: 30px;
-  position: absolute;
-  text-align: center;
-  text-decoration: underline;
-  top: 414px;
-  white-space: nowrap;
-}
-.x02-stake .overlap-group {
-  height: 100vh;
-  left: 0px;
-  position: absolute;
-  top: 0px;
-  width: 100vw;
-}
+.filled-progress {
+    background-color: black;
+    border-radius: 10px;
+    height: 25px;
+    margin-left: -5px;
+    /* margin-top: -2px; */
+    width: 74px;
+    /* left: -100px; */
+  }
+
+  .text-7 {
+    padding-left: 100px;
+    margin-right: 20px;
+    width: 200px;
+  }
+
+  .price {
+    padding-left: 100px;
+    padding-top: 5px;
+    font-weight: bold;
+  }
+/********** PROGRESS BARS **********/
 
 
-/* this is the sidebar */
-.x02-stake .overlap-group1 {
-  height: 767px;
-  left: 0px;
-  position: absolute;
-  top: 0px;
-  width: 305px;
+button {
+    width: 100%;
+    height: 200%;
+    background-color: #1b1c1d;
+    border-radius: 20px;
+    border: 2px solid #000000;
+    display: block;
+    margin: 0 auto !important;
+    cursor: pointer;
+    color: rgb(239, 239, 239);
+    font-family: "Raleway", Helvetica, Arial, serif;
+    font-size: 25px !important;
+    text-shadow: 0px 1px 0px #ffffff;
 }
-.x02-stake .overlap-group2 {
-  height: 25px;
-  position: relative;
-  width: 220px;
-}
-.x02-stake .overlap-group2-1 {
-  height: 30px;
-  margin-top: -0px;
-  position: relative;
-  width: 31px;
 
+.community-card-container {
+    border: 2px solid rgba(0, 0, 0, 1);
+    background-color: white;
+    width: 25%;
+    border-radius: 38px;
+    padding-top: 10%;
 }
-.x02-stake .overlap-group2-2 {
-  height: 11px;
-  margin-left: -0px;
-  margin-top: 1px;
-  position: relative;
-  width: 34px;
+
+.initial-investment-text {
+    font-weight: bold;
 }
-.x02-stake .path-1491 {
-  height: 133px;
-  left: 700px;
-  position: absolute;
-  top: 234px;
-  width: 0px;
+
+.group-1324 {
+    margin: 10px 0;
 }
-.x02-stake .path-1496 {
-  height: 12px;
-  margin-left: 2px;
-  width: 12px;
+
+.check-on-etherscan {
+    display: flex;
 }
-.x02-stake .path-1497 {
-  height: 10px;
-  left: 11px;
-  position: absolute;
-  top: 1px;
-  width: 23px;
-}
-.x02-stake .path-1498 {
-  align-self: flex-end;
-  height: 10px;
-  width: 10px;
-}
-.x02-stake .path-1499 {
-  height: 9px;
-  left: 0px;
-  position: absolute;
-  top: 0px;
-  width: 14px;
-}
-.x02-stake .path-1501 {
-  height: 29px;
-  width: 29px;
-}
-.x02-stake .path-1502 {
-  height: 14px;
-  width: 6px;
-}
-.x02-stake .path-1503 {
-  height: 20px;
-  margin-left: 2px;
-  width: 6px;
-}
-.x02-stake .path-1504 {
-  height: 28px;
-  margin-left: 2px;
-  width: 6px;
-}
-.x02-stake .path-1505 {
-  height: 32px;
-  margin-left: 2px;
-  width: 6px;
-}
-.x02-stake .path-1506 {
-  height: 32px;
-  left: 65px;
-  position: absolute;
-  top: 598px;
-  width: 32px;
-}
-.x02-stake .people {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  margin-top: 0.12px;
-  min-height: 25px;
-  width: 34px;
-}
-.x02-stake .photo {
-  border-radius: 38.5px;
-  height: 77px;
-  width: 77px;
-}
-.x02-stake .price {
-  left: 716px;
-  letter-spacing: 0px;
-  line-height: 14px;
-  position: absolute;
-  text-align: center;
-  top: 568px;
-  white-space: nowrap;
-}
-.x02-stake .progress-bar-2 {
-  align-items: flex-start;
-  background-color: var(--alice-blue);
-  border-radius: 10px;
-  display: flex;
-  height: 30px;
-  left: 640px;
-  min-width: 220px;
-  position: absolute;
-  top: 560px;
-}
-.x02-stake .progress-bar-2-1 {
-  align-items: flex-start;
-  background-color: var(--alice-blue);
-  border-radius: 10px;
-  display: flex;
-  height: 25px;
-  left: -0px;
-  min-width: 220px;
-  position: absolute;
-  top: 0px;
-}
-.x02-stake .rectangle-1609 {
-  background-color: white;
-  border-radius: 35px;
-  box-shadow: 3px 3px 6px rgba(255, 255, 255, 0.349);
-  height: 70px;
-  left: 41px;
-  position: absolute;
-  top: 662px;
-  width: 223px;
-}
-.x02-stake .c {
-  background-color: white;
-  border-radius: 35px;
-  box-shadow: 3px 3px 6px rgba(255, 255, 255, 0.349);
-  height: 70px;
-  left: 41px;
-  position: absolute;
-  top: 579px;
-  width: 223px;
-}
-.x02-stake .rectangle-1750 {
-  border-radius: 22px;
-  height: 82px;
-  left: 1037px;
-  position: absolute;
-  top: 569px;
-  width: 258px;
-}
-.x02-stake .rectangle-1751 {
-  background-color: white;
-  border-radius: 38px;
-  height: 571px;
-  left: 356px;
-  position: absolute;
-  top: 176px;
-  width: 526px;
-}
-.x02-stake .rectangle-1752 {
-  background-color: white;
-  border-radius: 31px;
-  height: 445px;
-  left: 1028px;
-  position: absolute;
-  top: 231px;
-  width: 276px;
-  
-}
-.x02-stake .rectangle-621 {
-  background-color: black;
-  border-radius: 10px;
-  height: 30px;
-  margin-left: -2px;
-  margin-top: -2px;
-  width: 53px;
-}
-.x02-stake .rectangle-621-1 {
-  background-color: black;
-  border-radius: 10px;
-  height: 25px;
-  margin-left: -2px;
-  margin-top: -2px;
-  width: 74px;
-}
-/* rectangle-621-1 is apy percent. width chagnes amount of filled in bar */
-.x02-stake .scarcity-score {
-  left: 1111px;
-  letter-spacing: 0px;
-  line-height: 30px;
-  position: absolute;
-  text-align: center;
-  text-decoration: underline;
-  top: 578px;
-  white-space: nowrap;
-}
-.x02-stake .settings {
-  align-self: flex-end;
-  height: 27px;
-  letter-spacing: 0.98px;
-  line-height: 18px;
-  margin-bottom: 1.16px;
-  margin-left: 8px;
-  min-height: 27px;
-  text-align: center;
-  width: 146px;
-}
-.x02-stake .side-menu {
-  align-items: flex-start;
-  background-color: black;
-  display: flex;
-  height: 767px;
-  justify-content: flex-end;
-  left: 0px;
-  min-width: 305px;
-  padding: 26px 113.4px;
-  position: absolute;
-  top: 0px;
-}
-.x02-stake .span0-lNgTr4 {
-  color: rgba(255, 255, 255, 1);
-  font-family: "Epilogue", Helvetica, Arial, serif;
-  font-weight: 700;
-  text-decoration: underline;
-}
-.x02-stake .span0-x09oUk {
+
+.check-on-etherscan > p, a {
   color: rgba(112, 112, 112, 1);
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 12px;
   font-weight: 600;
 }
-.x02-stake .span1-lNgTr4 {
-  color: rgba(255, 255, 255, 1);
-  font-family: "Epilogue", Helvetica, Arial, serif;
-  font-weight: 700;
+
+.check-on-etherscan > a {
+    text-decoration: underline;
 }
-.x02-stake .span1-x09oUk {
-  color: rgba(112, 112, 112, 1);
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 12px;
-  font-weight: 600;
-  text-decoration: underline;
+
+.liquidity-text-box {
+    display: flex;
+    flex-direction: column;
 }
-.x02-stake .stats-chart-sharp {
-  align-items: flex-end;
-  display: flex;
-  min-width: 30px;
+
+.liquidity-text-box > h3 {
+    margin-bottom: 5px;
 }
-.x02-stake .text-1 {
-  height: 51px;
-  left: 356px;
-  letter-spacing: 0.23px;
-  line-height: 19px;
-  position: absolute;
-  text-align: left;
-  top: 108px;
-  width: 941px;
+
+.group-1273 {
+    align-items: flex-end;
+    background-color: white;
+    border-radius: 18.5px;
+    display: flex;
+    height: 37px;
+    width: 37px;
+    padding: 7.5px 6.5px;
+  }
+
+.card-grouping {
+    margin: 25px;
+    display: flex;
+    justify-content: space-between;
 }
-.x02-stake .text-2 {
-  left: 356px;
-  letter-spacing: 0px;
-  line-height: 30px;
-  position: absolute;
-  text-align: center;
-  text-decoration: underline;
-  top: 42px;
-  white-space: nowrap;
+
+.scarcity-score {
+width: 80%;
+margin: 0 auto;
+padding-top: 20px;
+text-align: center;
 }
-.x02-stake .text-3 {
-  height: 44px;
-  left: 373px;
-  letter-spacing: 0px;
-  line-height: 18px;
-  position: absolute;
-  text-align: center;
-  top: 622px;
-  width: 198px;
-}
-.x02-stake .text-4 {
-  height: 112px;
-  left: 636px;
-  letter-spacing: 0px;
-  line-height: 18px;
-  position: absolute;
-  text-align: left;
-  top: 337px;
-  width: 228px;
-}
-.x02-stake .text-5 {
-  height: 59px;
-  left: 637px;
-  letter-spacing: 0px;
-  line-height: 18px;
-  position: absolute;
-  text-align: left;
-  top: 606px;
-  width: 228px;
-}
-.x02-stake .text-55 {
-  height: 59px;
-  left: 637px;
-  letter-spacing: 0px;
-  line-height: 18px;
-  position: absolute;
-  text-align: left;
-  top: 623px;
-  width: 228px;
-}
-.x02-stake .text-6 {
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 14px;
-  font-weight: 600;
-  height: 20px;
-  left: 639px;
-  letter-spacing: 0px;
-  line-height: 18px;
-  position: absolute;
-  text-align: left;
-  top: 532px;
-  white-space: nowrap;
-  width: 228px;
-}
-.x02-stake .text-7 {
-  left: 98px;
-  letter-spacing: 0px;
-  line-height: 14px;
-  position: absolute;
-  text-align: center;
-  top: 5px;
-  white-space: nowrap;
-}
-.x02-stake .text-8 {
-  height: 112px;
-  left: 373px;
-  letter-spacing: 0px;
-  line-height: 18px;
-  position: absolute;
-  text-align: center;
-  top: 337px;
-  width: 198px;
-}
-.x02-stake .top {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  min-height: 110px;
-  width: 77px;
-}
-.x02-stake .usdc {
-  left: 506px;
-  letter-spacing: 0px;
-  line-height: 14px;
-  position: absolute;
-  text-align: center;
-  top: 275px;
-  white-space: nowrap;
-}
-.x02-stake .your-return {
-  left: 698px;
-  letter-spacing: 0px;
-  line-height: 18px;
-  position: absolute;
-  text-align: left;
-  text-decoration: underline;
-  top: 498px;
-  white-space: nowrap;
-}
-.x02-stake .your-stats {
-  align-self: center;
-  height: 27px;
-  letter-spacing: 0.98px;
-  line-height: 18px;
-  margin-left: 8px;
-  margin-top: 3px;
-  min-height: 27px;
-  text-align: center;
-  width: 146px;
-}
+
 :root {
-  --alabaster: rgba(250, 251, 251, 1);
-  --alice-blue: rgba(241, 249, 255, 1);
-  --dove-gray: rgba(112, 112, 112, 1);
-  --gallery: rgba(237, 237, 237, 0.85);
-  --slimy-green: rgba(60, 170, 20, 1);
-}
+    --alabaster: rgba(250, 251, 251, 1);
+    --alice-blue: rgba(241, 249, 255, 1);
+    --dove-gray: rgba(112, 112, 112, 1);
+    --gallery: rgba(237, 237, 237, 0.85);
+    --slimy-green: rgba(60, 170, 20, 1);
+  }
