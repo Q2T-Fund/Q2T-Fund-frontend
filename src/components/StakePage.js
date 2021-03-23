@@ -113,15 +113,15 @@ const StakePage = () => {
         }) => (
           <Form onSubmit={handleSubmit}> )
         <div className="stake-background-container">
-            <h1 >Stake in your Community Treasury</h1>
-            <h2 >Delegate funds to your Treasury to accrue returns for new projects!</h2>
+            <h1 className="h1" >Stake in your Community Treasury</h1>
+            <h2 className="h2">Delegate funds to your Treasury to accrue returns for new projects!</h2>
             
             <div className="form-and-card-container">
                 <div className="stake-form-container">
                     <div>
 
                         <div className="form-subsection currency">
-                            <h3>Currency</h3>
+                            <h3 className="h3">Currency</h3>
 
                             <div className="dai">
                                 <Radio.Group name="currency" onBlur={handleBlur} value={values.currency}>
@@ -130,11 +130,11 @@ const StakePage = () => {
                                 </Radio.Group>
                             </div>
 
-                            <p className="left-column-text"><>Stablecoins are non-volatile cryptocurrencies. They are “pegged” to Fiat (USD), so to remain stable:<br />1 DAI  = 1 US Dollar<br />1 USDC = 1 US Dollar</></p>
+                            <p className="left-column-text p"><>Stablecoins are non-volatile cryptocurrencies. They are “pegged” to Fiat (USD), so to remain stable:<br />1 DAI  = 1 US Dollar<br />1 USDC = 1 US Dollar</></p>
                         </div>
 
                         <div className="form-subsection amount">
-                            <h3>Amount</h3>
+                            <h3 className="h3">Amount</h3>
                             <Input
                                 type="number"
                                 name="tokenAmount"
@@ -143,13 +143,13 @@ const StakePage = () => {
                                 value={values.tokenAmount}
                                 className="input2"
                             /> 
-                            <p className="left-column-text">The amount of tokens you stake for your community.</p>
+                            <p className="left-column-text p">The amount of tokens you stake for your community.</p>
                         </div>
                     </div>
 
                     <div>
                         <div className="form-subsection community-apy">
-                            <h3>Commmunity APY</h3>
+                            <h3 className="h3">Commmunity APY</h3>
 
                             <div className="group-1324">
                                 <div className="overlap">
@@ -161,29 +161,29 @@ const StakePage = () => {
                                 </div>
                             </div>
 
-                            <p className="text-4 raleway-normal-black-14px">“Staking” is different from “Donating” - basically your Treasury is “locking” these funds to provide liquidity. In exchange, you all get a higher interest return!</p>
+                            <p className="text-4 raleway-normal-black-14px p">“Staking” is different from “Donating” - basically your Treasury is “locking” these funds to provide liquidity. In exchange, you all get a higher interest return!</p>
 
 
                         </div>
                         
                         <div className="form-subsection return">
-                            <h3>Your Return</h3>
-                            <p className="initial-investment-text">Your initial investment plus: </p>
+                            <h3 className="h3">Your Return</h3>
+                            <p className="initial-investment-text p">Your initial investment plus: </p>
 
                             <div className="group-1324">
                                 <div className="overlap">
                                     <div className="progress-bar border-class-1">
                                         <div className="filled-progress">
-                                            <p className="price ">{`${values.tokenAmount * 0.5} USD`}</p>
+                                            <p className="price">{`${values.tokenAmount * 0.5} USD`}</p>
                                         </div>
                                     </div>
 
                                 
 
-                                    <p className="">It’s based on the size of your staking, and the amount of DiTo you own!</p>
+                                    <p className="p">It’s based on the size of your staking, and the amount of DiTo you own!</p>
 
 
-                                    <button type="submit">Stake!</button>
+                                    <button className="stake-button" type="submit">Stake!</button>
                                 </div>
                             </div>
                         </div>
@@ -192,14 +192,14 @@ const StakePage = () => {
 
                 <div className="community-card-container">
                     <div className="card-grouping">
-                        <h3>Members</h3>
+                        <h3 className="h3">Members</h3>
                         <div className={`group-1273 border-class-2 `}>
                         <div className="">{community.members}</div>
                         </div>
                     </div>
 
                     <div className="card-grouping">
-                        <h3>Open Projects</h3>
+                        <h3 className="h3">Open Projects</h3>
                         <div className="group-1273 border-class-2">
                         <div className="">{community.openGigs}</div>
                         </div>
@@ -207,10 +207,10 @@ const StakePage = () => {
 
                     <div className="card-grouping">
                         <div className="liquidity-text-box">
-                            <h3 >Liquidity Pool</h3>
+                            <h3 className="h3">Liquidity Pool</h3>
                             <div className="check-on-etherscan raleway-semi-bold-dove-gray-12px">
-                                <p className="span0-x09oUk">Check on </p>
-                                <a className="span1-x09oUk" href="https://www.google.com">Etherscan</a>
+                                <p className="span p">Check on </p>
+                                <a className="span p" href="https://www.google.com">Etherscan</a>
                             </div>
                         </div>
 
@@ -220,7 +220,7 @@ const StakePage = () => {
                     </div>
 
                     <div className="card-grouping">
-                        <h3 className="scarcity-score">Scarcity Score</h3>
+                        <h3 className="scarcity-score h3">Scarcity Score</h3>
                         <div>{community.scarcityScore}</div>
                     </div>
                 </div>
