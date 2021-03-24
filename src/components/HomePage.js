@@ -9,14 +9,14 @@ const HomePage = () => {
     <div className="homepage">
       <div className="overlap-group">
         <div className="quadratic-treasury">
-          <span className="heavier-span">Quadratic Treasury (Q2T) uses Quadratic Funding to fund (and fundraise for) projects in the area of public goods.</span>
+          <span className="span-homepage"><b>Quadratic Treasury (Q2T)</b> uses Quadratic Funding to fund (and fundraise for) projects in the area of public goods.</span>
           <br></br><br></br>
-          <span>It’s fair, and sybil-resistant. And it’s the first decentralized platform to combine math 
-            and unique, non-forgeable identities to fully automate the funding process. Continuously, and in a milestone-based approach.</span>
+          <span className="span-homepage">It’s fair, and sybil-resistant. And it’s the first decentralized platform to combine math 
+            and unique, non-forgeable identities to <b>fully automate</b> the funding process. <b>Continuously</b>, and in a milestone-based approach.</span>
         </div>
       </div>
 
-      <div className="overlap-group1">
+      <div className="overlap-group1-homepage">
       <img className="image-2" src={pokerChip} />
 
         <h1 className="raleway-semi-bold-black-40px">I want to </h1>

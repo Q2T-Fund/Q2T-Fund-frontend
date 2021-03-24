@@ -1,469 +1,54 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
 @import url("https://fonts.googleapis.com/css?family=Raleway:700,500,600,400|Epilogue:700|Lato:700");
 
-@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
-@import url("https://fonts.googleapis.com/css?family=Raleway:500,400,600,700|Epilogue:700|Lato:700");
 * {
   box-sizing: border-box;
 }
 
-.border-class-1 {
-  border: 2px solid rgba(0, 0, 0, 1);
+/******** CARD ********/
+.raleway {
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-style: normal;
+}
+.raleway-normal-alto-13px {
+  color: var(--alto);
+  font-size: 13px;
+  font-weight: 400;
 }
 .raleway-bold-black-14px {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 14px;
-  font-style: normal;
   font-weight: 700;
+}
+.raleway-semi-bold-black-18px {
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+}
+.raleway-bold-alto-22px {
+  color: var(--alto);
+  font-size: 22px;
+  font-weight: 700;
+}
+.raleway-normal-alto-18px {
+  color: var(--alto);
+  font-size: 16px;
+  font-weight: 300;
 }
 .raleway-bold-black-22px {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 22px;
-  font-style: normal;
   font-weight: 700;
 }
 .raleway-normal-black-14px {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
 }
 .raleway-normal-black-14px-2 {
   color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 14px;
 }
-.raleway-semi-bold-black-18px {
-  color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-}
-.x01b-delegation-agreement {
-  display: flex;
-  justify-content: center;
-  align-items: center !important;
-  flex-direction: column;
-  background-color: rgba(255,255,255,255);
-  border-radius: 38px;
-  padding: 16px;
-}
-
-.x01b-delegation-agreement .submit-button {
-  display: flex;
-  letter-spacing: 0px;
-  line-height: 20px;
-  white-space: nowrap;
-  font-weight: bold;
-  padding: 0.5em;
-  width: 100%;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-}
-
-.submit-button {
-  background-color: #1b1c1d;
-  border-radius: 13px;
-  border: 2px solid #000000;
-  display: inline-block;
-  cursor: pointer;
-  color: white;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 19px;
-  font-weight: bold;
-  padding: 21px 76px;
-  text-decoration: none;
-  text-shadow: 0px 1px 0px #ffffff;
-}
-.submit-button:hover {
-  background-color: white;
-  color: #1b1c1d;
-}
-.submit-button:active {
-  position: relative;
-  top: 1px;
-}
-
-.message-container {
-  display: flex;
-  width: 100%;
-  height: 7em;
-  justify-content: center;
-  align-items: center;
-}
-
-.x01b-delegation-agreement .amount {
-  letter-spacing: 0px;
-  line-height: 18px;
-  min-height: 23px;
-  text-align: left;
-  text-decoration: underline;
-  white-space: nowrap;
-  margin-left: 1em;
-}
-
-.auto-flex6 {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.auto-flex {
-  flex: 1;
-}
-
-.top-card {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-.auto-flex + .auto-flex {
-  margin-left: 10px;
-}
-
-.x01b-delegation-agreement .submit-button-container {
-  align-items: flex-end;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.x01b-delegation-agreement .bg {
-  border-radius: 9px;
-  height: 42px;
-  left: 0px;
-  position: absolute;
-  top: 0px;
-  width: 170px;
-}
-.x01b-delegation-agreement .bg-1 {
-  align-self: flex-start;
-  height: 1px;
-  margin-left: 16px;
-  margin-top: -1px;
-}
-.x01b-delegation-agreement .dai {
-  letter-spacing: 0px;
-  line-height: 14px;
-  margin-bottom: 0.07px;
-  margin-left: 16px;
-  min-height: 18px;
-  min-width: 26px;
-  text-align: center;
-  white-space: nowrap;
-}
-.x01b-delegation-agreement .delegate-support {
-  letter-spacing: 1.08px;
-  line-height: 18px;
-  min-height: 24px;
-  min-width: 232px;
-  text-align: center;
-  white-space: nowrap;
-}
-.x01b-delegation-agreement .group-1324 {
-  align-items: center;
-  display: flex;
-  margin-top: 6px;
-  min-width: 285px;
-}
-.x01b-delegation-agreement .group-1330 {
-  align-items: flex-end;
-  display: flex;
-  margin-top: 1em;
-  margin-left: 1em;
-  min-width: 172px;
-}
-.radio {
-  height: 22px;
-  margin-left: 28px;
-  width: 22px;
-}
-.x01b-delegation-agreement .number {
-  left: 115px;
-  letter-spacing: 0px;
-  line-height: 18px;
-  position: absolute;
-  text-align: center;
-  top: 12px;
-  white-space: nowrap;
-}
-.x01b-delegation-agreement .number-1 {
-  letter-spacing: 0px;
-  line-height: 14px;
-  min-height: 18px;
-  min-width: 10px;
-  text-align: center;
-  white-space: nowrap;
-  margin-top: 0.5em;
-  margin-right: 0.5em;
-}
-.x01b-delegation-agreement .number-2 {
-  letter-spacing: 0px;
-  line-height: 14px;
-  margin-left: 1em;
-  min-height: 18px;
-  min-width: 18px;
-  text-align: center;
-  white-space: nowrap;
-  margin-top: 0.5em;
-}
-.x01b-delegation-agreement .overlap-group {
-  position: relative;
-}
-.x01b-delegation-agreement .overlap-group1 {
-  border-radius: 10px;
-  height: 42px;
-  margin-top: 10px;
-  position: relative;
-  width: 170px;
-  margin-left: 1em;
-}
-.x01b-delegation-agreement .overlap-group2 {
-  align-items: flex-end;
-  background-color: black;
-  border-radius: 21px;
-  display: flex;
-  height: 59px;
-  justify-content: flex-end;
-  margin-top: 4px;
-  padding: 14px 351px;
-}
-.x01b-delegation-agreement .path-1491 {
-  height: 0px;
-  left: 307px;
-  position: absolute;
-  top: 46px;
-}
-.x01b-delegation-agreement .price {
-  letter-spacing: 0px;
-  line-height: 14px;
-  margin-bottom: 0px;
-  margin-left: 41px;
-  min-height: 18px;
-  min-width: 68px;
-  text-align: center;
-  white-space: nowrap;
-}
-.x01b-delegation-agreement .rectangle-621 {
-  background-color: black;
-  border-radius: 10px;
-  height: 25px;
-  width: 127px;
-}
-.x01b-delegation-agreement .rectangle-621-1 {
-  background-color: black;
-  border-radius: 10px;
-  height: 23px;
-  width: 53px;
-}
-.x01b-delegation-agreement .repayment-structure {
-  letter-spacing: 0px;
-  line-height: 18px;
-  min-height: 23px;
-  text-align: left;
-  text-decoration: underline;
-  white-space: nowrap;
-}
-.x01b-delegation-agreement .span {
-  color: rgba(0, 0, 0, 1);
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 14px;
-}
-.x01b-delegation-agreement .span0 {
-  color: rgba(255, 255, 255, 1);
-  font-family: "Epilogue", Helvetica, Arial, serif;
-  font-size: 22px;
-  font-weight: 700;
-  text-decoration: underline;
-}
-.x01b-delegation-agreement .span1-DQxoii {
-  color: rgba(0, 0, 0, 1);
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 14px;
-  text-decoration: underline;
-}
-.x01b-delegation-agreement .span1-movYKW {
-  color: rgba(255, 255, 255, 1);
-  font-family: "Epilogue", Helvetica, Arial, serif;
-  font-size: 22px;
-  font-weight: 700;
-}
-.x01b-delegation-agreement .text-1 {
-  height: 38px;
-  letter-spacing: 0px;
-  line-height: 18px;
-  margin-top: 8px;
-  min-height: 38px;
-  text-align: left;
-  width: 287px;
-}
-.x01b-delegation-agreement .text-2 {
-  height: 38px;
-  letter-spacing: 0px;
-  line-height: 18px;
-  margin-top: 8px;
-  min-height: 38px;
-  text-align: left;
-  width: 239px;
-}
-.x01b-delegation-agreement .text-3 {
-  letter-spacing: 0px;
-  line-height: 14px;
-  margin-left: 2px;
-  margin-top: 1.75px;
-  min-height: 18px;
-  min-width: 30px;
-  text-align: center;
-  white-space: nowrap;
-}
-.x01b-delegation-agreement .title {
-  letter-spacing: 0.15px;
-  line-height: 22px;
-  text-align: center;
-  text-decoration: underline;
-  white-space: nowrap;
-}
-.x01b-delegation-agreement .usdc {
-  letter-spacing: 0px;
-  line-height: 14px;
-  margin-bottom: 0.07px;
-  margin-left: 16px;
-  min-height: 18px;
-  min-width: 40px;
-  text-align: center;
-  white-space: nowrap;
-}
-.x01b-delegation-agreement .your-return {
-  letter-spacing: 0px;
-  line-height: 18px;
-  min-height: 23px;
-  text-align: left;
-  text-decoration: underline;
-  white-space: nowrap;
-}
-:root {
-  --dove-gray: rgba(112, 112, 112, 1);
-  --green-blue: rgba(20, 110, 170, 1);
-}
-
-* {
-  box-sizing: border-box;
-}
-.border-class-1 {
-  border: 2px solid rgba(0, 0, 0, 1);
-}
-.dove-gray-border-1px {
-  border: 1px solid var(--dove-gray);
-  align-items: baseline;
-}
-.raleway-bold-alto-22px {
-  color: var(--alto);
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 700;
-}
-.raleway-bold-black-14px {
-  color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 700;
-}
-.raleway-bold-black-20px {
-  color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 700;
-}
-.raleway-bold-black-24px {
-  color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 700;
-}
-.raleway-bold-black-30px {
-  color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 700;
-}
-.raleway-normal-alto-13px {
-  color: var(--alto);
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 13px;
-  font-style: normal;
-  font-weight: 400;
-}
-.raleway-normal-alto-18px {
-  color: var(--alto);
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 300;
-}
-.raleway-normal-black-14px {
-  color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-}
-.raleway-semi-bold-black-18px {
-  color: black;
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-}
-
-.success-font {
-  color: rgb(118, 182, 75);
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-}
-
-.x01b-delegation-agreement {
-  background-color: var(--alabaster);
-  position: relative;
-}
-.add-funds {
-  height: 31px;
-  letter-spacing: 1.18px;
-  line-height: 18px;
-  text-align: center;
-  width: 146px;
-}
-.amount {
-  letter-spacing: 0px;
-  line-height: 18px;
-  text-align: left;
-  text-decoration: underline;
-  white-space: nowrap;
-}
-.articles {
-  letter-spacing: 0px;
-  line-height: 24px;
-  margin-bottom: -7px;
-  min-height: 17px;
-  min-width: 107px;
-  text-align: left;
-  white-space: nowrap;
-}
-
-
 .articles-white-card {
   letter-spacing: 0px;
   line-height: 24px;
@@ -474,53 +59,68 @@
   white-space: nowrap;
   color:black;
 }
-.bg {
-  height: 1px;
-  width: 618px;
-}
-.bg-1 {
-  background-color: black;
-  border-radius: 21px;
-  height: 59px;
-  width: 948px;
-}
-.bg-2 {
-  border-radius: 9px;
-  height: 42px;
-  width: 170px;
-}
-.by-delegating-the-tr {
-  font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 14px;
+.description-white-card {
   letter-spacing: 0px;
-  line-height: 18px;
+  line-height: 24px;
   text-align: left;
+  flex: 1;
+  width: 100%;
+  padding: 20px;
+  color:black;
+  min-height: 15vw;
 }
-.dai {
-  letter-spacing: 0px;
-  line-height: 14px;
-  margin-bottom: 0.07px;
-  min-height: 18px;
-  min-width: 26px;
-  text-align: center;
+.white-card {
+  align-items: center;
+  background-color: white;
+  color: #1b1c1d;  
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 286px;
+  padding: 16px;
+}
+.title-white-card {
+  letter-spacing: 0.15px;
+  line-height: 22px;
+  min-height: 54px;
+  min-width: 144px;
+  text-align: left;
   white-space: nowrap;
+  color:black;
 }
-.dashboard {
-  align-self: flex-end;
-  height: 26px;
-  letter-spacing: 0px;
-  line-height: 20px;
-  min-height: 26px;
-  text-align: center;
-  width: 146px;
+.black-card {
+  align-items: center;
+  background-color: black;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 286px;
+  padding: 16px;
 }
-.delegate-support {
-  color: white;
-  font-family: "Epilogue", Helvetica, Arial, serif;
-  font-size: 22px;
-  letter-spacing: 1.08px;
-  line-height: 18px;
+.top-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.header-top {
   text-align: center;
+  width: 100%;
+}
+.top-header {
+  text-align: center;
+  width: 100%;
+}
+.image-7 {
+  height: 89px;
+  width: 89px;
+}
+.title {
+  letter-spacing: 0.15px;
+  line-height: 22px;
+  text-decoration: underline;
+  min-height: 54px;
+  min-width: 144px;
+  text-align: left;
   white-space: nowrap;
 }
 .description {
@@ -532,124 +132,131 @@
   padding: 20px;
   min-height: 15vw;
 }
-
-.description-white-card {
+.articles {
   letter-spacing: 0px;
   line-height: 24px;
+  margin-bottom: -7px;
+  min-height: 17px;
+  min-width: 107px;
   text-align: left;
-  flex: 1;
-  width: 100%;
-  padding: 20px;
-  color:black;
-  min-height: 15vw;
-
-}
-
-
-.description-1 {
-  height: 77px;
-  letter-spacing: 0px;
-  line-height: 24px;
-  min-height: 77px;
-  text-align: left;
-}
-.group-1324 {
-  align-items: flex-start;
-  display: flex;
-  height: 25px;
-}
-.black-card {
-  align-items: center;
-  background-color: black;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  min-height: 286px;
-  padding: 16px;
-}
-
-
-.white-card {
-  align-items: center;
-  background-color: white;
-  color: #1b1c1d;  
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  min-height: 286px;
-  padding: 16px;
-}
-.unavailable-card {
-  align-items: center;
-  background-color: #6e7069;
-  border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  min-height: 286px;
-  padding: 16px;
-}
-
-.group-1330 {
-  align-items: flex-end;
-  display: flex;
-  height: 22px;
-  min-width: 172px;
-}
-.image-7 {
-  height: 89px;
-  width: 89px;
+  white-space: nowrap;
 }
 .line-26 {
   height: 1px;
 }
-.line-26-1 {
-  height: 1px;
+
+/******** CARD ********/
+
+
+
+
+/******** FORM ********/
+
+.dove-gray-border-1px {
+  border: 1px solid var(--dove-gray);
+  align-items: baseline;
 }
-.number {
+.delegation-form {
+  display: flex;
+  justify-content: center;
+  align-items: center !important;
+  flex-direction: column;
+  background-color: rgba(255,255,255,255);
+  border-radius: 38px;
+  padding: 16px;
+}
+.delegation-form .overlap-group {
+  position: relative;
+}
+.delegation-form .linebreak {
+  height: 0px;
+  left: 307px;
+  position: absolute;
+  top: 46px;
+}
+.treasury-delegate {
   font-family: "Raleway", Helvetica, Arial, serif;
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 14px;
   letter-spacing: 0px;
   line-height: 18px;
-  text-align: center;
-  white-space: nowrap;
+  text-align: left;
 }
-.number-1 {
+.delegation-form .span1-delegate {
+  color: rgba(0, 0, 0, 1);
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 14px;
+}
+.delegation-form .span2-delegate {
+  color: rgba(0, 0, 0, 1);
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.auto-flex6 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 10px;
+}
+.auto-flex {
+  flex: 1;
+}
+.delegation-form .amount-delegate {
   letter-spacing: 0px;
-  line-height: 14px;
-  text-align: center;
+  line-height: 18px;
+  min-height: 23px;
+  text-align: left;
+  text-decoration: underline;
   white-space: nowrap;
+  margin-left: 1em;
 }
-.number-2 {
-  letter-spacing: 0px;
-  line-height: 14px;
-  text-align: center;
-  white-space: nowrap;
-}
-.overlap-group2 {
+.delegation-form .overlap-group1-delegate {
   border-radius: 10px;
-  height: 25px;
+  height: 42px;
+  margin-top: 10px;
   position: relative;
-  width: 285px;
+  width: 170px;
+  margin-left: 1em;
 }
-.overlap-group2-1 {
-  height: 30px;
-  margin-top: -0px;
-  position: relative;
-  width: 31px;
+.delegation-form .group-1330 {
+  align-items: flex-end;
+  display: flex;
+  margin-top: 1em;
+  margin-left: 1em;
+  min-width: 172px;
+  height: 22px;
 }
-.overlap-group2-2 {
-  height: 11px;
-  position: relative;
-  width: 34px;
+.auto-flex1 {
+  display: flex;
+  align-items: center;
 }
-.price {
+.delegation-form .repayment-structure {
   letter-spacing: 0px;
-  line-height: 14px;
-  text-align: center;
+  line-height: 18px;
+  min-height: 23px;
+  text-align: left;
+  text-decoration: underline;
   white-space: nowrap;
 }
-
+.delegation-form .text-1 {
+  height: 38px;
+  letter-spacing: 0px;
+  line-height: 18px;
+  margin-top: 8px;
+  min-height: 38px;
+  text-align: left;
+  width: 287px;
+}
+.delegation-form .number-1 {
+  letter-spacing: 0px;
+  line-height: 14px;
+  min-height: 18px;
+  min-width: 10px;
+  text-align: center;
+  white-space: nowrap;
+  margin-top: 0.5em;
+  margin-right: 0.5em;
+}
 .repayment-percent-bar {
   align-items: flex-start;
   display: flex;
@@ -657,98 +264,108 @@
   height: 1em;
   flex: 1;
 }
-
-.auto-flex1 {
-  display: flex;
-  align-items: center;
+.delegation-form .number-2 {
+  letter-spacing: 0px;
+  line-height: 14px;
+  margin-left: 1em;
+  min-height: 18px;
+  min-width: 18px;
+  text-align: center;
+  white-space: nowrap;
+  margin-top: 0.5em;
 }
-
 .repayment-percent-number {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.rectangle-621 {
+.delegation-form .your-return {
+  letter-spacing: 0px;
+  line-height: 18px;
+  min-height: 23px;
+  text-align: left;
+  text-decoration: underline;
+  white-space: nowrap;
+}
+.delegation-form .text-2 {
+  height: 38px;
+  letter-spacing: 0px;
+  line-height: 18px;
+  margin-top: 8px;
+  min-height: 38px;
+  text-align: left;
+  width: 239px;
+}
+.delegation-form .rectangle-621-1 {
   background-color: black;
   border-radius: 10px;
   height: 23px;
-  margin-left: -2px;
-  margin-top: -2px;
   width: 53px;
-}
-.rectangle-621-1 {
-  background-color: black;
-  border-radius: 10px;
-  height: 25px;
   margin-left: -2px;
   margin-top: -2px;
-  width: 127px;
 }
-.repayment-structure {
+.delegation-form .price-delegate {
   letter-spacing: 0px;
-  line-height: 18px;
-  text-align: left;
-  text-decoration: underline;
-  white-space: nowrap;
-}
-.span {
-  color: rgba(0, 0, 0, 1);
-  font-family: "Raleway", Helvetica, Arial, serif;
-}
-.span0 {
-  color: rgba(255, 255, 255, 1);
-  font-family: "Epilogue", Helvetica, Arial, serif;
-  font-weight: 700;
-  text-decoration: underline;
-}
-.span1-DQxoii {
-  color: rgba(0, 0, 0, 1);
-  font-family: "Raleway", Helvetica, Arial, serif;
-  text-decoration: underline;
-}
-.text-1 {
-  height: 34px;
-  letter-spacing: 0.19px;
-  line-height: 19px;
+  line-height: 14px;
+  margin-bottom: 0px;
+  margin-left: 41px;
+  min-height: 18px;
+  min-width: 68px;
   text-align: center;
-  width: 935px;
-}
-.text-2 {
-  letter-spacing: 0px;
-  line-height: 30px;
-  text-align: left;
-}
-.title {
-  letter-spacing: 0.15px;
-  line-height: 22px;
-  min-height: 54px;
-  min-width: 144px;
-  text-align: left;
   white-space: nowrap;
 }
-.title-white-card {
-  letter-spacing: 0.15px;
-  line-height: 22px;
-  min-height: 54px;
-  min-width: 144px;
-  text-align: left;
-  white-space: nowrap;
-  color:black;
-}
-.top {
-  align-items: center;
+.delegation-form .submit-button-container {
+  align-items: flex-end;
   display: flex;
-  flex-direction: column;
-  min-height: 110px;
-  width: 77px;
+  justify-content: center;
+  width: 100%;
 }
-.your-return {
+.delegation-form .submit-button {
+  display: flex;
   letter-spacing: 0px;
-  line-height: 18px;
-  text-align: left;
-  text-decoration: underline;
+  line-height: 20px;
   white-space: nowrap;
+  font-weight: bold;
+  padding: 0.5em;
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  background-color: #1b1c1d;
+  border-radius: 13px;
+  border: 2px solid #000000;
+  cursor: pointer;
+  color: white;
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 19px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffffff;
 }
+.submit-button:hover {
+  background-color: white;
+  color: #1b1c1d;
+}
+.submit-button:active {
+  position: relative;
+  top: 1px;
+}
+.message-container {
+  display: flex;
+  width: 100%;
+  height: 7em;
+  justify-content: center;
+  align-items: center;
+}
+.success-font {
+  color: rgb(118, 182, 75);
+  font-family: "Raleway", Helvetica, Arial, serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+}
+
+/******** FORM ********/
 
 :root {
   --alabaster: rgba(250, 251, 251, 1);
@@ -758,25 +375,7 @@
   --gallery: rgba(237, 237, 237, 0.85);
   --green-blue: rgba(20, 110, 170, 1);
 }
-
-.ui.grid {
-  display: flex;
-  flex-direction: column !important;
-  flex-wrap: nowrap !important;
-  padding: 20px !important;
-}
-
-.header-top {
-  text-align: center;
-  width: 100%;
-}
-
-.column {
-  width: 100% !important;
-  padding: 0 !important;
-}
-
-.icon.menu .item > .icon:not(.dropdown) {
-  font-size: inherit !important;
-  margin: 0 !important;
+:root {
+  --dove-gray: rgba(112, 112, 112, 1);
+  --green-blue: rgba(20, 110, 170, 1);
 }

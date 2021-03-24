@@ -39,9 +39,9 @@ const DelegateModal = () => {
           onOpen={() => setOpen1(true)}
           open={open1}
           size='small'
-          trigger={<Button size="massive" color="black" className="button1" style={{width: "9em"}}>
-            <span className="spanBigText">Support</span><br></br>
-            <span className="spanSmallText">Public Goods.</span>
+          trigger={<Button size="massive" color="black" className="button1-homepage" style={{width: "9em"}}>
+            <span className="spanBigText-homepage">Support</span><br></br>
+            <span className="spanSmallText-homepage">Public Goods.</span>
           </Button >}
         >
           <Header icon>
@@ -51,11 +51,11 @@ const DelegateModal = () => {
           <Modal.Content>
             <Grid>
               <Grid.Row>
-                <Image src={metamask} size="tiny" className="login-icons"></Image>
+                <Image src={metamask} size="tiny" className="login-icons-homepage"></Image>
                 <Button size="massive" color="black" onClick={() => loginWithMetamask('/delegate')}>Metamask</Button>
               </Grid.Row>
               <Grid.Row >
-                <Image src={skillwallet} size="tiny" className="login-icons" />
+                <Image src={skillwallet} size="tiny" className="login-icons-homepage" />
                 <Button size="massive" color="black" onClick={() => {
                   loginWithSkillWallet('/delegate')
                   setOpen1(false)

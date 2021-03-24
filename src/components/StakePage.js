@@ -133,7 +133,7 @@ const StakePage = () => {
                             <p className="left-column-text p"><>Stablecoins are non-volatile cryptocurrencies. They are “pegged” to Fiat (USD), so to remain stable:<br />1 DAI  = 1 US Dollar<br />1 USDC = 1 US Dollar</></p>
                         </div>
 
-                        <div className="form-subsection amount">
+                        <div className="form-subsection amount-stake">
                             <h3 className="h3">Amount</h3>
                             <Input
                                 type="number"
@@ -155,7 +155,7 @@ const StakePage = () => {
                                 <div className="overlap">
                                     <div className="progress-bar border-class-1">
                                         <div className="filled-progress">
-                                        <div className="text-7 raleway-bold-black-14px">{`${values.communityAPY} %`}</div>
+                                        <div className="text-7 raleway-bold-black-14px-stake">{`${values.communityAPY} %`}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -174,7 +174,7 @@ const StakePage = () => {
                                 <div className="overlap">
                                     <div className="progress-bar border-class-1">
                                         <div className="filled-progress">
-                                            <p className="price">{`${values.tokenAmount * 0.5} USD`}</p>
+                                            <p className="price-stake">{`${values.tokenAmount * 0.5} USD`}</p>
                                         </div>
                                     </div>
 
@@ -209,8 +209,8 @@ const StakePage = () => {
                         <div className="liquidity-text-box">
                             <h3 className="h3">Liquidity Pool</h3>
                             <div className="check-on-etherscan raleway-semi-bold-dove-gray-12px">
-                                <p className="span p">Check on </p>
-                                <a className="span p" href="https://www.google.com">Etherscan</a>
+                                <p className="span-stake p">Check on </p>
+                                <a className="span-stake p" href="https://www.google.com">Etherscan</a>
                             </div>
                         </div>
 

@@ -12,13 +12,11 @@ const DelegationPage = () => {
   const [template, setTemplate] = useState('open-source');
 
   return (
-    <Page layout="base" className="top-cards">
+    <Page layout="base" className="top-card">
       <Section slot="header">
         <div className="top-header">
           <h1 className="main-title">Support the Public Goods!</h1>
-          <h4 className="subtitle">
-            Choose the area and the type of Project you want to fund.
-          </h4>
+          <h4 className="subtitle">Choose the area and the type of Project you want to fund.</h4>
         </div>
       </Section>
       <Section slot="row1-col1">

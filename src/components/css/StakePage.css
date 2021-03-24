@@ -38,8 +38,11 @@
     text-decoration: underline;
 }
 
-.span {
-    color: black;
+.span-stake {
+    color: black !important;
+    font-family: Lato,"Helvetica Neue",Arial,Helvetica,sans-serif;
+    /* color: rgba(0, 0, 0, 1); */
+    /* font-family: "Raleway", Helvetica, Arial, serif; */
 }
 
 .border-class-1 {
@@ -89,6 +92,12 @@ border: 3px solid rgba(0, 0, 0, 1);
 
 .dai {
     margin: 20px 0;
+    letter-spacing: 0px;
+    line-height: 14px;
+    min-height: 18px;
+    min-width: 26px;
+    text-align: center;
+    white-space: nowrap;
 }
 
 .left-column-text {
@@ -105,7 +114,7 @@ border: 3px solid rgba(0, 0, 0, 1);
     margin: 5px 0;
 }
 
-.amount {
+.amount-stake {
     width: 100%;
 }
 
@@ -156,9 +165,14 @@ border: 3px solid rgba(0, 0, 0, 1);
     padding-left: 100px;
     margin-right: 20px;
     width: 200px;
+    color: black;
+    font-family: "Raleway", Helvetica, Arial, serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
   }
 
-  .price {
+  .price-stake {
     padding-left: 100px;
     padding-top: 5px;
     font-weight: bold;
@@ -167,6 +181,7 @@ border: 3px solid rgba(0, 0, 0, 1);
     font-size: 14px;
     font-style: normal;
     text-decoration: none !important;
+    white-space: pre;
   }
 /********** PROGRESS BARS **********/
 
@@ -206,14 +221,14 @@ border: 3px solid rgba(0, 0, 0, 1);
     display: flex;
 }
 
-.check-on-etherscan > p, a {
-  color: rgba(112, 112, 112, 1);
+.check-on-etherscan > p, .check-on-etherscan > a {
+  color: rgba(112, 112, 112, 1) !important;
   font-size: 12px;
   font-weight: 600;
 }
 
 .check-on-etherscan > a {
-    text-decoration: underline;
+    text-decoration: underline !important;
 }
 
 .liquidity-text-box {
@@ -246,6 +261,14 @@ width: 80%;
 margin: 0 auto;
 padding-top: 20px;
 text-align: center;
+}
+
+.raleway-bold-black-14px-stake {
+    color: black;
+    font-family: "Raleway", Helvetica, Arial, serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
 }
 
 :root {
