@@ -34,9 +34,9 @@ const StakeModal = () => {
           onOpen={() => setOpen2(true)}
           open={open2}
           size='small'
-          trigger={<Button size="massive" color="black" className="button2">
-            <span className="spanBigText">Fund</span><br></br>
-            <span className="spanSmallText">my Project.</span>
+          trigger={<Button size="massive" color="black" className="button2-homepage">
+            <span className="spanBigText-homepage">Fund</span><br></br>
+            <span className="spanSmallText-homepage">my Project.</span>
           </Button >}
         >
           <Header icon>
@@ -46,7 +46,7 @@ const StakeModal = () => {
           <Modal.Content>
             <Grid>
               <Grid.Row>
-                <Image src={skillwallet} size="tiny" className="login-icons" />
+                <Image src={skillwallet} size="tiny" className="login-icons-homepage" />
                 <Button size="massive" color="black" onClick={() => {
                   loginWithSkillWallet('/stake')
                   setOpen2(false)
@@ -55,7 +55,7 @@ const StakeModal = () => {
               </Grid.Row>
   
               <Grid.Row>
-                <Image src={newuser} size="tiny" className="login-icons" />
+                <Image src={newuser} size="tiny" className="login-icons-homepage" />
                 <Button size="massive" color="black" onClick={() => window.open('https://app.distributed.town/community/join', '_blank')}>New User</Button>
               </Grid.Row>
             </Grid>

@@ -62,23 +62,23 @@ const DelegateForm = (props) => {
           }) => (
             <Form onSubmit={handleSubmit}>
               <>
-                <div className="x01b-delegation-agreement dove-gray-border-1px">
-                  <div className="title raleway-bold-black-22px">
+                <div className="delegation-form dove-gray-border-1px">
+                  <div className="title raleway raleway-bold-black-22px">
                     Your Delegation Agreement
                   </div>
                   <div className="overlap-group">
                     <img
-                      className="path-1491"
+                      className="linebreak"
                       src={lineBreak}
                     />
-                    <p className="by-delegating-the-tr raleway-normal-black-14px-2">
-                      <span className="span">
+                    <p className="treasury-delegate raleway raleway-normal-black-14px-2">
+                      <span className="span1-delegate">
                         By delegating the Treasury, you can fund and support
                         projects for the Public Goods. The Quadratic Treasury will
                         be “locking” these funds to provide “
                       </span>
-                      <span className="span1-DQxoii">non-repayable loans</span>
-                      <span className="span">
+                      <span className="span2-delegate">non-repayable loans</span>
+                      <span className="span1-delegate">
                         ” to these projects using Quadratic Funding and a
                         milestone-based approach to prevent any form of fraud and
                         collusion.
@@ -87,7 +87,7 @@ const DelegateForm = (props) => {
                   </div>
                   <div className="auto-flex6">
                     <div className="auto-flex">
-                      <div className="amount raleway-semi-bold-black-18px">
+                      <div className="amount-delegate raleway raleway-semi-bold-black-18px">
                         Amount
                       </div>
   
@@ -98,7 +98,7 @@ const DelegateForm = (props) => {
                         onBlur={handleBlur}
                         value={values.tokenAmount}
                         placeholder="5000"
-                        className="overlap-group1"
+                        className="overlap-group1-delegate"
                       />
                       {<div>{errors.tokenAmount}</div>}
   
@@ -114,16 +114,16 @@ const DelegateForm = (props) => {
                       </div>
                     </div>
                     <div className="auto-flex">
-                      <div className="repayment-structure raleway-semi-bold-black-18px">
+                      <div className="repayment-structure raleway raleway-semi-bold-black-18px">
                         Repayment Structure
                       </div>
-                      <p className="text-1 raleway-normal-black-14px">
+                      <p className="text-1 raleway raleway-normal-black-14px">
                         Decide whether you want it to be a full donation, or
                         receive back part of your funds.
                       </p>
   
                       <div className="auto-flex1">
-                        <div className="number-1 raleway-bold-black-14px">0</div>
+                        <div className="number-1 raleway raleway-bold-black-14px">0</div>
   
                         <Slider
                           name="repaymentPercent"
@@ -135,24 +135,24 @@ const DelegateForm = (props) => {
                           className="repayment-percent-bar"
                         />
   
-                        <div className="number-2 raleway-bold-black-14px">50</div>
+                        <div className="number-2 raleway raleway-bold-black-14px">50</div>
                       </div>
   
-                      <div className="repayment-percent-number raleway-normal-black-14px">
+                      <div className="repayment-percent-number raleway raleway-normal-black-14px">
                         {`${values.repaymentPercent} % Repayment Percent`}
                       </div>
                     </div>
                     <div className="auto-flex">
-                      <div className="your-return raleway-semi-bold-black-18px">
+                      <div className="your-return raleway raleway-semi-bold-black-18px">
                         Your Return
                       </div>
-                      <p className="text-2 raleway-normal-black-14px">
+                      <p className="text-2 raleway raleway-normal-black-14px">
                         This is how much you will receive back from your funds.
                         Plus interest!
                       </p>
-                      <div className="auto-flex4">
+                      <div>
                         <div className="rectangle-621-1"></div>
-                        <div className="price raleway-bold-black-14px">{`${(
+                        <div className="price-delegate raleway raleway-bold-black-14px">{`${(
                           (values.repaymentPercent / 100) *
                           values.tokenAmount
                         ).toFixed(0)} USD`}</div>

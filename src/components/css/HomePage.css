@@ -10,7 +10,7 @@
     width: 100vw;
 }
 
-.login-icons {
+.login-icons-homepage {
   margin-left: 17em;
   margin-right: 2em;
 }
@@ -56,7 +56,7 @@
   min-width: 500  px;
   padding: 250px 44px;
 }
-.homepage .overlap-group1 {
+.homepage .overlap-group1-homepage {
   align-items: center;
   display: flex;    
   flex-direction: column;
@@ -76,7 +76,7 @@
   font-size: 24px;
   margin: auto
 }
-span {
+.span-homepage {
   color: rgba(235, 225, 225, 1);
   font-family: "Raleway", Helvetica, Arial, serif;
   font-size: 24px;
@@ -91,14 +91,6 @@ span {
   margin-left: 1em;
 }
 
-.button1 {
-  margin: 0 .25em 0 0 !important;
-}
-
-.button2 {
-  width: 9em;
-}
-
 :root {
   --black: rgba(0, 0, 0, 0.9);
   --ebb: rgba(235, 225, 225, 1);
@@ -106,12 +98,32 @@ span {
   --governor-bay: rgba(47, 45, 179, 1);
 }
 
-.spanBigText {
+/****** MODAL ******/
+
+.button1-homepage {
+  margin: 0 .25em 0 0 !important;
+  width: 10em;
+  height: 4.25em;
+}
+
+.button2-homepage {
+  width: 10em;
+  height: 4.25em;
+}
+
+.spanBigText-homepage {
   font-weight: 600;
   font-size: larger;
 }
 
-.spanSmallText {
+.spanSmallText-homepage {
   font-weight: 100;
   font-size: medium;
 }
+
+.login-icons-homepage {
+  margin-left: 17em;
+  margin-right: 2em;
+}
+
+/****** MODAL ******/
