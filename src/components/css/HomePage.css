@@ -91,6 +91,14 @@ span {
   margin-left: 1em;
 }
 
+.button1 {
+  margin: 0 .25em 0 0 !important;
+}
+
+.button2 {
+  width: 9em;
+}
+
 :root {
   --black: rgba(0, 0, 0, 0.9);
   --ebb: rgba(235, 225, 225, 1);
