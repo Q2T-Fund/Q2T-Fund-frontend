@@ -14,7 +14,7 @@ const communityTreasuryAddress = '0x3CFCae3fe95f555783E13DF1ce6697602608f66D';
 
 const StakePage = () => {
 
-    const [state, setState] = useState({
+    const [state] = useState({
       animation: 'push',
       direction: 'left',
       dimmed: false,
@@ -44,7 +44,7 @@ const StakePage = () => {
   const Stake = () => {
   
     // const [user, setUser] = useState(undefined);
-    const [community, setCommunity] = useState({
+    const [community] = useState({
       openGigs: 0,
       members: 0
     });

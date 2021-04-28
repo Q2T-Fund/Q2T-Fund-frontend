@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 
 // components
@@ -23,7 +23,7 @@ const App = () => {
     // in this fashion:
     // const { address } = state
     // instead of being sourced from the useState function
-    const [address, setAddress] = useState(undefined)
+    // const [address, setAddress] = useState(undefined)
 
     return (
     	<>
