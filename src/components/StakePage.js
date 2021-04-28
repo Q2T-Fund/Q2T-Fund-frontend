@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { Form, Input, Radio } from 'formik-antd'
 import { Formik } from 'formik'
-import { fetchCommunity, fetchUser } from '../api/community';
 import { approveDai, fund, validateKovanNet } from '../api/contracts';
 import 'antd/dist/antd.css';
 import "./css/StakePage.css"

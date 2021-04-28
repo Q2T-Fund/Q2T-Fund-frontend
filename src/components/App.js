@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-// contract's artifacts and address here
-import NoWalletDetected from './error-messages/NoWalletDetected'
 
 // components
 import HomePage from "./HomePage"
@@ -9,7 +7,7 @@ import DelegationPage from "./DelegationPage"
 import StakePage from "./StakePage"
 // router
 import { BrowserRouter as Router } from "react-router-dom"
-import { Switch, Link, Route } from "react-router-dom"
+import { Switch, Route } from "react-router-dom"
 
 // layouts
 import { LayoutProvider } from "react-page-layout"
