@@ -70,6 +70,7 @@ const DelegateForm = (props) => {
                     <img
                       className="linebreak"
                       src={lineBreak}
+                      alt="linebreak"
                     />
                     <p className="treasury-delegate raleway raleway-normal-black-14px-2">
                       <span className="span1-delegate">

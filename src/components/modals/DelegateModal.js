@@ -8,7 +8,6 @@ import {useHistory } from "react-router-dom"
 
 const DelegateModal = () => {
     const [open1, setOpen1] = useState(false)
-    const [open2, setOpen2] = useState(false)
   
     let history = useHistory()
   
