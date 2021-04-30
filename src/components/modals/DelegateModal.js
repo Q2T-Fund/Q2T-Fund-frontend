@@ -5,12 +5,21 @@ import { SkillWallet } from "../wallets/skillWallet"
 import metamask from '../../assets/metamask.svg'
 import skillwallet from '../../assets/skillwallet.png'
 import {useHistory } from "react-router-dom"
+import QRModal from '../common/QRModal';
 
 const DelegateModal = () => {
     const [open1, setOpen1] = useState(false)
     const [open2, setOpen2] = useState(false)
   
     let history = useHistory()
+
+    const [showModal, setShowModal] = useState(false);
+    const toggleModal = () => setShowModal(!showModal);
+  
+    const modalText = [
+      'Scan with your ', 
+      <a href="" className="underline text-blue-600 hover:text-blue-400 visited:text-purple-400" >SkillWallet App</a>, 
+      ' to support public goods.'];
   
     const loginWithSkillWallet = async (pageRedirect) => {
       const addresses = await window.ethereum.enable()
@@ -32,6 +41,7 @@ const DelegateModal = () => {
     }
 
     return (
+      <div>
         <Modal
           basic
           closeIcon
@@ -56,9 +66,10 @@ const DelegateModal = () => {
               </Grid.Row>
               <Grid.Row >
                 <Image src={skillwallet} size="tiny" className="login-icons-homepage" />
-                <Button size="massive" color="black" onClick={() => {
-                  loginWithSkillWallet('/delegate')
-                  setOpen1(false)
+                <Button size="massive" color="black" onClick={() =>
+                  {toggleModal()
+                  // () => {loginWithSkillWallet('/delegate')
+                         setOpen1(false)
                 }
                 }>SkillWallet</Button>
               </Grid.Row>
@@ -66,6 +77,8 @@ const DelegateModal = () => {
             </Grid>
           </Modal.Content>
         </Modal >
+        { showModal ? <QRModal toggleModal={toggleModal} key={'delegate'} modalText={modalText}/> : null}
+        </div>
       )
 }
 

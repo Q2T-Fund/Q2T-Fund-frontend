@@ -5,12 +5,21 @@ import { SkillWallet } from "../wallets/skillWallet"
 import skillwallet from '../../assets/skillwallet.png'
 import {useHistory } from "react-router-dom"
 import newuser from '../../assets/newuser.png'
+import QRModal from '../common/QRModal';
 
 const StakeModal = () => {
     const [open1, setOpen1] = useState(false)
     const [open2, setOpen2] = useState(false)
   
     let history = useHistory()
+
+    const [showModal, setShowModal] = useState(false);
+    const toggleModal = () => setShowModal(!showModal);
+  
+    const modalText = [
+      'Scan with your ', 
+      <a href="" className="underline text-blue-600 hover:text-blue-400 visited:text-purple-400" >SkillWallet App</a>, 
+      ' to manage your project.'];
   
     const loginWithSkillWallet = async (pageRedirect) => {
       const addresses = await window.ethereum.enable()
@@ -27,6 +36,7 @@ const StakeModal = () => {
     }
 
     return (
+      <div>
         <Modal
           basic
           closeIcon
@@ -48,7 +58,8 @@ const StakeModal = () => {
               <Grid.Row>
                 <Image src={skillwallet} size="tiny" className="login-icons-homepage" />
                 <Button size="massive" color="black" onClick={() => {
-                  loginWithSkillWallet('/stake')
+                  // loginWithSkillWallet('/stake')
+                  toggleModal()
                   setOpen2(false)
                 }
                 }>Skillwallet</Button>
@@ -61,6 +72,8 @@ const StakeModal = () => {
             </Grid>
           </Modal.Content>
         </Modal>
+        { showModal ? <QRModal toggleModal={toggleModal} key={'stake'} modalText={modalText}/> : null}
+        </div>
       )
 }
 
