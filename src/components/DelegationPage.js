@@ -2,6 +2,12 @@ import React, { useState } from "react";
 import Card from './common/Card';
 import { Page, Section } from "react-page-layout";
 import DelegateForm from "./DelegateForm";
+import artBlack from '../assets/art-nft-black.png';
+import artWhite from '../assets/art-nft-white.png';
+import localBlack from '../assets/local-dao-black.png';
+import localWhite from '../assets/local-dao-white.png';
+import openSourceBlack from '../assets/opensource-defi-black.png';
+import openSourceWhite from '../assets/opensource-defi-white.png';
 import "antd/dist/antd.css";
 import "./css/DelegationPage.css";
 import "./css/BaseLayout.css";
@@ -24,12 +30,13 @@ const DelegationPage = () => {
           type={template === 'open-source' ? 'white-card' : 'black-card'}
           title={
             <>
-              Blockchain & <br /> Open Source
+              Open-Source<br /> & DeFi
             </>
           }
-          description="Help researchers and small, functional web3 teams to bring innovation and support the open-source movement for a more sustainable, collaborative world."
+          description="For researchers & web3, open-source teams, that innovate in a liberal fashion - for a more sustainable, meritocratic world."
           category="blockchain"
-          activeProjects={2}
+          activeProjects='xx'
+          image={template === 'open-source' ? openSourceWhite : openSourceBlack }
           onClick={() => setTemplate('open-source')}
         />
       </Section>
@@ -38,12 +45,13 @@ const DelegationPage = () => {
           type={template === 'art' ? 'white-card' : 'black-card'}
           title={
             <>
-              Arts, Events <br /> & Lifestyle
+              Art, Events<br />& NFT <br />
             </>
           }
-          description="Art groups, writers, and live events in all of their variety. From entertainment, to music performances - Art is the purest form of human connection."
+          description="Art movements, writers & creatives of all kind who use Art & provable ownership for purer forms of human interaction."
           category="arts"
           activeProjects="xx"
+          image={template === 'art' ? artWhite : artBlack }
           onClick={() => setTemplate('art')}
         />
       </Section>
@@ -52,12 +60,13 @@ const DelegationPage = () => {
           type={template === 'local' ? 'white-card' : 'black-card'}
           title={
             <>
-              Local <br /> Communities
+              Local Projects<br />& DAO 
             </>
           }
-          description="Local Projects bring support to people in need - from impoverished areas, to innovative local hubs where locals can get together and create something greater than oneself."
+          description="From support for people in need, to innovative local hubs to get together & create something greater than oneself."
           category="local"
           activeProjects="xx"
+          image={template === 'local' ? localWhite : localBlack }
           onClick={() => setTemplate('local')}
         />
       </Section>
