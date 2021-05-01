@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { Form, Input, Radio } from 'formik-antd'
 import { Formik } from 'formik'
-import { fetchCommunity, fetchUser } from '../api/community';
 import { approveDai, fund, validateKovanNet } from '../api/contracts';
 import 'antd/dist/antd.css';
 import "./css/StakePage.css"
@@ -15,7 +14,7 @@ const communityTreasuryAddress = '0x3CFCae3fe95f555783E13DF1ce6697602608f66D';
 
 const StakePage = () => {
 
-    const [state, setState] = useState({
+    const [state] = useState({
       animation: 'push',
       direction: 'left',
       dimmed: false,
@@ -45,7 +44,7 @@ const StakePage = () => {
   const Stake = () => {
   
     // const [user, setUser] = useState(undefined);
-    const [community, setCommunity] = useState({
+    const [community] = useState({
       openGigs: 0,
       members: 0
     });

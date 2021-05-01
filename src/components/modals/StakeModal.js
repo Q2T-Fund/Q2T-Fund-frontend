@@ -7,7 +7,6 @@ import newuser from '../../assets/newuser.png'
 import QRModal from '../common/QRModal';
 
 const StakeModal = () => {
-    const [open1, setOpen1] = useState(false)
     const [open2, setOpen2] = useState(false)
   
     let history = useHistory()
