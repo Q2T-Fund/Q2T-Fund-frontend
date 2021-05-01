@@ -6,7 +6,7 @@ import HomePage from "./HomePage"
 import DelegationPage from "./DelegationPage"
 import StakePage from "./StakePage"
 // router
-import { BrowserRouter as Router } from "react-router-dom"
+import { HashRouter as Router } from "react-router-dom"
 import { Switch, Route } from "react-router-dom"
 
 // layouts
