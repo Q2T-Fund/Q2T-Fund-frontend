@@ -8,8 +8,7 @@ import {useHistory } from "react-router-dom"
 import QRModal from '../common/QRModal';
 
 const DelegateModal = () => {
-    const [open1, setOpen1] = useState(false)
-    const [open2, setOpen2] = useState(false)
+    const [open1, setOpen1] = useState(false);
   
     let history = useHistory()
 

@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import '../css/HomePage.css';
 import { Button, Modal, Header, Icon, Grid, Image } from 'semantic-ui-react';
 import { SkillWallet } from "../wallets/skillWallet"
+import metamask from '../../assets/metamask.svg'
 import skillwallet from '../../assets/skillwallet.png'
 import {useHistory } from "react-router-dom"
-import newuser from '../../assets/newuser.png'
 import QRModal from '../common/QRModal';
 
-const StakeModal = () => {
-    const [open2, setOpen2] = useState(false)
+const ManageModal = () => {
+    const [open1, setOpen1] = useState(false);
   
     let history = useHistory()
 
@@ -18,7 +18,7 @@ const StakeModal = () => {
     const modalText = [
       'Scan with your ', 
       <a href="" className="underline text-blue-600 hover:text-blue-400 visited:text-purple-400" >SkillWallet App</a>, 
-      ' to stake your funds.'];
+      ' to manage your project.'];
   
     const loginWithSkillWallet = async (pageRedirect) => {
       const addresses = await window.ethereum.enable()
@@ -39,13 +39,13 @@ const StakeModal = () => {
         <Modal
           basic
           closeIcon
-          onClose={() => setOpen2(false)}
-          onOpen={() => setOpen2(true)}
-          open={open2}
+          onClose={() => setOpen1(false)}
+          onOpen={() => setOpen1(true)}
+          open={open1}
           size='small'
-          trigger={<Button size="massive" color="black" className="button2-homepage">
-            <span className="spanBigText-homepage">Fund</span><br></br>
-            <span className="spanSmallText-homepage">my Project.</span>
+          trigger={<Button size="massive" color="black" className="button1-homepage" style={{width: "9em"}}>
+            <span className="spanBigText-homepage">Manage</span><br></br>
+            <span className="spanSmallText-homepage">your Project.</span>
           </Button >}
         >
           <Header icon>
@@ -54,26 +54,21 @@ const StakeModal = () => {
           </Header>
           <Modal.Content>
             <Grid>
-              <Grid.Row>
+              <Grid.Row >
                 <Image src={skillwallet} size="tiny" className="login-icons-homepage" />
-                <Button size="massive" color="black" onClick={() => {
-                  // loginWithSkillWallet('/stake')
-                  toggleModal()
-                  setOpen2(false)
+                <Button size="massive" color="black" onClick={() =>
+                  {toggleModal()
+                  // () => {loginWithSkillWallet('/manage')
+                         setOpen1(false)
                 }
-                }>Skillwallet</Button>
-              </Grid.Row>
-  
-              <Grid.Row>
-                <Image src={newuser} size="tiny" className="login-icons-homepage" />
-                <Button size="massive" color="black" onClick={() => window.open('https://app.distributed.town/community/join', '_blank')}>New User</Button>
+                }>SkillWallet</Button>
               </Grid.Row>
             </Grid>
           </Modal.Content>
-        </Modal>
-        { showModal ? <QRModal toggleModal={toggleModal} key={'stake'} modalText={modalText}/> : null}
+        </Modal >
+        { showModal ? <QRModal toggleModal={toggleModal} key={'manage'} modalText={modalText}/> : null}
         </div>
       )
 }
 
-export default StakeModal;
+export default ManageModal;
