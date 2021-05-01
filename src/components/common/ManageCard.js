@@ -43,7 +43,7 @@ const ManageCard = (props) => {
               <Link to="/milestones">
                 <button type="submit" className="submit-button">Manage </button>
               </Link>
-                  </div>
+          </div>
         </div>
       );
 }

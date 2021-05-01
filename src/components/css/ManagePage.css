@@ -65,3 +65,46 @@
   .milestones-img {
       height: 5px;
   }
+
+  .manage-subsection {
+      display: flex;
+  }
+
+  .milestones-page .submit-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100% !important;
+  }
+
+  .milestones-page .submit-button {
+    display: flex;
+    letter-spacing: 0px;
+    line-height: 20px;
+    white-space: nowrap;
+    font-weight: bold;
+    padding: 0.5em;
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    background-color: #1b1c1d;
+    border-radius: 13px;
+    border: 2px solid #000000;
+    cursor: pointer;
+    color: white;
+    font-family: "Raleway", Helvetica, Arial, serif;
+    font-size: 19px;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #ffffff;
+  }
+
+  .milestones-project-card {
+      /* width: 140% !important; */
+  }
+
+  .milestones-sub-title {
+      display: flex;
+      align-items: center;
+  }

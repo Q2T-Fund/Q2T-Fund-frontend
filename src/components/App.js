@@ -16,9 +16,13 @@ import { Switch, Link, Route } from "react-router-dom"
 // layouts
 import { LayoutProvider } from "react-page-layout"
 import BaseLayout from './layouts/BaseLayout'
+import MilestonesLayout from './layouts/MilestonesLayout'
 
 const layouts = {
     'base': BaseLayout
+}
+const milestonesLayout = {
+    'milestones': MilestonesLayout
 }
 
 const App = () => {
@@ -46,7 +50,7 @@ const App = () => {
                         </LayoutProvider>
                     </Route>
                     <Route path="/milestones">
-                        <LayoutProvider layouts={layouts}>
+                        <LayoutProvider layouts={milestonesLayout}>
                             <MilestonesPage />
                         </LayoutProvider>
                     </Route>
