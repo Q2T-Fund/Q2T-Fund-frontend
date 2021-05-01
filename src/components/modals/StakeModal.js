@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import '../css/HomePage.css';
 import { Button, Modal, Header, Icon, Grid, Image } from 'semantic-ui-react';
-import { SkillWallet } from "../wallets/skillWallet"
 import skillwallet from '../../assets/skillwallet.png'
 import {useHistory } from "react-router-dom"
 import newuser from '../../assets/newuser.png'
@@ -22,16 +21,7 @@ const StakeModal = () => {
       ' to manage your project.'];
   
     const loginWithSkillWallet = async (pageRedirect) => {
-      const addresses = await window.ethereum.enable()
-      await SkillWallet.init(addresses[0]);
-      const res = await SkillWallet.get();
-      console.log(res);
-      if (!res) {
-        // Show error;
-        return;
-      }
-      localStorage.setItem('skillWallet', JSON.stringify(res));
-      localStorage.setItem('skillWalletID', await SkillWallet.getSkillWalletID());
+     
       history.push(pageRedirect);
     }
 
