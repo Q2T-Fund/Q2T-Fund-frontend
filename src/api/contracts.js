@@ -28,10 +28,7 @@ export const approveDai = async (address, amount) => {
 
   const weiAmount = amount.toString() + e18
 
-  const createTx = await contract.approve(address, weiAmount);
-
-  const transactionResult = await createTx.wait();
-  const { events } = transactionResult;
+  await contract.approve(address, weiAmount);
 
 }
 export const fund = async (communityTreasuryAddress, currency, amount) => {

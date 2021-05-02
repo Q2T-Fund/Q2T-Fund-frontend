@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 
-// contract's artifacts and address here
-import NoWalletDetected from './error-messages/NoWalletDetected'
 
 // components
 import HomePage from "./HomePage"
@@ -11,8 +9,8 @@ import ManagePage from './ManagePage';
 import MilestonesPage from './MilestonesPage';
 import CreateMilestonePage from './CreateMilestonePage';
 // router
-import { BrowserRouter as Router } from "react-router-dom"
-import { Switch, Link, Route } from "react-router-dom"
+import { HashRouter as Router } from "react-router-dom"
+import { Switch, Route } from "react-router-dom"
 
 // layouts
 import { LayoutProvider } from "react-page-layout"
@@ -32,7 +30,7 @@ const App = () => {
     // in this fashion:
     // const { address } = state
     // instead of being sourced from the useState function
-    const [address, setAddress] = useState(undefined)
+    // const [address, setAddress] = useState(undefined)
 
     return (
     	<>

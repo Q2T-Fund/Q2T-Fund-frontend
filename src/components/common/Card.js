@@ -9,7 +9,7 @@ const Card = (props) => {
     return (
         <div className={props.type} onClick={props.onClick}>
           <div className="top-card">
-            <img className="image-7" src={cardImage} />
+            <img className="image-7" src={cardImage} alt="card-logo"/>
 
             <div className={isBlackCard ? "title raleway-bold-alto-22px" : "title-white-card raleway-bold-alto-22px"}>
               {props.title}
@@ -20,7 +20,7 @@ const Card = (props) => {
             {props.description}
           </div>
 
-          <img className="line-26" src={cardLineBreak} />
+          <img className="line-26" src={cardLineBreak} alt="line" />
           
           <div className={isBlackCard ? "articles raleway-normal-alto-13px" : "articles-white-card raleway-normal-alto-13px"}>
             {props.activeProjects} Active Projects

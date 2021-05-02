@@ -2,12 +2,10 @@ import { getDefaultProvider } from "ethers";
 import React, { Component } from "react";
 import { Slot } from "react-page-layout";
 import {
-  Button,
   Icon,
   Menu,
   Container,
   Sidebar,
-  Image,
   Grid,
 } from "semantic-ui-react";
 

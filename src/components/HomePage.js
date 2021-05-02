@@ -18,7 +18,7 @@ const HomePage = () => {
       </div>
 
       <div className="overlap-group1-homepage">
-      <img className="image-2" src={pokerChip} />
+      <img className="image-2" src={pokerChip} alt="poker chip logo" />
 
         <h1 className="raleway-semi-bold-black-40px">I want to </h1>
         <div className="buttons">

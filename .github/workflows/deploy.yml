@@ -1,0 +1,35 @@
+name: Q2T Skynet CI Pipeline
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build webapp
+        run: yarn build
+        env:
+          REACT_APP_TEXTILE_KEY: ${{ secrets.TEXTILE_KEY }}
+          REACT_APP_TEXTILE_PRIV_KEY: ${{ secrets.TEXTILE_PRIV_KEY }}
+          REACT_APP_TEXTILE_SECRET: ${{ secrets.TEXTILE_SECRET }}
+          REACT_APP_THREAD_ID: ${{ secrets.THREAD_ID }}
+          REACT_APP_DITO_API_URL: https://api.distributed.town
+
+      - name: Deploy to Skynet
+        uses: kwypchlo/deploy-to-skynet-action@main
+        with:
+          upload-dir: build
+          github-token: ${{ secrets.GITHUB_TOKEN }}
