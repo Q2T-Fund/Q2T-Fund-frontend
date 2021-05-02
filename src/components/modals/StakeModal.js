@@ -12,9 +12,8 @@ const StakeModal = () => {
   
     const modalText = [
       'Scan with your ', 
-      <a href="https://distributed.town" className="underline text-blue-600 hover:text-blue-400 visited:text-purple-400" >SkillWallet App</a>, 
-      ' to manage your project.'
-    ];
+      <a href="" className="underline text-blue-600 hover:text-blue-400 visited:text-purple-400" >SkillWallet App</a>, 
+      ' to stake your funds.'];
   
     return (
       <div>

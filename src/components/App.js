@@ -5,16 +5,23 @@ import React from "react";
 import HomePage from "./HomePage"
 import DelegationPage from "./DelegationPage"
 import StakePage from "./StakePage"
+import ManagePage from './ManagePage';
+import MilestonesPage from './MilestonesPage';
+import CreateMilestonePage from './CreateMilestonePage';
 // router
-import { BrowserRouter as Router } from "react-router-dom"
+import { HashRouter as Router } from "react-router-dom"
 import { Switch, Route } from "react-router-dom"
 
 // layouts
 import { LayoutProvider } from "react-page-layout"
 import BaseLayout from './layouts/BaseLayout'
+import MilestonesLayout from './layouts/MilestonesLayout'
 
 const layouts = {
     'base': BaseLayout
+}
+const milestonesLayout = {
+    'milestones': MilestonesLayout
 }
 
 const App = () => {
@@ -36,6 +43,17 @@ const App = () => {
                             <DelegationPage />
                         </LayoutProvider>
                     </Route>
+                    <Route path="/manage">
+                        <LayoutProvider layouts={layouts}>
+                            <ManagePage />
+                        </LayoutProvider>
+                    </Route>
+                    <Route path="/milestones">
+                        <LayoutProvider layouts={milestonesLayout}>
+                            <MilestonesPage />
+                        </LayoutProvider>
+                    </Route>
+                    <Route path="/create-milestone"><CreateMilestonePage /></Route>
                 </Switch>
 
             </Router>

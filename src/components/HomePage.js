@@ -2,6 +2,7 @@ import React from "react";
 import './css/HomePage.css'
 import DelegateModal from './modals/DelegateModal';
 import StakeModal from './modals/StakeModal';
+import ManageModal from './modals/ManageModal';
 import pokerChip from '../assets/q2t-poker-chip.png';
 
 const HomePage = () => {
@@ -23,7 +24,8 @@ const HomePage = () => {
         <div className="buttons">
 
           <DelegateModal></DelegateModal>
-          <StakeModal></StakeModal>
+          {/* <StakeModal></StakeModal> */}
+          <ManageModal></ManageModal>
         </div>
       </div>
     </div>
