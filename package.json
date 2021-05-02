@@ -3,11 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "3id-connect": "^1.0.0-alpha.15",
-    "@ceramicnetwork/common": "^0.15.8",
-    "@ceramicnetwork/http-client": "^0.9.5",
-    "@ceramicstudio/idx": "^0.7.0",
-    "@ceramicstudio/idx-tools": "^0.7.0",
     "@ethersproject/address": "^5.0.10",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",

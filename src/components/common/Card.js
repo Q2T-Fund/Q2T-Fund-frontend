@@ -1,15 +1,13 @@
 import React from "react";
-import cardIcon from "../../assets/geometric-card-icon.png";
 import cardLineBreak from "../../assets/geometric-card-line-break.png";
 
 const Card = (props) => {
     const isBlackCard = props.type === "black-card";
-    const cardImage = isBlackCard ? cardIcon : 'unknown.png';
 
     return (
         <div className={props.type} onClick={props.onClick}>
           <div className="top-card">
-            <img className="image-7" src={cardImage} alt="card-logo"/>
+            <img className="image-7" src={props.image} alt="card-logo"/>
 
             <div className={isBlackCard ? "title raleway-bold-alto-22px" : "title-white-card raleway-bold-alto-22px"}>
               {props.title}
