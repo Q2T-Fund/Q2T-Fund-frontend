@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import '../css/HomePage.css';
 import { useHistory } from "react-router-dom"
 import QRModal from '../common/QRModal';
-import { fetchUniqueStringForLogin, checkSuccessfulLogin } from '../../api/login';
+import { fetchUniqueStringForLogin, checkSuccessfulLogin, getSkillWallet } from '../../api/login';
 
 const SkillWalletQRModal = (props) => {
 
   let history = useHistory()
   const [showModal, setShowModal] = useState(false);
   const [encodeString, setEncodeString] = useState();
-  const [tokenId, setTokenId] = useState(false);
+  const [tokenId, setTokenId] = useState(3);
   const toggleModal = () => setShowModal(!showModal);
 
   const modalText = [
@@ -21,7 +21,7 @@ const SkillWalletQRModal = (props) => {
 
   useEffect(() => {
     const longpoll = async (str) => {
-      if (!tokenId) {
+      if (tokenId === -1) {
         async function authenticationLongPoll(interval, pollAttemptsCount) {
           const response = await checkSuccessfulLogin(str);
           console.log(`poll ${pollAttemptsCount}`);
@@ -32,7 +32,11 @@ const SkillWalletQRModal = (props) => {
               authenticationLongPoll(interval, --pollAttemptsCount);
             }, interval);
           } else {
+            console.log('sasdasdads')
             localStorage.setItem('tokenId', tokenId);
+            console.log(tokenId)
+            const skillWallet = await getSkillWallet(tokenId);
+            console.log(skillWallet);
             console.log('push');
             console.log(props.redirectPage);
             history.push(props.redirectPage);
@@ -41,9 +45,16 @@ const SkillWalletQRModal = (props) => {
         }
         await authenticationLongPoll(3000, 20);
       } else {
+        console.log('aaa');
+        console.log('adsadasdasda')
+        localStorage.setItem('tokenId', tokenId);
+        const skillWallet = await getSkillWallet(tokenId);
+        localStorage.setItem('skillWallet', JSON.stringify(skillWallet));
+        console.log(skillWallet);
         console.log('push');
         console.log(props.redirectPage);
         history.push(props.redirectPage);
+        return;
       }
     }
     const login = async () => {

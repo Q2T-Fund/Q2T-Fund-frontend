@@ -40,3 +40,8 @@ Also you can [follow us on Twitter](https://twitter.com/HardhatHQ).
 **Happy _buidling_!**
 
 
+
+
+blockchainUrl https://hub.textile.io/ipfs/bafkreiadwauokas5mg6zal3p6kaj7hf6ggczxfqhmhvsxwqasyluwhld34
+arturl https://hub.textile.io/ipfs/bafkreid7jtzhuedeggn5welup7iyxchpqodbyam3yfnt4ey4xwnusr3vbe
+local https://hub.textile.io/ipfs/bafkreibglk3i7c24b2zprsd3jlkzfhxti6rubv3tkif6hu36lz42uwrfki

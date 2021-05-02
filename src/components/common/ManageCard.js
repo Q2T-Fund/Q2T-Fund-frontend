@@ -12,7 +12,7 @@ const ManageCard = (props) => {
     return (
         <div className={'white-card'} onClick={props.onClick}>
           <div className="top-card">
-            <img className="image-7" src={cardImage} />
+            <img className="image-7" alt='card' src={cardImage} />
 
             <div className={"title-white-card raleway-bold-alto-22px"}>
               {props.title}
@@ -23,25 +23,25 @@ const ManageCard = (props) => {
             {props.description}
           </div>
 
-          <img className="line-26" src={cardLineBreak} />
+          <img className="line-26" alt='card line' src={cardLineBreak} />
           
           <div className={"stats raleway-normal-alto-13px"}>
-            <img className="image-icon milestones-img" src={milestoneChain} />
-            Open milestones: {3}
+            <img className="image-icon milestones-img" alt='milestone' src={milestoneChain} />
+            Open milestones: {props.openMilestones}
           </div>
 
           <div className={"stats raleway-normal-alto-13px"}>
-          <img className="image-icon" src={credits} />
-            Credits: {2160}/{3840}
+          <img className="image-icon" alt='credits' src={credits} />
+            Credits: {props.credits}/{3840}
           </div>
 
           <div className={"stats raleway-normal-alto-13px"}>
-          <img className="image-icon" src={funds} />
-            Funds: {1200} USDCs
+          <img className="image-icon" alt='funds' src={funds} />
+            Funds: {props.funds} USDCs
           </div>
           <div className="manage-page submit-button-container">
-              <Link to="/milestones">
-                <button type="submit" className="submit-button">Manage </button>
+              <Link to={`/milestones?projectId=${props.projectId}`}>
+                <button type="submit" className="submit-button">Manage</button>
               </Link>
           </div>
         </div>

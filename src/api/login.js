@@ -11,3 +11,11 @@ export const checkSuccessfulLogin = (uniqueString) => {
     })
         .then(res => res.json());
 };
+
+
+export const getSkillWallet = (tokenId) => {
+    return fetch(`${process.env.REACT_APP_DITO_API_URL}/api/skillwallet?tokenId=${tokenId}`, {
+        method: 'GET'
+    })
+        .then(res => res.json());
+};
