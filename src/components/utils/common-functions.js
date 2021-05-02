@@ -2,7 +2,6 @@ import React from "react";
 import { notification } from "antd";
 import { HeartOutlined, CloseOutlined } from "@ant-design/icons";
 import { Buckets } from '@textile/hub'
-const fs = require('fs');
 
 const keyInfo = {
   key: process.env.REACT_APP_TEXTILE_KEY,

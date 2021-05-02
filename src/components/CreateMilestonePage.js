@@ -4,7 +4,7 @@ import { Sidebar } from 'semantic-ui-react';
 import "./css/CreateMilestonePage.css";
 import QRModal from './common/QRModal';
 import { createMilestone } from '../api/community';
-import { pushJSONDocumentInTextileHub, pushImage} from './utils/common-functions';
+import { pushJSONDocumentInTextileHub } from './utils/common-functions';
 
 const CreateMilestonePage = () => {
     const [state] = useState({
@@ -19,25 +19,11 @@ const CreateMilestonePage = () => {
     const toggleModal = () => setShowModal(!showModal);
 
     const publishOnClick = async (milestone) => {
-        await pushImage();
-        // const metadataJson = {
-        //     name: `Q2T projects milestone`,
-        //     description: "Q2T milestone description here",
-        //     image: 'https://png.pngtree.com/png-clipart/20190619/original/pngtree-vector-avatar-icon-png-image_4017288.jpg',
-        //     properties: {
-        //         title: milestone.title,
-        //         description: milestone.description,
-        //         skillsNeeded: [milestone.skill],
-        //         fundsNeeded: milestone.fundsNeeded,
-        //         commitment: milestone.commitment
-        //     }
-        // };
+      
 
-        // const url = await pushJSONDocumentInTextileHub(metadataJson);
         // const swString = localStorage.getItem('skillWallet');
         // const skillWallet = JSON.parse(swString);
-        // createMilestone(skillWallet.currentCommunity.address, )
-
+        // createMilestone(skillWallet.currentCommunity.address,)
 
     }
     const modalText = [

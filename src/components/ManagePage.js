@@ -11,10 +11,9 @@ const ManagePage = () => {
   const [projects, setProjects] = useState();
   useEffect(() => {
     const fetchProjects = async () => {
-      // const skillWalletString = localStorage.getItem('skillWallet');
-      // const skillWallet = JSON.parse(skillWalletString);
-      // const proj = await getProjects(skillWallet.currentCommunity.address);
-      const proj = await getProjects('0xF0F8AEC4D3552a0BE4D797EA93aE20dB8F643b99');
+      const skillWalletString = localStorage.getItem('skillWallet');
+      const skillWallet = JSON.parse(skillWalletString);
+      const proj = await getProjects(skillWallet.currentCommunity.address);
       console.log(proj);
       setProjects(proj);
     }

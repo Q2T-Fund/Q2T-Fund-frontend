@@ -9,7 +9,7 @@ const SkillWalletQRModal = (props) => {
   let history = useHistory()
   const [showModal, setShowModal] = useState(false);
   const [encodeString, setEncodeString] = useState();
-  const [tokenId, setTokenId] = useState(1);
+  const [tokenId, setTokenId] = useState(3);
   const toggleModal = () => setShowModal(!showModal);
 
   const modalText = [
