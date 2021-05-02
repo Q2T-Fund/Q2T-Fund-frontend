@@ -19,7 +19,7 @@ const MilestonesPage = () => {
       setMilestones(mil);
     }
     fetchProjects();
-  }, [])
+  }, [projectId])
   return (
     <Page layout="milestones" id="milestonesPageContent">
       <h1>Ongoing Milestones</h1>

@@ -3,8 +3,6 @@ import { VerticalSidebar } from "./layouts/BaseLayout";
 import { Sidebar } from 'semantic-ui-react';
 import "./css/CreateMilestonePage.css";
 import QRModal from './common/QRModal';
-import { createMilestone } from '../api/community';
-import { pushJSONDocumentInTextileHub } from './utils/common-functions';
 
 const CreateMilestonePage = () => {
     const [state] = useState({
