@@ -9,6 +9,7 @@ import DelegationPage from "./DelegationPage"
 import StakePage from "./StakePage"
 import ManagePage from './ManagePage';
 import MilestonesPage from './MilestonesPage';
+import CreateMilestonePage from './CreateMilestonePage';
 // router
 import { BrowserRouter as Router } from "react-router-dom"
 import { Switch, Link, Route } from "react-router-dom"
@@ -54,6 +55,7 @@ const App = () => {
                             <MilestonesPage />
                         </LayoutProvider>
                     </Route>
+                    <Route path="/create-milestone"><CreateMilestonePage /></Route>
                 </Switch>
 
             </Router>

@@ -60,7 +60,9 @@ const MilestonesPage = () => {
 
         <Section slot="row2-col1" className="mi">
           <div className="milestones-page submit-button-container">
-            <button className="submit-button">Create new Milestone</button>
+            <Link to="/create-milestone">
+              <button className="submit-button">Create new Milestone</button>
+            </Link>
           </div>
         </Section>
 
