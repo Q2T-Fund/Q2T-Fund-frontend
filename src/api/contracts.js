@@ -75,7 +75,7 @@ export const depositTx = async (template, amount, repaymentPercent) => {
   const signer = provider.getSigner();
 
   const contract = new ethers.Contract(
-    '0x2fB257d500E4C4a86B0fbC4F61027ececeae11ef',
+    '0xc015c3a36d8Fb3A8Ef118Bd1026c2cC6AA946ba7',
     treasuryAbi,
     signer
   );
