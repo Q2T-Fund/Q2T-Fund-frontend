@@ -40,6 +40,10 @@ const DelegateForm = (props) => {
             //   );
             //   return;
             // }
+            console.log(
+              templateId,
+              values.tokenAmount,
+              values.repaymentPercent);
             await approveDai('0x2fB257d500E4C4a86B0fbC4F61027ececeae11ef', values.tokenAmount);
             await depositTx(
               templateId,

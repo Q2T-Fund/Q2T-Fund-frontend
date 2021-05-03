@@ -5,7 +5,7 @@ const q2t = require('../contracts/abi/Q2T.json');
 const { erc20abi } = require('../contracts/abi/ERC20.abi.json');
 const { treasuryAbi } = require("../contracts/abi/TreasuryDAO.abi.json");
 
-const daiContractAddress = "0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD"
+const daiContractAddress = "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
 const e18 = "000000000000000000";
 
 export const validateKovanNet = async () => {
@@ -66,7 +66,7 @@ export const getTemplate = (template) => {
       id = 0;
 
   }
-  return id;
+  return ++id;
 }
 
 export const depositTx = async (template, amount, repaymentPercent) => {
@@ -79,7 +79,10 @@ export const depositTx = async (template, amount, repaymentPercent) => {
     treasuryAbi,
     signer
   );
-  const createTx = await contract.deposit(0, amount, repaymentPercent);
+  const weiAmount = amount.toString() + e18
+
+  console.log( weiAmount, repaymentPercent);
+  const createTx = await contract.deposit(template, weiAmount, repaymentPercent);
   const transactionResult = await createTx.wait();
 
   console.log("deposit results: ", transactionResult);
@@ -98,10 +101,10 @@ export const depositTx = async (template, amount, repaymentPercent) => {
     );
   } else {
     console.log("Event was found", createdEvents);
-    const etherScanLink = `https://kovan.etherscan.io/tx/${createdEvents.transactionHash}`;
+    const maticExplorerLink = `https://explorer-mainnet.maticvigil.com/tx/${createdEvents.transactionHash}/token-transfers`
     openNotification(
       "Transaction Success!",
-      `Congratulations, you can view your transaction here: ${etherScanLink}`,
+      `Congratulations, you can view your transaction here: ${maticExplorerLink}`,
       true
     );
   }
