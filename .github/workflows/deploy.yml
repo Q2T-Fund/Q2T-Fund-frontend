@@ -25,6 +25,7 @@ jobs:
           REACT_APP_TEXTILE_KEY: ${{ secrets.TEXTILE_KEY }}
           REACT_APP_TEXTILE_PRIV_KEY: ${{ secrets.TEXTILE_PRIV_KEY }}
           REACT_APP_TEXTILE_SECRET: ${{ secrets.TEXTILE_SECRET }}
+          REACT_APP_TEXTILE_BUCKET_NAME: ${{ secrets.TEXTILE_BUCKET_NAME }}
           REACT_APP_THREAD_ID: ${{ secrets.THREAD_ID }}
           REACT_APP_DITO_API_URL: https://api.distributed.town
 
