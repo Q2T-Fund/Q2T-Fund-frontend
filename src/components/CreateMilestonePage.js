@@ -64,7 +64,7 @@ const CreateMilestonePage = () => {
         });
         console.log(url);
         const projectId = 0;
-        const res = await createMilestone(projectId, url, credits, 3);
+         await createMilestone(projectId, url, credits, 3);
     }
     const modalText = [
         'Scan with your ',

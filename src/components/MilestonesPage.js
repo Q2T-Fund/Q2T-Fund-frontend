@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import { Page, Section } from "react-page-layout";
 import MilestoneCard from "./common/MilestoneCard";
 import './css/ManagePage.css';
@@ -32,7 +31,7 @@ const MilestonesPage = (props) => {
       setMilestones(mil ? mil.milestones : []);
     }
     fetchProjects();
-  }, [])
+  }, [projectId])
   return (
     <Page layout="milestones" id="milestonesPageContent">
       <h1>Ongoing Milestones</h1>
@@ -65,7 +64,7 @@ const MilestonesPage = (props) => {
         <Section slot="row2-col2">
           <div className='white-card milestones-project-card'>
             <div className="milestones-sub-title">
-              <img className="image-7" src={cardImage} />
+              <img className="image-7" alt='card' src={cardImage} />
 
               <div className={"title-white-card raleway-bold-alto-22px"}>
                 {project.title}
@@ -76,16 +75,16 @@ const MilestonesPage = (props) => {
               {project.description}
             </div>
 
-            <img className="line-26" src={cardLineBreak} />
+            <img className="line-26" alt='card line break' src={cardLineBreak} />
 
             <div>
               <div className={"stats raleway-normal-alto-13px"}>
-                <img className="image-icon" src={credits} />
+                <img className="image-icon" alt='credits' src={credits} />
                         Credits: {2006}/{3840}
               </div>
 
               <div className={"stats raleway-normal-alto-13px"}>
-                <img className="image-icon" src={funds} />
+                <img className="image-icon" alt='funds' src={funds} />
                         Funds: {project.fundsNeeded} USDCs
                       </div>
             </div>

@@ -6,7 +6,6 @@ import funds from "../../assets/funds.png";
 import milestoneChain from "../../assets/milestone-chain.png";
 import "../css/ManagePage.css";
 import { useHistory } from "react-router-dom"
-import { Link } from "react-router-dom";
 
 const ManageCard = (props) => {
   let history = useHistory()
