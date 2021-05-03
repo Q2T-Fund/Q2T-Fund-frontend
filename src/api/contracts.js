@@ -25,13 +25,9 @@ export const approveDai = async (address, amount) => {
     signer,
   );
 
-  let overrides = {
-    gasLimit: 1000000
-  };
-
   const weiAmount = amount.toString() + e18
 
-  await contract.approve(address, weiAmount, overrides);
+  await contract.approve(address, weiAmount);
 
 }
 export const fund = async (communityTreasuryAddress, currency, amount) => {
@@ -83,11 +79,9 @@ export const depositTx = async (template, amount, repaymentPercent) => {
     signer
   );
   const weiAmount = amount.toString() + e18
-  let overrides = {
-    gasLimit: 1000000
-  };
+
   console.log( weiAmount, repaymentPercent);
-  const createTx = await contract.deposit(template, weiAmount, repaymentPercent, overrides);
+  const createTx = await contract.deposit(template, weiAmount, repaymentPercent);
   const transactionResult = await createTx.wait();
 
   console.log("deposit results: ", transactionResult);
