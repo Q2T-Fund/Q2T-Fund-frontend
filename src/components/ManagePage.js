@@ -40,7 +40,7 @@ const ManagePage = () => {
               openMilestones={3}
               credits={2006}
               funds={proj.budget}
-              projectId={proj.tokenId}
+              projectId={proj.projectId}
             />
           </Section>
         })}
