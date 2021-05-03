@@ -1,7 +1,7 @@
 import { ethers } from 'ethers'
 import { openNotification } from '../components/utils/common-functions';
 
-const { treasuryABI } = require('../contracts/abi/Treasury.abi.json');
+const q2t = require('../contracts/abi/Q2T.json');
 const { erc20abi } = require('../contracts/abi/ERC20.abi.json');
 const { treasuryAbi } = require("../contracts/abi/TreasuryDAO.abi.json");
 
@@ -41,7 +41,7 @@ export const fund = async (communityTreasuryAddress, currency, amount) => {
 
   const contract = new ethers.Contract(
     communityTreasuryAddress,
-    treasuryABI,
+    q2t.abi,
     signer,
   );
 
@@ -50,40 +50,36 @@ export const fund = async (communityTreasuryAddress, currency, amount) => {
 
 }
 
-export const getTreasuryDAOAddress = (template) => {
-  const treasuryDAOOpenSourceAddress = "0x5A29c96878764519E9266A87543E97211aA8283c";
-  const treasuryDAOLocalCommunitiesAddress = "0x98fF76Dbe4b7E931204788c676FE4D22565f825D";
-  const treasuryDAOArtAddress = "0x555c643cbC1119132a0736B6Fe8df2D41a09537f";
-  let address = '';
+export const getTemplate = (template) => {
+  let id = 0;
   switch (template) {
     case 'open-source':
-      address = treasuryDAOOpenSourceAddress;
+      id = 0;
       break;
     case 'art':
-      address = treasuryDAOArtAddress;
+      id = 1;
       break;
     case 'local':
-      address = treasuryDAOLocalCommunitiesAddress;
-      break
+      id = 2;
+      break;
     default:
-      address = treasuryDAOOpenSourceAddress;
+      id = 0;
 
   }
-  return address;
+  return id;
 }
 
-export const depositTx = async (address, currency, amount, repaymentPercent) => {
+export const depositTx = async (template, amount, repaymentPercent) => {
   // const provider = new ethers.providers.getDefaultProvider("kovan")
   const provider = new ethers.providers.Web3Provider(window.ethereum);
   const signer = provider.getSigner();
 
   const contract = new ethers.Contract(
-    address,
+    '0x2fB257d500E4C4a86B0fbC4F61027ececeae11ef',
     treasuryAbi,
     signer
   );
-
-  const createTx = await contract.deposit(currency, amount, repaymentPercent);
+  const createTx = await contract.deposit(0, amount, repaymentPercent);
   const transactionResult = await createTx.wait();
 
   console.log("deposit results: ", transactionResult);

@@ -4,12 +4,11 @@ import "./css/BaseLayout.css";
 import { Form, Input, Slider, Radio } from "formik-antd";
 import { Formik } from "formik";
 import { approveDai } from "../api/contracts";
-import { openNotification } from "./utils/common-functions";
-import { validateKovanNet, depositTx, getTreasuryDAOAddress } from '../api/contracts';
+import { depositTx, getTemplate } from '../api/contracts';
 import lineBreak from "../assets/delegate-form-line-break.png";
 
 const DelegateForm = (props) => {
-    const address = getTreasuryDAOAddress(props.template);
+    const templateId = getTemplate(props.template);
 
     return (
       <>
@@ -32,19 +31,18 @@ const DelegateForm = (props) => {
           }}
   
           onSubmit={async (values, { setSubmitting }) => {
-            const isKovan = await validateKovanNet();
-            if (!isKovan) {
-              openNotification(
-                "Transaction Failed!",
-                `Please switch to Kovan network before proceeding.`,
-                false
-              );
-              return;
-            }
-            await approveDai(address, values.tokenAmount);
+            // const isKovan = await validateKovanNet();
+            // if (!isKovan) {
+            //   openNotification(
+            //     "Transaction Failed!",
+            //     `Please switch to Kovan network before proceeding.`,
+            //     false
+            //   );
+            //   return;
+            // }
+            await approveDai('0x2fB257d500E4C4a86B0fbC4F61027ececeae11ef', values.tokenAmount);
             await depositTx(
-              address,
-              values.currency,
+              templateId,
               values.tokenAmount,
               values.repaymentPercent
             );
