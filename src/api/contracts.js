@@ -1,9 +1,8 @@
 import { ethers } from 'ethers'
 import { openNotification } from '../components/utils/common-functions';
 
-const q2t = require('../contracts/abi/Q2T.json');
+const {q2tabi} = require('../contracts/abi/Q2T.json');
 const { erc20abi } = require('../contracts/abi/ERC20.abi.json');
-const { treasuryAbi } = require("../contracts/abi/TreasuryDAO.abi.json");
 
 const daiContractAddress = "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063"
 const e18 = "000000000000000000";
@@ -26,9 +25,13 @@ export const approveDai = async (address, amount) => {
     signer,
   );
 
+  let overrides = {
+    gasLimit: 1000000
+  };
+
   const weiAmount = amount.toString() + e18
 
-  await contract.approve(address, weiAmount);
+  await contract.approve(address, weiAmount, overrides);
 
 }
 export const fund = async (communityTreasuryAddress, currency, amount) => {
@@ -41,7 +44,7 @@ export const fund = async (communityTreasuryAddress, currency, amount) => {
 
   const contract = new ethers.Contract(
     communityTreasuryAddress,
-    q2t.abi,
+    q2tabi,
     signer,
   );
 
@@ -76,13 +79,15 @@ export const depositTx = async (template, amount, repaymentPercent) => {
 
   const contract = new ethers.Contract(
     '0xc015c3a36d8Fb3A8Ef118Bd1026c2cC6AA946ba7',
-    treasuryAbi,
+    q2tabi,
     signer
   );
   const weiAmount = amount.toString() + e18
-
+  let overrides = {
+    gasLimit: 1000000
+  };
   console.log( weiAmount, repaymentPercent);
-  const createTx = await contract.deposit(template, weiAmount, repaymentPercent);
+  const createTx = await contract.deposit(template, weiAmount, repaymentPercent, overrides);
   const transactionResult = await createTx.wait();
 
   console.log("deposit results: ", transactionResult);
